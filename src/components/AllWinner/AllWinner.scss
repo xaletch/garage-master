@@ -1,0 +1,240 @@
+.AllWinner{
+    margin-top: 300px;
+    position: relative;
+    .main{
+        color: white;
+        margin: 50px auto;
+        display: flex;
+        justify-content: space-between;
+        .offers{
+            width: 45%;
+            .offersTop,.offersBottom{
+                position: absolute;
+                left: 50px;
+            }
+            .winnerCardMain{
+                display: flex;
+                gap: 10px;
+                row-gap: 20px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                .winnerCardMainTop{
+                    width: 100%;
+                    display: flex;
+                    justify-content: end;
+                    .showAll{
+                        color: white;
+                        text-decoration: none;
+                        img{
+                            height: 20px;
+                            filter: grayscale(.5) invert(1);
+                        }
+                    }
+                }
+                .WinnerCard{
+                    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.438);
+                    border-radius: 17px;
+                    background-color: rgb(24, 8, 56);
+                    background-position: right bottom;
+                    background-repeat: no-repeat;
+                    background-image: url(../../img/winnersBlockkrown.png);
+                    display: flex;
+                    width: fit-content;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 20px;
+                    color: white;
+                    gap: 20px;
+                    .img.c1{
+                        .border{
+                            border: solid 1px #8b2ca5;
+                            box-shadow: 0px 0px 5px #8b2ca5 ,inset 0px 0px 5px #8b2ca5;
+                        }
+                        
+                        background-image: url(../../img/winner_card_bg_1.png);
+                    }
+                    .img.c2{
+                        .border{
+                            border: solid 1px #3092bb;
+                            box-shadow: 0px 0px 5px #3092bb ,inset 0px 0px 5px #3092bb;
+                        }
+                        background-image: url(../../img/winner_card_bg_2.png);
+                    }
+                    // .img.c3{
+                    //     background-image: url(../../img/winner_card_bg_3.png);
+                    // }
+                    // .img.c4{
+                    //     background-image: url(../../img/winner_card_bg_4.png);
+                    // }
+                    // .img.c5{
+                    //     background-image: url(../../img/winner_card_bg_5.png);
+                    // }
+                    .img{
+                        width: 130px;
+                        height: 130px;
+                        margin: auto;
+                        display: flex;
+                        border-radius: 12px;
+                        background-position: center;
+                        background-size: calc(100% + 10px);
+                        .border{
+                            border-radius: 50%;
+                            margin: auto;
+                        }
+                    }
+                    span{
+                        opacity: .3;
+                    }
+                    .user{
+                        display: flex;
+                        gap: 10px;
+                        font-size: 14px;
+                        .userName{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            .date{
+                                font-size: .9em;
+                                font-weight: normal;
+                            }
+                        }
+                        .avatar{
+                            width: 30px;
+                            height: 30px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                        }
+                    }
+                    .price{
+                        font-weight: 600;
+                        span{
+                            opacity: 1;
+                        }
+                    }
+                    .every{
+                        color: #e07520;
+                        font-weight: 700;
+                        opacity: 1;
+                    }
+                }
+            }
+            .offersBottom{
+                margin-top: 50px;
+            }
+        }
+        .DailyGiveawayMain{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+            position: relative;
+            .radial{
+                position: absolute;
+                top: -20px;
+                left: -150px;
+                width: calc(100% + 200px);
+                height: calc(100% + 100px);
+                z-index: -1;
+                opacity: 0.6;   
+                background-image: url(../../img/radial.png);
+                background-size: cover;
+                background-position: center;
+            }
+            .DailyGiveaway.c1{
+                background-image: url(../../img/winner_right_bg_1.png);
+                .price{
+                    border: solid 2px #9830b3;
+                    box-shadow: 0 0 10px #9830b3;
+                }
+                .title{
+                    color:#9830b3;
+                }
+            }
+            .DailyGiveaway.c4{
+                background-image: url(../../img/winner_right_bg_4.png);
+                .price{
+                    border: solid 2px #1dd87e;
+                    box-shadow: 0 0 10px #1dd87e;
+                }
+                .title{
+                    color:#1dd87e;
+                }
+            }
+            .DailyGiveaway{
+                position: relative;
+                box-shadow: 0 0 10px #00000036;
+                padding: 20px 50px;
+                border-radius: 20px;
+                // background-color: #180838;
+                background-size: cover;
+                background-position: calc(50% - 50px);
+                gap: 20px;
+                width: 100%;height: 150px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .DailyGiveawayLeft{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    gap: 10px;
+                    .time{
+                        display: flex;
+                        gap: 5px;
+                        .blockTime{
+                            .timeTitle{
+                                font-size: 14px;
+                                opacity: 0.5;
+                                margin-top: 5px;
+                                text-align: center;
+                            }
+                            span{
+                                display: flex;
+                                height: 40px;width: 40px;
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: 10px;
+                                background-color: #1f0a48;
+                            }
+                        }
+                    }
+                }
+                .DailyGiveawayCenter{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    .price{
+                        padding: 10px;
+                        border-radius: 20px;
+                        display: flex;
+                        justify-content: center;
+                        gap: 5px;
+                    }
+                    .title{
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .members{
+                        color: #d97429;
+                    }
+                }
+                .DailyGiveawayRight{
+                    width: 100px;
+                    position: relative;
+                    .gun{
+                        width: 100%;
+                        position: relative;
+                        z-index: 2;
+                    }
+                    .imgBg{
+                        width: 100%;
+                        scale: 1.4;
+                        position: absolute;
+                        top: 0;left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

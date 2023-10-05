@@ -1,0 +1,113 @@
+.ProfileInfo {
+    margin-top: 60px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+
+    .ProfileInfoLine {
+        position: relative;
+            flex-grow: 1;
+
+        &::before {
+            content: "";
+            width: 1px;
+            height: 54px;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            background: #4f4368;
+            // opacity: 0.8;
+        }
+    }
+
+    .ProfileInfoAvatar {
+        padding: 22px;
+        border: 1px solid #9a33b5;
+        height: 206px;
+        border-radius: 100px;
+        box-shadow: 0 0 100px #9a33b5;
+        img {
+            width: 160px;
+            height: 160px;
+            border-radius: 100px;
+        }
+    }
+
+    .ProfileInfoUserName {
+        margin-left: 50px;
+
+        .userName {
+            color: #fff;
+            font-size: 26px;
+            line-height: 30px;
+        }
+
+        .userId {
+            margin-top: 18px;
+            color: #ef7d23;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 18px;
+            display: flex;
+
+            span {
+                margin-left: 4px;
+            }
+        }
+
+        .userIdCopy {
+            margin-left: 16px;
+            cursor: pointer;
+
+            img {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+
+    .ProfileInfoBlock {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #FFF;
+            border-radius: 100px;
+            box-shadow: 0 0 5px #fff;
+        }
+
+        p {
+            display: flex;
+            flex-direction: column;
+            color: #FFF;
+            justify-content: center;
+
+            .itemName {
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 20px;
+            }
+
+            .itemBottom {
+                margin-top: 6px;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 22px;
+            }
+        }
+    }
+}

@@ -1,0 +1,398 @@
+@font-face {
+  font-family: 'Gilroy';
+  src: url(Font/gilroy/gilroy-regular.ttf);
+
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url(Font/gilroy/gilroy-medium.ttf);
+  font-weight: medium;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url(Font/gilroy/gilroy-semibold.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url(Font/gilroy/gilroy-bold.ttf);
+  font-weight: bold;
+}
+
+* {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+body {
+  font-family: "Gilroy";
+  background: #180838 url(./img/background.png);
+  color: white;
+  background-position: top center;
+  font-size: 13px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.mainWidht {
+  width: 1200px;
+  margin: auto;
+}
+
+.orangeBtn {
+  border: none;
+  color: white;
+  background: linear-gradient(45deg, #b4550a 0%, #de7c2f 100%);
+  padding: 14px 40px 14px 60px;
+  border-radius: 17px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: medium;
+}
+
+h2 {
+  text-align: center;
+}
+
+span.orange {
+  color: #ed771b;
+}
+
+.CasesByRarityCard,
+.FreeCaseCard {
+  background-size: calc(100% + 10px) calc(100% + 10px);
+  background-position: -2px -2px;
+}
+
+@media(min-width:1300px) {
+  .AllWinner .main .offers {
+    width: 46% !important;
+  }
+}
+
+@media(max-width:1300px) {
+  .mainWidht {
+    width: 1000px;
+  }
+
+  .App {
+    padding-top: 20px;
+  }
+
+  .FreeCaseMain {
+    gap: 54px !important;
+  }
+
+  .WinnerCard:nth-child(3) {
+    display: none !important;
+  }
+
+  .orangeBtn {
+    margin-top: -16px;
+  }
+}
+
+@media(max-width:1050px) {
+  .offersTop {
+    margin-top: -45px;
+  }
+
+  .AllWinner .main {
+    margin: 100px auto !important;
+  }
+
+  .mainWidht {
+    width: 800px;
+  }
+
+  .WinnerCard:nth-child(2) {
+    display: none !important;
+  }
+
+  .App {
+    padding-top: 20px;
+  }
+
+  .AllWinner .main .offers {
+    width: 40% !important;
+  }
+
+  .AllWinner .main .DailyGiveawayMain {
+    width: 60% !important;
+  }
+
+  .FreeCaseMain {
+    gap: 86px !important;
+  }
+
+  .FreeСase .FreeCaseMain .FreeCaseCard {
+    padding: 35px;
+  }
+
+  .AllWinner .main .DailyGiveawayMain .DailyGiveaway .DailyGiveawayLeft .time .blockTime .timeTitle {
+    font-size: 10px !important;
+  }
+
+  .AllWinner .main .DailyGiveawayMain .DailyGiveaway .DailyGiveawayLeft .time .blockTime span {
+    font-size: 10px !important;
+    height: 22px !important;
+    width: 25px !important;
+    border-radius: 3px !important;
+  }
+
+
+}
+
+@media(max-width:900px) {
+  .orangeBtn {
+    margin-top: 10px !important;
+  }
+
+  .Header nav .massager .ico {
+    width: 25px !important;
+    height: 25px !important;
+
+    img {
+      width: calc(100% - 8px) !important;
+    }
+  }
+
+  body {
+    font-size: 10px;
+  }
+
+  .mainWidht {
+    width: 600px;
+  }
+
+  .WinnerCard:nth-child(3),
+  .WinnerCard:nth-child(2) {
+    display: none !important;
+  }
+
+  .HeaderBottom .HeaderBottomCard {
+    width: 8vw !important;
+    height: 8vw !important;
+  }
+
+  .HeaderBottomCard::after {
+    width: 4px !important;
+    height: 19px !important;
+    left: -4px !important;
+  }
+
+  .FreeCaseCard,
+  .CasesByRarityCard {
+    img {
+      width: 100px;
+      margin: auto;
+    }
+  }
+
+  .FreeCaseMain {
+    gap: 38px !important;
+  }
+
+  .About .aboutCard {
+    flex-direction: column;
+    text-align: center;
+
+    .title {
+      font-size: 10px;
+      opacity: 0.7;
+    }
+
+    span {
+      font-size: 12px !important;
+    }
+
+    .img {
+      width: 50px !important;
+      height: 50px !important;
+      padding: 15px;
+
+      img {
+        height: 100%;
+      }
+    }
+
+  }
+
+  .Footer .block {
+    width: calc(50% - 20px) !important;
+
+    .imgs {
+      img {
+        display: block;
+        height: 25px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .Footer .mainWidht {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .orangeBtn {
+    font-size: 10px;
+    padding: 7px 25px 7px 40px;
+  }
+
+
+
+  .AllWinner .main .DailyGiveawayMain .DailyGiveaway {
+    height: 100px !important;
+
+
+
+    .DailyGiveawayCenter {
+      font-size: 8px;
+
+      .price {
+        padding: 6px !important;
+        font-size: 8px !important;
+        border-radius: 14px !important;
+      }
+    }
+  }
+
+  .AllWinner .main .offers .offersBottom {
+    margin-top: 20px !important;
+  }
+
+  .offersTop {
+    button {
+      margin-top: -40px;
+    }
+  }
+}
+
+@media(max-width:650px) {
+  .HeaderBottom .HeaderBottomCard{
+    width: 20vw!important;
+    height: 20vw!important;
+  }
+  .AllWinner .main .offers {
+    width: 100% !important;
+  }
+
+  .mainWidht {
+    width: 400px;
+  }
+
+
+  .About {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .AllWinner .main {
+    flex-direction: column;
+    gap: 50px;
+    padding-bottom: 20px;
+  }
+
+  .AllWinner .main .DailyGiveawayMain {
+    width: 100% !important;
+  }
+
+  .AllWinner .main .offers .offersBottom {
+    margin-top: 300px !important;
+  }
+
+  .WinnerCard:nth-child(2) {
+    display: flex !important;
+  }
+
+  .offers {
+    width: 100% !important;
+  }
+}
+
+@media(max-width:550px) {
+  .CardMenu{
+    bottom: -210px !important;
+  }
+  .CardMenu .CardMenuBottom img{
+    width: 25px !important;
+  }
+  h2 {
+    font-size: 20px;
+  }
+
+  .mainWidht {
+    width: calc(100% - 30px);
+  }
+
+  .CasesByRarity nav a,
+  .FreeСase nav a {
+    padding: 10px 10px !important;
+    font-size: 8px;
+  }
+
+  .FreeСase .FreeCaseMain {
+    gap: 20px !important;
+    justify-content: space-between;
+  }
+
+  .Header {
+    padding: 0 !important;
+  }
+
+  .Footer .block {
+    width: calc(100% - 20px) !important;
+  }
+
+  .Header nav .massager {
+    display: none !important;
+  }
+
+  .Footer .block .imgs {
+    width: 100% !important;
+  }
+}
+
+@media(max-width:450px) {
+
+  .FreeCaseCard img,
+  .CasesByRarityCard img {
+    width: 220px;
+    margin: auto;
+  }
+
+  .AllWinner .main .DailyGiveawayMain .DailyGiveaway .DailyGiveawayRight {
+    display: none;
+  }
+
+  .FreeСase .FreeCaseMain,
+  .CasesByRarity .CasesByRarityCardMain,
+  .AllWinner .main .offers .winnerCardMain {
+    justify-content: center !important;
+  }
+  .AllWinner .main .offers .winnerCardMain .WinnerCard{
+    padding: 15px !important;
+  }
+  .AllWinner .main .offers .winnerCardMain .WinnerCard .img{
+    width: 120px!important;
+  }
+
+}

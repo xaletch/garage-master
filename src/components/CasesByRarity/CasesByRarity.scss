@@ -1,0 +1,89 @@
+.CasesByRarity{
+    margin-top: 50px;
+    nav{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 30px;
+        a:hover{
+            color: #8b2ca5;
+            box-shadow: 0 0 10px #8b2ca5bc,inset 0 0 10px #8b2ca5bc;
+        }
+        a{
+            transition: .4s;
+            padding: 10px 30px;
+            border: solid 1px #8b2ca5;
+            border-radius: 10px;
+        }
+    }
+    .CasesByRarityCardMain{
+        display: flex;
+        margin-top: 50px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .CasesByRarityCard.c1{
+            background-image: url(../../img/raritet_card_1.png);
+            .price{
+                border: #8b2ca5 solid 1px;
+                box-shadow: 0 0 10px #972eb4;
+            }
+        }
+        .CasesByRarityCard.c1:hover{
+            border: #8b2ca5 solid 2px;
+        }
+        .CasesByRarityCard.c1::after{
+            background-color: #8b2ca5;
+        }
+
+        .CasesByRarityCard.c5{
+            background-image: url(../../img/raritet_card_5.png);
+            .price{
+                border: #de7422 solid 1px;
+                box-shadow: 0 0 10px #de7422;
+            }
+        }
+        .CasesByRarityCard.c5:hover{
+            border: #de7422 solid 2px;
+        }
+        .CasesByRarityCard.c5::after{
+            background-color: #de7422;
+        }
+
+
+        .CasesByRarityCard:hover::after{
+            width: 6px;
+            left: -8px;
+        }
+
+        .CasesByRarityCard::after{
+            position: absolute;
+            content: '';
+            left: 0;
+            width: 0;
+            height: 40px;
+            border-radius: 50px 0 0 50px;
+            bottom: 30px;
+            transition: .4s;
+        }
+        .CasesByRarityCard{
+            position: relative;
+            transition: .4s;
+            border: #ffffff00 solid 2px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 35px;
+            border-radius: 18px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.302);
+            .price{
+                font-weight: 600;
+                padding: 5px 30px;
+                width: fit-content;
+                border-radius: 18px;
+            }
+        }
+    }
+}

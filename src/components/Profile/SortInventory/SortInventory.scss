@@ -1,0 +1,91 @@
+.SortInventory {
+    margin-top: 38px;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    ul li {
+        list-style: none;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    .categoryList {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        margin-right: 30px;
+
+        .categoryItem {
+            height: 55px;
+            padding: 18px 30px;
+            border: 1px solid #872ba1;
+            border-radius: 14px;
+
+            color: #FFF;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 16px;
+            cursor: pointer;
+        }
+
+        .categoryItem.active {
+            border: 1px solid #32166b;
+            background: linear-gradient(48deg, #32166b, 50%, #672183 100%);
+        }
+    }
+
+    .SellEverything {
+        height: 55px;
+        padding: 18px 60px;
+        background: linear-gradient(48deg, #b4550a, 50%, #de7c2f 100%);
+        border: 1px solid #9b4705;
+        border-radius: 14px;
+
+        color: #FFF;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 16px;
+        cursor: pointer;
+    }
+
+    .SortInventoryPrice {
+        margin-left: 35px;
+
+        .priceList {
+            display: flex;
+            // border: 1px solid #64597a;
+            border-radius: 14px;
+
+            .priceItem {
+                height: 55px;
+                padding: 18px 20px;
+                border: 1px solid #64597a;
+
+                color: #FFF;
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 18px;
+                cursor: pointer;
+            }
+
+            .priceItem:first-child {
+                border-top-left-radius: 14px;
+                border-bottom-left-radius: 14px;
+            }
+            .priceItem:last-child {
+                border-top-right-radius: 14px;
+                border-bottom-right-radius: 14px;
+            }
+            
+            .priceItem.active {
+                border: 1px solid #9830b3;
+                box-shadow: 0 0 10px #9830b3;
+            }
+        }
+    }
+}

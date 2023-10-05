@@ -1,0 +1,26 @@
+.Footer{
+    background-color: #0f0723;
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    .mainWidht{
+        display: flex;
+    }
+    .block{
+        width: 25%;
+        padding:0 20px;
+        a{
+            display: block;
+            margin-top: 10px;
+        }
+        .imgs{
+            margin-top: 10px;
+            width: 200px;
+            gap: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+    }
+}

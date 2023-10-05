@@ -1,0 +1,123 @@
+.ProfileBottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    row-gap: 28px;
+    margin-bottom: 160px;
+
+    .ProfileBottomCard.c1 {
+        background: linear-gradient(45deg, #3a1359 0%, #180838 100%);
+
+        &::before {
+            background-color: #9830b3;
+        }
+    }
+
+    .ProfileBottomCard.c2 {
+        background: linear-gradient(45deg, #173366 0%, #180939 100%);
+
+        &::before {
+            background-color: #3092bb;
+        }
+    }
+
+    .ProfileBottomCard.c3 {
+        background: linear-gradient(45deg, #40143f 0%, #190838 100%);
+
+        &::before {
+            background-color: #c9405d;
+        }
+    }
+
+    .ProfileBottomCard.c4 {
+        background: linear-gradient(45deg, #193447 0%, #180938 100%);
+
+        &::before {
+            background-color: #1dd87e;
+        }
+    }
+
+    .ProfileBottomCard.c5 {
+        background: linear-gradient(45deg, #59292f 0%, #190938 100%);
+
+        &::before {
+            background-color: #de7422;
+        }
+    }
+
+    .ProfileBottomCard {
+        width: 150px;
+        padding: 18px;
+        border-radius: 14px;
+        border-width: 2px;
+        border-style: solid;
+        border-color: #180838;
+        position: relative;
+        cursor: pointer;
+        transition: all .4s;
+        
+        &::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 45px;
+            bottom: 40px;
+            left: -8px;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .ProfileBottomBlockRing {
+            border-radius: 100px;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        .ProfileBottomBlockDescription {
+            margin-top: 20px;
+
+            .name, .categoryName {
+                font-size: 15px;
+                line-height: 16px;
+            }
+
+            .name {
+                margin-bottom: 8px;
+                color: #FFF;
+                font-weight: 700;
+            }
+            .categoryName {
+                color: #7257a8;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .ProfileBottomCard.c1:hover {
+        border: #9830b3 2px solid !important;
+    }
+
+    .ProfileBottomCard.c2:hover {
+        border: #3092bb 2px solid !important;
+    }
+
+    .ProfileBottomCard.c3:hover {
+        border: #c9405d 2px solid !important;
+    }
+
+    .ProfileBottomCard.c4:hover {
+        border: #1dd87e 2px solid !important;
+    }
+
+    .ProfileBottomCard.c5:hover {
+        border: #de7422 2px solid !important;
+    }
+}

@@ -1,0 +1,186 @@
+.Header {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(50, 22, 107, 1) 40%, rgba(103, 33, 131, 1) 59%);
+    top: 0;
+    nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+
+        .navRight,
+        .massager {
+            display: flex;
+            position: relative;
+            gap: 10px;
+            align-items: center;
+            .block {
+                display: flex;
+                gap: 10px;
+
+                p {
+                    display: flex;
+                    flex-direction: column;
+                    color: white;
+                    justify-content: center;
+                    font-size: 15px;
+                    .follower {
+                        opacity: 0.7;
+                        filter: contrast(0.5);
+
+                    }
+                }
+            }
+
+            .ico {
+                height: 40px;
+                border-radius: 50%;
+                width: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+
+                img {
+                    filter: invert(1);
+                    width: calc(100% - 15px);
+                }
+            }
+
+            .vk {
+                .ico {
+                    background: linear-gradient(90deg, rgba(40, 60, 190, 1) 20%, rgba(81, 110, 223, 1) 77%);
+                }
+            }
+
+            .inst {
+                .ico {
+                    background: linear-gradient(90deg, rgba(242, 170, 82, 1) 20%, rgba(228, 64, 153, 1) 77%);
+                }
+            }
+
+            .telegram {
+                .ico {
+                    background: linear-gradient(90deg, rgba(50, 164, 254, 1) 20%, rgba(115, 180, 249, 1) 77%);
+                }
+            }
+
+            .wallet,
+            .user {
+                .ico {
+                    border: solid 2px white;
+                }
+
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+    }
+}
+
+.HeaderMedia.open{
+    display: block;
+}
+.HeaderMedia {
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.637);
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    .HeaderMediaTop {
+        display: flex;
+        justify-content: space-between;
+        padding: 50px 0 0 0;
+        .vk {
+            .ico {
+                background: linear-gradient(90deg, rgba(40, 60, 190, 1) 20%, rgba(81, 110, 223, 1) 77%);
+            }
+        }
+
+        .inst {
+            .ico {
+                background: linear-gradient(90deg, rgba(242, 170, 82, 1) 20%, rgba(228, 64, 153, 1) 77%);
+            }
+        }
+
+        .telegram {
+            .ico {
+                background: linear-gradient(90deg, rgba(50, 164, 254, 1) 20%, rgba(115, 180, 249, 1) 77%);
+            }
+        }
+
+        .massage {
+            display: flex;
+            gap: 20px;
+            .block {
+                width: 30px;
+                height: 30px;
+                display: flex;
+
+                .ico {
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 50%;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                img {
+                    width: 20px;
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+    }
+    .HeaderMediaBottom{
+        padding: 200px 0;
+        display: flex;
+        justify-content: space-between;
+        .block{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            a{
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+@media(max-width:1300px) {
+    .Header {
+        box-shadow: 0 0 15px black;
+        border-radius: 20px;
+        width: calc(100% - 30px);
+        left: 0;
+        right: 0;
+        top: 10px;
+        margin: auto;
+        padding: 10px 30px;
+
+        .massager {
+            .block {
+                p {
+                    display: none !important;
+                }
+            }
+        }
+
+        .follower {
+            display: none;
+        }
+
+        .ico {
+            border: none !important;
+        }
+
+        .logoImg {
+            display: none;
+        }
+    }
+}

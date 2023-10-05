@@ -1,0 +1,279 @@
+.HeaderBottom {
+    width: 100%;
+    padding: 20px;
+    padding-top: 100px;
+    top: 0;left: 0;
+    position: absolute;
+    height: 500px;
+    
+    &::after{
+        background-color: #12062b;
+        position: absolute;
+        content: '';
+        top: 0;left: 0;right: 0;
+        height: calc(110px + 100px + 20px );
+        z-index: -1;
+    }
+
+    .slick-slider,.slick-list{
+        height: 100%;
+    }
+
+
+    
+    .HeaderBottomMain {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+
+    .HeaderBottomCard::after {
+        position: absolute;
+        content: '';
+        width: 8px;
+        height: 40px;
+        left: -10px;
+        border-radius: 5px 0 0 5px;
+        bottom: 25px;
+    }
+
+    .HeaderBottomCard.c1::after {
+        background-color: #9830b3;
+    }
+
+    .HeaderBottomCard.c2::after {
+        background-color: #3092bb;
+    }
+
+    .HeaderBottomCard.c3::after {
+        background-color: #c9405d;
+    }
+
+    .HeaderBottomCard.c4::after {
+        background-color: #1dd87e;
+    }
+
+    .HeaderBottomCard.c5::after {
+        background-color: #de7422;
+    }
+
+    .HeaderBottomCard.c1 {
+        background-image: url(../../img/header_bottom_bg_1.png);
+
+        .CardMenu {
+            border: #9830b3 2px solid;
+
+            .CardMenuTop {
+                border-top: #9830b3 3px solid;
+            }
+        }
+
+        .CardMenu::after {
+            background-color: #9830b3;
+        }
+    }
+
+    .HeaderBottomCard.c2 {
+        background-image: url(../../img/header_bottom_bg_2.png);
+
+        .CardMenu {
+            border: #3092bb 2px solid;
+
+            .CardMenuTop {
+                border-top: #3092bb 3px solid;
+            }
+        }
+
+        .CardMenu::after {
+            background-color: #3092bb;
+        }
+    }
+
+    .HeaderBottomCard.c3 {
+        background-image: url(../../img/header_bottom_bg_3.png);
+
+        .CardMenu {
+            border: #c9405d 2px solid;
+
+            .CardMenuTop {
+                border-top: #c9405d 3px solid;
+            }
+        }
+
+        .CardMenu::after {
+            background-color: #c9405d;
+        }
+    }
+
+    .HeaderBottomCard.c4 {
+        background-image: url(../../img/header_bottom_bg_4.png);
+
+        .CardMenu {
+            border: #1dd87e 2px solid;
+
+            .CardMenuTop {
+                border-top: #1dd87e 3px solid;
+            }
+        }
+
+        .CardMenu::after {
+            background-color: #1dd87e;
+        }
+
+    }
+
+    .HeaderBottomCard.c5 {
+        background-image: url(../../img/header_bottom_bg_5.png);
+
+        .CardMenu {
+            border: #de7422 2px solid;
+
+            .CardMenuTop {
+                border-top: #de7422 3px solid;
+            }
+        }
+
+        .CardMenu::after {
+            background-color: #de7422;
+        }
+
+    }
+
+    .HeaderBottomCard.c1:hover {
+        border: #9830b3 2px solid !important;
+        padding: 0;
+    }
+
+    .HeaderBottomCard.c2:hover {
+        border: #3092bb 2px solid !important;
+        padding: 0;
+    }
+
+    .HeaderBottomCard.c3:hover {
+        border: #c9405d 2px solid !important;
+        padding: 0;
+    }
+
+    .HeaderBottomCard.c4:hover {
+        border: #1dd87e 2px solid !important;
+        padding: 0;
+    }
+
+    .HeaderBottomCard.c5:hover {
+        border: #de7422 2px solid !important;
+        padding: 0;
+    }
+
+    .HeaderBottomCard {
+        transition: all .4s;
+        background-size: calc(100% + 10px);
+        background-position: center;
+        padding: 2px;
+        position: relative;
+        border-radius: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10vw;
+        height: 10vw;
+        max-width: 110px;
+        max-height: 110px;
+        border: solid 2px #0000;
+
+
+        .HeaderBottomBlockRing {
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 50%;
+            width: 65%;
+            height: 65%;
+
+            img {
+                width: 100%;
+            }
+
+            color: #0000002a;
+        }
+    }
+
+}
+
+.CardMenu::after {
+    position: absolute;
+    content: '';
+    top: -12px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 20px;
+    border-radius: 2px;
+    z-index: -10;
+    height: 20px;
+    transform: rotateZ(45deg) skew(20deg, 20deg);
+}
+
+.CardMenu {
+    position: absolute;
+    display: none;
+    transition: 1s;
+    bottom: -235px;
+
+    border-radius: 18px;
+    flex-direction: column;
+    background-color: #180838;
+    z-index: 10;
+
+    .CardMenuTop {
+        margin-top: -2px;
+        border-radius: 18px 18px 0 0;
+        border-bottom: #7257a8 solid 1px;
+        background-color: #180838;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+
+        img {
+            width: calc(100% - 10px);
+            margin: auto;
+        }
+    }
+
+    .CardMenuBottom {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        img {
+            width: 40px;
+            border-radius: 50%;
+        }
+    }
+}
+
+.HeaderBottomCard:hover .CardMenu {
+    display: flex;
+}
+
+// .HeaderBottom{
+//     // overflow-x: auto;
+//     overflow-y: visible;
+//     display: flex;
+//     .HeaderBottomMain{
+//         justify-content: center;
+//       width: max-content!important;
+//       .HeaderBottomCard {
+//         width: 70px !important;
+//         height: 70px !important;
+//       }
+//     }
+//   }
+
+
+
+.slick-arrow {
+    display: none !important;
+}
