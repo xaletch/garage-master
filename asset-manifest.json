@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/garage-master/static/css/main.dcd4c22b.css",
-    "main.js": "/garage-master/static/js/main.d5fe512c.js",
+    "main.js": "/garage-master/static/js/main.fd1d5381.js",
     "static/media/background.png": "/garage-master/static/media/background.80cefd18d09463326d70.png",
     "static/media/radial.png": "/garage-master/static/media/radial.b68b8ae64540b09ad396.png",
     "static/media/bgBlock.png": "/garage-master/static/media/bgBlock.34f2e9b23df5728fd918.png",
@@ -21,10 +21,10 @@
     "static/media/copy-userId.svg": "/garage-master/static/media/copy-userId.340a85c43ff35571b4fd6d7be31fd870.svg",
     "static/media/update.svg": "/garage-master/static/media/update.7792b45ee0d9ef4c434c43e4e45e877e.svg",
     "main.dcd4c22b.css.map": "/garage-master/static/css/main.dcd4c22b.css.map",
-    "main.d5fe512c.js.map": "/garage-master/static/js/main.d5fe512c.js.map"
+    "main.fd1d5381.js.map": "/garage-master/static/js/main.fd1d5381.js.map"
   },
   "entrypoints": [
     "static/css/main.dcd4c22b.css",
-    "static/js/main.d5fe512c.js"
+    "static/js/main.fd1d5381.js"
   ]
 }
