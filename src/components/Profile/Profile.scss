@@ -2,3 +2,15 @@
     margin-top: 280px;
     position: relative;
 }
+
+@media(max-width:650px) {
+    .Profile {
+        margin-top: 260px;
+    }
+}
+
+@media (max-width: 550px) {
+    .Profile {
+        margin-top: 250px;
+    }
+}
