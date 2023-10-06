@@ -50,7 +50,7 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
                 <span className="follower">Баланс</span>
               </p>
             </div>
-            <div className="block user">
+            <div className="block user" style={{cursor: "pointer"}}>
               <div className="ico">
                 <img src={link_img.user2} alt="" />
               </div>

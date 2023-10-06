@@ -19,7 +19,7 @@ export const ProfileInfo = () => {
                 </div>
             </div>
         </div>
-        <div class="ProfileInfoLine" aria-hidden="true"></div>
+        <div class="ProfileInfoLine Line1" aria-hidden="true"></div>
         <div className='ProfileInfoBlock'>
             <div className='item countCase'>
                 <div className='icon'>
