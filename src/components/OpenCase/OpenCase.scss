@@ -1,0 +1,52 @@
+.OpenCase {
+    margin-top: 280px;
+    position: relative;
+
+    .CaseShadow {
+        width: 629px;
+        height: 340px;
+        background: #6e238a;
+        border-radius: 100%;
+        position: absolute;
+        left: -50px;
+        transform: rotate(10deg);
+        z-index: -1;
+        filter: blur(80px)
+    }
+}
+
+@media(max-width:900px) {
+    .OpenCase {
+        .CaseShadow {
+            width: 600px;
+            height: 380px;
+        }
+    }
+}
+
+@media(max-width:650px) {
+    .OpenCase {
+        .CaseShadow {
+            width: 500px;
+            height: 280px;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .OpenCase {
+        .CaseShadow {
+            width: 370px;
+            height: 220px;
+        }
+    }
+}
+
+@media(max-width:450px) {
+    .OpenCase {
+        .CaseShadow {
+            width: 320px;
+            height: 180px;
+        }
+    }
+}

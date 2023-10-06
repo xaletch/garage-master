@@ -23,8 +23,11 @@ import close from './close.png'
 import Layer_777 from './Layer 777.png'
 import copy_userId from './copy-userId.svg';
 import steam from './steam.svg';
-import update from './update.svg'
-
+import update from './update.svg';
+import freeCase from './free_case.png';
+import case_open_arrow_top from './case_open_arrow_top.png';
+import case_open_arrow_bottom from './case_open_arrow_bottom.png';
+import winnings from './winnings.png';
 
 const link_img={
     logo:logo,
@@ -53,6 +56,10 @@ const link_img={
     copy_userId: copy_userId,
     steam: steam,
     update: update,
+    freeCase: freeCase,
+    case_open_arrow_top: case_open_arrow_top,
+    case_open_arrow_bottom: case_open_arrow_bottom,
+    winnings: winnings,
 }
 
 

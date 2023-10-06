@@ -1,0 +1,494 @@
+.Case {
+    margin-top: 38px;
+
+    .CaseWrapper {
+        display: flex;
+        gap: 150px;
+
+        .CaseImg {
+            padding-top: 80px;
+            position: relative;
+
+            &::before {
+                content: "";
+                width: 468px;
+                height: 468px;
+                border: 1px solid #9432af;
+                box-shadow: 0 0 10px #9a33b5, inset 0 0 10px #9a33b5;
+                border-radius: 100%;
+                position: absolute;
+                top: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: -1;
+            }
+        }
+
+        .BuyCase {
+            padding-left: 40px;
+
+            .CaseName {
+                padding-left: 10px;
+                text-align: start;
+                color: #FFF;
+                font-size: 30px;
+                font-weight: 400;
+                line-height: 34px;
+            }
+
+            .CasePrice {
+                width: 138px;
+                margin-top: 20px;
+                padding: 16px 32px;
+                padding-bottom: 14px;
+                border-radius: 10px;
+                border: 1px solid #9830b3;
+                box-shadow: 0 0 10px #9830b3, inset 0 0 10px #9830b3;
+
+                color: #FFF;
+                font-size: 27px;
+                line-height: 28px;
+            }
+
+            .SelectCountCase {
+                margin-top: 40px;
+    
+                ul,li {
+                    list-style: none;
+                }
+                ul {
+                    padding: 0;
+                }
+                
+                span {
+                    color: #FFF;
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 16px;
+                }
+    
+                .CountCaseBlock {
+                    margin-top: 16px;
+                    
+                    .CountCaseList {
+                        display: flex;
+                        border-radius: 14px;
+            
+                        .CountCaseItem {
+                            height: 55px;
+                            padding: 18px 30px;
+                            border: 1px solid #64597a;
+            
+                            color: #FFF;
+                            cursor: pointer;
+    
+                            span {
+                                font-size: 21px;
+                                font-weight: 400;
+                                line-height: 22px;
+                            }
+                        }
+            
+                        .CountCaseItem:first-child {
+                            border-top-left-radius: 14px;
+                            border-bottom-left-radius: 14px;
+                        }
+                        .CountCaseItem:last-child {
+                            border-top-right-radius: 14px;
+                            border-bottom-right-radius: 14px;
+                        }
+                        
+                        .CountCaseItem.active {
+                            border: 1px solid #9830b3;
+                            box-shadow: 0 0 10px #9830b3, inset 0 0 10px #9830b3;
+                        }
+                    }
+                }
+            }
+            .TopUpBalance {
+                margin-top: 42px;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+    
+                span {
+                    color: #ef7d23;
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 16px;
+                }
+    
+                .TopUpBalanceBtn {
+                    padding: 20px;
+                    background: linear-gradient(48deg, #b4550a, 50%, #de7c2f 100%);
+                    border: 1px solid #9b4705;
+                    border-radius: 14px;
+    
+                    color: #FFF;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 16px;
+                    cursor: pointer;
+                }
+            }
+
+            .warning {
+                margin-top: 28px;
+                padding: 38px 40px;
+                text-align: center;
+                border: 1px solid #ed771b;
+                border-radius: 14px;
+                box-shadow: 0 0 4px #ed771b, inset 0 0 4px #ed771b;
+
+                color: #FFF;
+                font-size: 15px;
+                line-height: 17px;
+
+                h3 {
+                    text-transform: uppercase;
+                }
+                p {
+                    margin-top: 20px;
+                    margin-bottom: 14px;
+                }
+                span {
+                    color: #ef7d23;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:1300px) {
+    .Case {
+        .CaseWrapper {
+            gap: 100px;
+            .CaseImg {
+                img {
+                    width: 464px;
+                }
+                &::before {
+                    content: "";
+                    width: 420px;
+                    height: 420px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:1050px) {
+    .Case {
+        .CaseWrapper {
+            gap: 30px;
+            .CaseImg {
+                img {
+                    width: 340px;
+                }
+                &::before {
+                    content: "";
+                    width: 350px;
+                    height: 350px;
+                }
+            }
+            .BuyCase {
+                .CaseName {
+                    font-size: 26px;
+                    line-height: 28px;
+                }
+                .CasePrice {
+                    width: 120px;
+                    padding: 14px 29px;
+                    font-size: 22px;
+                }
+                .warning {
+                    h3 {
+                        font-size: 18px;
+                        line-height: 20px;
+                    }
+                    p {
+                        font-size: 14px;
+                        line-height: 16px;
+                    }
+                    span {
+                        font-size: 14px;
+                        line-height: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:900px) {
+    .Case {
+        .CaseWrapper {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            .CaseImg {
+                width: 460px;
+                img {
+                    width: 460px;
+                }
+                &::before {
+                    content: "";
+                    width: 480px;
+                    height: 480px;
+                }
+            }
+            .BuyCase {
+                padding-left: 0;
+                margin-top: 100px;
+                width: 400px;
+            }
+        }
+    }
+}
+
+@media(max-width:650px) {
+    .Case {
+        .CaseWrapper {
+            .CaseImg {
+                width: 360px;
+                img {
+                    width: 360px;
+                }
+                &::before {
+                    content: "";
+                    width: 380px;
+                    height: 380px;
+                }
+            }
+            .BuyCase {
+                .CaseName {
+                    font-size: 24px;
+                    line-height: 26px;
+                }
+                .CasePrice {
+                    width: 110px;
+                    padding: 14px 29px;
+                    font-size: 18px;
+                    line-height: 18px;
+                }
+                .warning {
+                    h3 {
+                        font-size: 18px;
+                        line-height: 20px;
+                    }
+                    p {
+                        font-size: 14px;
+                        line-height: 16px;
+                    }
+                    span {
+                        font-size: 14px;
+                        line-height: 16px;
+                    }
+                }
+                .SelectCountCase {
+                    .CountCaseBlock {
+                        .CountCaseList {
+                            .CountCaseItem {
+                                span {
+                                    font-size: 22px;
+                                    line-height: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .TopUpBalance {
+                    margin-top: 32px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:550px) {
+    .Case {
+        .CaseWrapper {
+            .CaseImg {
+                width: 290px;
+                img {
+                    width: 290px;
+                }
+                &::before {
+                    content: "";
+                    width: 320px;
+                    height: 320px;
+                }
+            }
+            .BuyCase {
+                width: 90%;
+                .CaseName {
+                    font-size: 20px;
+                    line-height: 22px;
+                }
+                .CasePrice {
+                    width: 90px;
+                    padding: 14px 20px;
+                    font-size: 16px;
+                    line-height: 16px;
+                }
+                .warning {
+                    h3 {
+                        font-size: 16px;
+                        line-height: 18px;
+                    }
+                    p {
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+                    span {
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+                }
+                .SelectCountCase {
+                    margin-top: 30px;
+                    span {
+                        font-size: 12px;
+                        line-height: 12px;
+                    }
+                    .CountCaseBlock {
+                        .CountCaseList {
+                            .CountCaseItem {
+                                height: auto;
+                                padding: 10px 20px;
+                                span {
+                                    font-size: 16px;
+                                    line-height: 16px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .TopUpBalance {
+                    margin-top: 28px;
+                    span {
+                        font-size: 12px;
+                        line-height: 12px;
+                    }
+                    .TopUpBalanceBtn {
+                        padding: 15px;
+                        font-size: 14px;
+                        line-height: 14px;
+                    }
+                }
+                .warning {
+                    padding: 20px 10px;
+                    h3 {
+                        font-size: 14px;
+                        line-height: 16px;
+                    }
+                    p {
+                        margin-top: 10px;
+                        margin-bottom: 8px;
+                    }
+                    span {
+                        font-size: 10px;
+                        line-height: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:450px) {
+    .Case {
+        .CaseWrapper {
+            .CaseImg {
+                width: 240px;
+                img {
+                    width: 240px;
+                }
+                &::before {
+                    content: "";
+                    width: 260px;
+                    height: 260px;
+                }
+            }
+            .BuyCase {
+                margin-top: 60px;
+                .CaseName {
+                    font-size: 18px;
+                    line-height: 20px;
+                }
+                .CasePrice {
+                    width: 80px;
+                    padding: 12px 20px;
+                    font-size: 13px;
+                    line-height: 14px;
+                }
+                .warning {
+                    h3 {
+                        font-size: 12px;
+                        line-height: 18px;
+                    }
+                    p {
+                        font-size: 11px;
+                        line-height: 13px;
+                    }
+                    span {
+                        font-size: 10px;
+                        line-height: 12px;
+                    }
+                }
+                .SelectCountCase {
+                    margin-top: 20px;
+                    span {
+                        font-size: 11px;
+                        line-height: 12px;
+                    }
+                    .CountCaseBlock {
+                        margin-top: 15px;
+                        .CountCaseList {
+                            .CountCaseItem {
+                                height: auto;
+                                padding: 10px 20px;
+                                span {
+                                    font-size: 14px;
+                                    line-height: 14px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .TopUpBalance {
+                    margin-top: 18px;
+                    span {
+                        font-size: 11px;
+                        line-height: 12px;
+                    }
+                    .TopUpBalanceBtn {
+                        padding: 12px;
+                        font-size: 12px;
+                        line-height: 12px;
+                    }
+                }
+                .warning {
+                    margin-top: 22px;
+                    padding: 20px 10px;
+                    h3 {
+                        font-size: 14px;
+                        line-height: 16px;
+                    }
+                    p {
+                        margin-top: 10px;
+                        margin-bottom: 8px;
+                    }
+                    span {
+                        font-size: 10px;
+                        line-height: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    .Footer .block {
+        padding: 0 0;
+    }
+}

@@ -1,0 +1,16 @@
+.ReturnHomeButton {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .ReturnHomeItem {
+        color: #FFF;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 15px;
+
+        span {
+            color: #6b5499;
+        }
+    }
+}

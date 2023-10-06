@@ -1,0 +1,422 @@
+.CaseOpen {
+    margin-top: 38px;
+
+    .CaseName {
+        color: #FFF;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 32px;
+    }
+
+    .CaseOpens {
+        width: 1000px;
+        margin: 0 auto;
+        margin-top: 60px;
+        padding: 22px;
+        height: 270px;
+        border: 1px solid #9830b3;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #9830b3, inset 0 0 10px #9830b3;
+        position: relative;
+
+        .arrows {
+            .arrowsTop {
+                position: absolute;
+                top: -22px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .arrowsBottom {
+                position: absolute;
+                bottom: -24px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .CaseOpensContent {
+            display: flex;
+            gap: 22px;
+            overflow: hidden;
+            margin-left: 4px;
+
+            .ContentCaseItem.c1 {
+                background: linear-gradient(45deg, #3a1359 0%, #180838 100%);
+        
+                &::before {
+                    background-color: #9830b3;
+                }
+            }
+        
+            .ContentCaseItem.c2 {
+                background: linear-gradient(45deg, #173366 0%, #180939 100%);
+        
+                &::before {
+                    background-color: #3092bb;
+                }
+            }
+        
+            .ContentCaseItem.c3 {
+                background: linear-gradient(45deg, #40143f 0%, #190838 100%);
+        
+                &::before {
+                    background-color: #c9405d;
+                }
+            }
+        
+            .ContentCaseItem.c4 {
+                background: linear-gradient(45deg, #193447 0%, #180938 100%);
+        
+                &::before {
+                    background-color: #1dd87e;
+                }
+            }
+        
+            .ContentCaseItem.c5 {
+                background: linear-gradient(45deg, #59292f 0%, #190938 100%);
+        
+                &::before {
+                    background-color: #de7422;
+                }
+            }
+    
+            .ContentCaseItem {
+                min-width: 170px;
+                height: 224px;
+                padding: 28px 20px;
+                border-radius: 14px;
+                border-color: #180838;
+                position: relative;
+                
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 8px;
+                    height: 45px;
+                    bottom: 40px;
+                    left: -8px;
+                    border-radius: 5px 0 0 5px;
+                }
+        
+                .ContentCaseItemRing {
+                    border-radius: 100px;
+                    width: 97px;
+                    height: 97px;
+                    margin: 0 auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    img {
+                        width: 97px;
+                        height: 97px;
+                    }
+                }
+        
+                .ContentCaseItemDescription {
+                    margin-top: 20px;
+        
+                    .name, .categoryName {
+                        font-size: 15px;
+                        line-height: 16px;
+                    }
+        
+                    .name {
+                        margin-bottom: 8px;
+                        color: #FFF;
+                        font-weight: 700;
+                    }
+                    .categoryName {
+                        color: #7257a8;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+
+        .winnings {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            &::before {
+                content: "";
+                width: 350px;
+                height: 350px;
+                border: 1px solid #9a33b5;
+                border-radius: 100%;
+                box-shadow: 0 0 10px #9a33b5, inset 0 0 10px #9a33b5;
+                position: absolute;
+                top: 48%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1;
+            }
+
+            .CaseShadow {
+                transform: rotate(4deg);
+                opacity: 0.7;
+            }
+        }
+    }
+     
+    .CaseOpenBtn {
+        margin-top: 140px;
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+
+        .btn {
+            width: 305px;
+            padding: 18px 84px;
+            border-radius: 14px;
+            text-align: center;
+            color: #FFF;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 16px;
+            cursor: pointer;
+        }
+
+        .tryAgain {
+            border: 1px solid #FFF;
+            background: #180838;
+        }
+
+        .sell {
+            background: linear-gradient(48deg, #b4550a, 50%, #de7c2f 100%);
+            border: 1px solid #9b4705;
+        }
+    }
+}
+
+@media (max-width: 1300px) {
+    .CaseOpen {
+        .CaseOpens {
+            width: 100%;
+        }
+    }
+}
+
+@media(max-width:900px) {
+    .CaseOpen {
+        .CaseOpens {
+            // padding: 10px;
+            height: auto;
+            .CaseOpensContent {
+                .ContentCaseItem {
+                    min-width: 125px;
+                    height: auto;
+                    .ContentCaseItemRing {
+                        width: 80px;
+                        height: 80px;
+                        img {
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+                }
+            }
+            .winnings {
+                img {
+                    width: 280px;
+                }
+                &::before {
+                    width: 300px;
+                    height: 300px;
+                }
+                .CaseShadow {
+                    width: 500px;
+                    height: 300px;
+                }
+            }
+        }
+        .CaseOpenBtn {
+            margin-top: 100px;
+            .btn {
+                padding: 18px 60px;
+                position: relative;
+                z-index: 3;
+            }
+        }
+    }
+}
+
+@media(max-width:650px) {
+    .CaseOpen {
+        .CaseName {
+            font-size: 26px;
+            line-height: 28px;
+        }
+        .CaseOpens {
+            margin-top: 30px;
+            .CaseOpensContent {
+                .ContentCaseItem {
+                    min-width: 125px;
+                    height: auto;
+                    .ContentCaseItemRing {
+                        width: 80px;
+                        height: 80px;
+                        img {
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+                }
+            }
+            .winnings {
+                img {
+                    width: 220px;
+                }
+                &::before {
+                    width: 240px;
+                    height: 240px;
+                    top: 70px;
+                }
+                .CaseShadow {
+                    width: 400px;
+                    height: 200px;
+                }
+            }
+        }
+        .CaseOpenBtn {
+            margin-top: 100px;
+            .btn {
+                padding: 18px 60px;
+            }
+        }
+        .CaseOpenBtn {
+            margin-top: 80px;
+            .btn {
+                width: 180px;
+                padding: 18px 30px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .CaseOpen {
+        .CaseName {
+            font-size: 18px;
+            line-height: 20px;
+        }
+        .CaseOpens {
+            margin-top: 30px;
+            padding: 16px;
+            .CaseOpensContent {
+                .ContentCaseItem {
+                    min-width: 110px;
+                    height: auto;
+                    padding: 16px 14px;
+                    .ContentCaseItemRing {
+                        width: 60px;
+                        height: 60px;
+                        img {
+                            width: 60px;
+                            height: 60px;
+                        }
+                    }
+                    .ContentCaseItemDescription {
+                        .name {
+                            margin-bottom: 4px;
+                            font-size: 12px;
+                            line-height: 14px;
+                        }
+                        .categoryName {
+                            font-size: 10px;
+                            line-height: 12px;
+                        }
+                    }
+                }
+            }
+            .winnings {
+                img {
+                    width: 155px;
+                }
+                &::before {
+                    width: 175px;
+                    height: 175px;
+                    top: 38px;
+                }
+                .CaseShadow {
+                    width: 400px;
+                    height: 200px;
+                }
+            }
+        }
+        .CaseOpenBtn {
+            margin-top: 60px;
+            .btn {
+                width: 180px;
+                padding: 12px 30px;
+                font-size: 12px;
+                line-height: 12px;
+            }
+        }
+    }
+}
+
+@media(max-width:450px) {
+    .CaseOpen {
+        .CaseName {
+            font-size: 16px;
+            line-height: 18px;
+        }
+        .CaseOpens {
+            margin-top: 20px;
+            padding: 12px;
+            .CaseOpensContent {
+                .ContentCaseItem {
+                    min-width: 95px;
+                    height: auto;
+                    padding: 12px 10px;
+                    .ContentCaseItemRing {
+                        width: 55px;
+                        height: 55px;
+                        img {
+                            width: 55px;
+                            height: 55px;
+                        }
+                    }
+                    .ContentCaseItemDescription {
+                        .name {
+                            margin-bottom: 4px;
+                            font-size: 10px;
+                            line-height: 12px;
+                        }
+                        .categoryName {
+                            font-size: 8px;
+                            line-height: 10px;
+                        }
+                    }
+                }
+            }
+            .winnings {
+                img {
+                    width: 140px;
+                }
+                &::before {
+                    width: 155px;
+                    height: 155px;
+                    top: 28px;
+                }
+                .CaseShadow {
+                    width: 400px;
+                    height: 200px;
+                }
+            }
+        }
+        .CaseOpenBtn {
+            margin-top: 40px;
+            .btn {
+                width: 140px;
+                padding: 12px 15px;
+                font-size: 12px;
+                line-height: 12px;
+            }
+        }
+    }
+}
