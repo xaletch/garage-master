@@ -401,6 +401,10 @@
     .Footer .block {
         padding: 0;
     }
+    .Header nav .navRight, .Header nav .massager {
+        width: 100%;
+        justify-content: space-between;
+    }
     .Header nav .navRight .block p, .Header nav .massager .block p {
         font-size: 14px;
     }
