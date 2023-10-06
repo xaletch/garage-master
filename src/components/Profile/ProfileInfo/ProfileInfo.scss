@@ -18,7 +18,6 @@
             top: -25px;
             left: 50%;
             background: #4f4368;
-            // opacity: 0.8;
         }
     }
 
@@ -107,6 +106,206 @@
                 font-size: 20px;
                 font-weight: 700;
                 line-height: 22px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1300px) {
+    .ProfileInfo {
+        .ProfileInfoAvatar {
+            padding: 22px;
+            height: auto;
+            img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        .ProfileInfoUserName {
+            margin-left: 20px;
+            .userName {
+                font-size: 24px;
+                line-height: 28px;
+            }
+            .userId {
+                margin-top: 12px;
+                font-size: 16px;
+                line-height: 17px;
+
+                .userIdCopy {
+                    margin-left: 12px;
+                }
+            }
+        }
+        .ProfileInfoBlock {
+            gap: 30px;
+        }
+    }
+}
+
+@media(max-width:1050px) {
+    .ProfileInfo {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        .ProfileInfoBlock {
+            gap: 30px;
+        }
+        .ProfileInfoLine {
+            opacity: 0;
+        }
+      
+    }
+}
+
+@media(max-width:900px) {
+    .ProfileInfo {
+        .ProfileInfoUserName {
+            .userName {
+                font-size: 22px;
+                line-height: 26px;
+            }
+            .userId {
+                margin-top: 8px;
+                font-size: 14px;
+                line-height: 16px;
+                .userIdCopy {
+                    margin-left: 8px;
+                }
+            }
+        }
+        .ProfileInfoBlock {
+            gap: 25px;
+            .item  {
+                gap: 12px;
+            }
+            .icon {
+                width: 50px;
+                height: 50px;
+                img {
+                    width: 20px;
+                    height: auto;
+                }
+            }
+            p {
+                .itemName {
+                    font-size: 16px;
+                    line-height: 18px;
+                }
+                .itemBottom {
+                    margin-top: 4px;
+                    font-size: 18px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:650px) {
+    .ProfileInfo {
+        margin-top: 40px;
+        .ProfileInfoAvatar {
+            padding: 18px;
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        .ProfileInfoUserName {
+            margin-left: 0;
+            .userName {
+                font-size: 18px;
+                line-height: 22px;
+            }
+            .userId {
+                margin-top: 8px;
+                font-size: 12px;
+                line-height: 14px;
+
+                .userIdCopy {
+                    margin-left: 8px;
+
+                    img {
+                        width: 14px;
+                        height: 14px;
+                    }
+                }
+            }
+        }
+        .ProfileInfoBlock {
+            gap: 10px;
+            .item  {
+                gap: 12px;
+            }
+            .icon {
+                width: 50px;
+                height: 50px;
+                img {
+                    width: 17px;
+                    height: 18px;
+                }
+            }
+            p {
+                .itemName {
+                    font-size: 12px;
+                    line-height: 14px;
+                }
+                .itemBottom {
+                    margin-top: 2px;
+                    font-size: 13px;
+                    line-height: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:450px) {
+    .ProfileInfo {
+        margin-top: 30px;
+        .ProfileInfoAvatar {
+            padding: 10px;
+            img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        .ProfileInfoUserName {
+            margin-left: 0;
+            .userName {
+                font-size: 14px;
+                line-height: 16px;
+            }
+            .userId {
+                margin-top: 6px;
+                font-size: 10px;
+                line-height: 12px;
+
+                .userIdCopy {
+                    margin-left: 6px;
+
+                    img {
+                        width: 10px;
+                        height: 10px;
+                    }
+                }
+            }
+        }
+        .ProfileInfoBlock {
+            gap: 16px;
+            .item  {
+                gap: 10px;
+                flex-direction: column;
+            }
+            .icon {
+                img {
+                    width: 17px;
+                    height: 18px;
+                }
+            }
+            p {
+                text-align: center;
             }
         }
     }

@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import About from '../../components/About/About';
-import AllWinner from '../../components/AllWinner/AllWinner';
-import CasesByRarity from '../../components/CasesByRarity/CasesByRarity';
+
+import { Routes, Route } from 'react-router-dom';
+
 import Footer from '../../components/Footer/Footer';
-import FreeСase from '../../components/FreeKace/FreeСase';
 
 import Header from '../../components/Header/Header';
 import HeaderBottom from '../../components/HeaderBottom/HeaderBottom';
+
 import LogIn from '../../components/LogIn/LogIn';
 import './App.scss';
-import { Profile } from '../../components/Profile/Profile';
+
+import { Profile } from '../../pages/Profile';
+import { Home } from '../../pages/Home';
 
 function App() {
   const [LogInOpen, setLogInOpen] = useState(false)
@@ -18,12 +20,10 @@ function App() {
     <div className="App">
       <Header setHeaderOpen={setHeaderOpen} HeaderOpen={HeaderOpen} setLogInOpen={setLogInOpen} />
       <HeaderBottom />
-      {/* <AllWinner setHeaderOpen={setHeaderOpen}/> */}
-      {/* <FreeСase /> */}
-      {/* <CasesByRarity /> */}
-      {/* <FreeСase /> */}
-      {/* <About /> */}
-      <Profile />
+      <Routes>
+        <Route path='/' element={<Home setHeaderOpen={setHeaderOpen} />}></Route>
+        <Route path='garage-master' element={<Profile />}></Route>
+      </Routes>
       <Footer />
       <LogIn LogInOpen={LogInOpen} setLogInOpen={setLogInOpen} />
     </div>

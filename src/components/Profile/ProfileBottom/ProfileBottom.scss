@@ -121,3 +121,95 @@
         border: #de7422 2px solid !important;
     }
 }
+
+@media (max-width: 1300px) {
+    .ProfileBottom {
+        display: grid;
+        grid-template-columns: repeat(5, 150px);
+        grid-template-rows: repeat(1fr, 1fr);
+        justify-content: center;
+    }
+}
+
+@media(max-width:1050px) {
+    .ProfileBottom {
+        grid-template-columns: repeat(4, 150px);
+        grid-template-rows: repeat(1fr, 1fr);
+        justify-content: center;
+    }
+}
+
+@media (max-width: 900px) {
+    .ProfileBottom {
+        grid-template-columns: repeat(4, 120px);
+        grid-template-rows: repeat(1fr, 1fr);
+        gap: 16px;
+        .ProfileBottomCard {
+            width: 120px;
+            .ProfileBottomBlockRing {
+                width: 60px;
+                height: 60px;
+                img {
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+            .ProfileBottomBlockDescription {
+                margin-top: 12px;
+                .name {
+                    margin-bottom: 4px;
+                    font-size: 12px;
+                    line-height: 14px;
+                }
+                .categoryName {
+                    font-size: 10px;
+                }
+            }
+        }
+        .ProfileBottomCard::before {
+            width: 6px;
+            height: 40px;
+            left: -6px;
+        }
+    }
+}
+
+@media(max-width:650px) {
+    .ProfileBottom {
+        margin-bottom: 80px;
+        grid-template-columns: repeat(3, 120px);
+        grid-template-rows: repeat(1fr, 1fr);
+        gap: 12px;
+    }
+}
+
+@media(max-width:450px) {
+    .ProfileBottom {
+        grid-template-columns: repeat(3, 95px);
+        grid-template-rows: repeat(1fr, 1fr);
+        gap: 10px;
+        .ProfileBottomCard {
+            width: 95px;
+            .ProfileBottomBlockRing {
+                width: 50px;
+                height: 50px;
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+            .ProfileBottomBlockDescription {
+                margin-top: 10px;
+                .name {
+                    margin-bottom: 2px;
+                    font-size: 10px;
+                    line-height: 12px;
+                }
+                .categoryName {
+                    font-size: 8px;
+                    line-height: 10px;
+                }
+            }
+        }
+    }
+}

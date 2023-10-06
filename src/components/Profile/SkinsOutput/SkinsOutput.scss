@@ -155,3 +155,228 @@
         }
     }
 }
+
+@media (max-width: 1300px) {
+    .SkinsOutput {
+        .SkinsOutputWrapper {
+            padding-bottom: 42px;
+            .SkinsOutputHead {
+                .item {
+                    width: 300px;
+                    .ItemDescription {
+                        font-size: 14px;
+                        line-height: 16px;
+                    }
+                }
+            }
+            .SkinsOutputContent {
+                padding-top: 42px;
+                .SkinsOutputContentTitle {
+                    font-size: 18px;
+                    line-height: 20px;
+                }
+                .inputLink {
+                    width: 700px;
+                    margin-top: 22px;
+                    input {
+                        padding: 24px 220px 24px 26px;
+                        font-size: 16px;
+                        line-height: 16px;
+                    }
+                    .saveBtn {
+                        width: 220px;
+                    }
+                }
+                .outputAvailable {
+                    margin-top: 40px;
+                    gap: 8px;
+                    img {
+                        width: 22px;
+                        height: 24px;
+                    }
+                    p {
+                        font-size: 22px;
+                        line-height: 23px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:900px) {
+    .SkinsOutput {
+        .SkinsOutputWrapper {
+            .SkinsOutputHead {
+                .item {
+                    width: 170px;
+                    .itemTitle {
+                        font-size: 16px;
+                        line-height: 18px;
+                    }
+                    .ItemDescription {
+                        margin-top: 8px;
+                        font-size: 12px;
+                        line-height: 16px;
+                    }
+                }
+            }
+            .SkinsOutputContent {
+                padding-top: 32px;
+                .SkinsOutputContentTitle {
+                    font-size: 16px;
+                    line-height: 18px;
+                }
+                .inputLink {
+                    width: 90%;
+                    margin-top: 22px;
+                    input {
+                        padding: 18px 160px 18px 22px;
+                        font-size: 14px;
+                        line-height: 14px;
+                    }
+                    .saveBtn {
+                        width: 160px;
+                        font-size: 14px;
+                    }
+                }
+                .outputAvailable {
+                    margin-top: 32px;
+                    gap: 8px;
+                    img {
+                        width: 20px;
+                        height: 22px;
+                    }
+                    p {
+                        font-size: 18px;
+                        line-height: 19px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:650px) {
+    .SkinsOutput {
+        .SkinsOutputWrapper {
+            .SkinsOutputHead {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 10px;
+                .item {
+                    width: 100%;
+                    .itemTitle {
+                        font-size: 14px;
+                        line-height: 16px;
+                    }
+                    .ItemDescription {
+                        margin-top: 6px;
+                        font-size: 10px;
+                        line-height: 12px;
+                    }
+                    .num {
+                        font-size: 70px;
+                        bottom: 20px;
+                        right: -2px;
+                    }
+                }
+                .item:nth-child(3) {
+                    grid-column: 2;
+                    grid-row: 1;
+                }
+                .item:nth-child(5) {
+                    grid-column: 1 / 2 span;
+                    .num {
+                        right: 70px;
+                    }
+                }
+                .SkinsOutputLine {
+                    display: none;
+                }
+            }
+            .SkinsOutputContent {
+                padding-top: 32px;
+                .SkinsOutputContentTitle {
+                    font-size: 12px;
+                    line-height: 14px;
+                }
+                .inputLink {
+                    width: 90%;
+                    margin-top: 22px;
+                    input {
+                        padding: 14px 100px 14px 16px;
+                        font-size: 9px;
+                        line-height: 12px;
+                    }
+                    .saveBtn {
+                        width: 100px;
+                        font-size: 10px;
+                    }
+                }
+                .outputAvailable {
+                    margin-top: 26px;
+                    gap: 6px;
+                    img {
+                        width: 16px;
+                        height: 16px;
+                    }
+                    p {
+                        font-size: 14px;
+                        line-height: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:450px) {
+    .SkinsOutput {
+        .SkinsOutputWrapper {
+            .SkinsOutputHead {
+                padding: 16px;
+                .item {
+                    .itemTitle {
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+                    .ItemDescription {
+                        margin-top: 4px;
+                        font-size: 8px;
+                        line-height: 10px;
+                    }
+                    .num {
+                        font-size: 60px;
+                        bottom: 20px;
+                        right: 0px;
+                    }
+                }
+                .item:nth-child(5) {
+                    .num {
+                        right: 60px;
+                    }
+                }
+            }
+            .SkinsOutputContent {
+                .SkinsOutputContentTitle {
+                    font-size: 10px;
+                    line-height: 12px;
+                }
+                .outputAvailable {
+                    margin-top: 22px;
+                    gap: 4px;
+                    img {
+                        width: 14px;
+                        height: 14px;
+                    }
+                    p {
+                        font-size: 12px;
+                        line-height: 13px;
+                    }
+                }
+            }
+        }
+    }
+}
