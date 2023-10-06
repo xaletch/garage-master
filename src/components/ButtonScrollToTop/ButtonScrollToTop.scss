@@ -1,0 +1,63 @@
+.ButtonScrollToTop {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 2px solid #7b2797;
+    box-shadow: 0 0 5px #7b2797, inset 0 0 5px #7b2797;
+    position: absolute;
+    bottom: 143px;
+    right: 0;
+    z-index: 99;
+    cursor: pointer;
+}
+
+@media(max-width:1050px) {
+    .ButtonScrollToTop {
+        width: 50px;
+        height: 50px;
+        bottom: 208px;
+        img {
+            width: 22px;
+        }
+    }
+}
+
+@media(max-width:900px) {
+    .ButtonScrollToTop {
+        bottom: 196px;
+    }
+}
+
+@media(max-width:650px) {
+    .ButtonScrollToTop {
+        width: 40px;
+        height: 40px;
+        bottom: 252px;
+        img {
+            width: 18px;
+        }
+    }
+}
+
+@media(max-width:550px) {
+    .ButtonScrollToTop {
+        bottom: 220px;
+        img {
+            width: 18px;
+        }
+    }
+}
+
+@media(max-width:550px) {
+    .ButtonScrollToTop {
+        width: 30px;
+        height: 30px;
+        bottom: 250px;
+        img {
+            width: 12px;
+        }
+    }
+}

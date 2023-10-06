@@ -1,10 +1,11 @@
 import React from 'react'
 import './Footer.scss'
 import link_img from '../../img/link_img'
+import { ButtonScrollToTop } from '../ButtonScrollToTop/ButtonScrollToTop'
 export default function Footer() {
   return (
     <div className='Footer'>
-      <div className="mainWidht">
+      <div className="mainWidht" style={{position: 'relative'}}>
         <div className="companyName block">
           <img src={link_img.logo} alt="" />
           <p>2021 - 2023 GameBuilder </p>
@@ -30,6 +31,7 @@ export default function Footer() {
 
           </div>
         </div>
+        <ButtonScrollToTop />
       </div>
     </div>
   )

@@ -13,6 +13,7 @@ import './App.scss';
 import { Profile } from '../../pages/Profile';
 import { Home } from '../../pages/Home';
 import { OpenCase } from '../../pages/OpenCase';
+import { OpeningCase } from '../../pages/OpeningCase';
 
 function App() {
   const [LogInOpen, setLogInOpen] = useState(false)
@@ -25,6 +26,7 @@ function App() {
         <Route path='/' element={<Home setHeaderOpen={setHeaderOpen} />}></Route>
         <Route path='garage-master' element={<Profile />}></Route>
         <Route path='open-case' element={<OpenCase />}></Route>
+        <Route path='opening-case' element={<OpeningCase />}></Route>
       </Routes>
       <Footer />
       <LogIn LogInOpen={LogInOpen} setLogInOpen={setLogInOpen} />

@@ -87,3 +87,20 @@
         }
     }
 }
+
+@media (max-width: 550px) {
+    .CasesByRarity {
+        .CasesByRarityCardMain {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(1fr, 1fr);
+            gap: 16px;
+            .CasesByRarityCard {
+                margin-bottom: 0;
+            }
+        }
+        a {
+            width: 200px;
+        }
+    }
+}

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import './Case.scss';
 
 import link_img from '../../../img/link_img'
+import { Link } from 'react-router-dom';
 
 const countCase = ["10", "25", "50", "100"]
 
@@ -30,7 +31,9 @@ export const Case = () => {
                 </div>
                 <div className='TopUpBalance'>
                     <span>Недостаточно средств</span>
-                    <button className='TopUpBalanceBtn'>Пополнение баланса</button>
+                    <Link to='/opening-case'>
+                        <button className='TopUpBalanceBtn'>Пополнение баланса</button>
+                    </Link>
                 </div>
                 <div className='warning'>
                     <h3>Ширп здесь вне закона!</h3>
