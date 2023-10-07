@@ -31,9 +31,7 @@ export const Case = () => {
                 </div>
                 <div className='TopUpBalance'>
                     <span>Недостаточно средств</span>
-                    <Link to='/opening-case'>
-                        <button className='TopUpBalanceBtn'>Пополнение баланса</button>
-                    </Link>
+                        <button className='TopUpBalanceBtn'><Link to='/opening-case'>Пополнение баланса</Link></button>
                 </div>
                 <div className='warning'>
                     <h3>Ширп здесь вне закона!</h3>

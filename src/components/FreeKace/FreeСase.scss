@@ -103,4 +103,37 @@
             grid-template-rows: repeat(1fr, 1fr);
         }
     }
+    .CasesByRarity nav a{
+        width: auto;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 450px) {
+    .FreeСase .FreeCaseMain .FreeCaseCard {
+        padding: 18px;
+    }
+    .FreeCaseCard{
+        .title {
+            font-size: 11px;
+        }
+    }
+    .FreeСase .FreeCaseMain .FreeCaseCard .price {
+        font-size: 10px;
+        padding: 5px 20px;
+    }
+
+    .CasesByRarity .CasesByRarityCardMain .CasesByRarityCard {
+        .title {
+            font-size: 11px;
+        }
+        .price {
+            font-size: 10px;
+            padding: 5px 20px;
+        }
+    }
+
+    .AllWinner .main .offers .offersTop, .AllWinner .main .offers .offersBottom {
+        left: auto;
+    }
 }
