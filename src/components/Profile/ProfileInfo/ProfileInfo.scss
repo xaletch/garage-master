@@ -35,18 +35,18 @@
     }
 
     .ProfileInfoUserName {
-        margin-left: 50px;
+        margin-left: 40px;
 
         .userName {
             color: #fff;
-            font-size: 26px;
+            font-size: 36px;
             line-height: 30px;
         }
 
         .userId {
             margin-top: 18px;
             color: #ef7d23;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 400;
             line-height: 18px;
             display: flex;
@@ -70,7 +70,7 @@
     .ProfileInfoBlock {
         display: flex;
         align-items: center;
-        gap: 60px;
+        gap: 40px;
 
         .item {
             display: flex;
@@ -96,16 +96,16 @@
             justify-content: center;
 
             .itemName {
-                font-size: 18px;
+                font-size: 20px;
                 font-weight: 400;
-                line-height: 20px;
+                line-height: 22px;
             }
 
             .itemBottom {
                 margin-top: 6px;
-                font-size: 20px;
+                font-size: 32px;
                 font-weight: 700;
-                line-height: 22px;
+                line-height: 32px;
             }
         }
     }

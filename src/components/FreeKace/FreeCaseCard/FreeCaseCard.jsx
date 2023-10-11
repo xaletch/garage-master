@@ -4,8 +4,11 @@ import link_img from '../../../img/link_img'
 import { Link } from 'react-router-dom'
 
 export default function FreeCaseCard({color}) {
+  const handleScrollTop = () => {
+    window.scrollTo(0, 0)
+  }
   return (
-    <Link to='open-case'>
+    <Link to='open-case' onClick={handleScrollTop}>
       <div className={`FreeCaseCard ${color == '9830b3' ? 'c1' :
         color == '3092bb' ? 'c2' :
         color == 'c9405d' ? 'c3' :

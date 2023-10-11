@@ -97,7 +97,12 @@
             grid-template-rows: repeat(1fr, 1fr);
             gap: 16px;
             .CasesByRarityCard {
+                width: auto;
                 margin-bottom: 0;
+                img {
+                    max-width: 170px;
+                    width: 100%;
+                }
             }
         }
         a {

@@ -17,6 +17,8 @@
 
     .slick-slider,.slick-list{
         height: 100%;
+        position: relative;
+        z-index: 999;
     }
 
 
@@ -223,7 +225,7 @@
     border-radius: 18px;
     flex-direction: column;
     background-color: #180838;
-    z-index: 99;
+    z-index: 999;
 
     .CardMenuTop {
         margin-top: -2px;

@@ -1,6 +1,7 @@
 .ProfileBottom {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 22px;
     row-gap: 28px;
     margin-bottom: 160px;
@@ -85,8 +86,8 @@
             margin-top: 20px;
 
             .name, .categoryName {
-                font-size: 15px;
-                line-height: 16px;
+                font-size: 18px;
+                line-height: 19px;
             }
 
             .name {

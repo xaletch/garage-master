@@ -9,6 +9,11 @@ const countCase = ["10", "25", "50", "100"]
 
 export const Case = () => {
     const [selectCountCase, setSelectCountCase] = useState(2);
+
+    const handleScrollTop = () => {
+        window.scrollTo(0, 0);
+    };
+
   return (
     <div className='Case'>
         <div className='CaseWrapper'>
@@ -31,7 +36,7 @@ export const Case = () => {
                 </div>
                 <div className='TopUpBalance'>
                     <span>Недостаточно средств</span>
-                        <button className='TopUpBalanceBtn'><Link to='/opening-case'>Пополнение баланса</Link></button>
+                        <button className='TopUpBalanceBtn'><Link to='/opening-case' onClick={handleScrollTop}>Пополнение баланса</Link></button>
                 </div>
                 <div className='warning'>
                     <h3>Ширп здесь вне закона!</h3>
