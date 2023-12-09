@@ -6,12 +6,12 @@ export default function FreeСase() {
   return (
     <div className='FreeСase'>
         <h2>Бесплатные кейсы</h2>
-        <nav className='mainWidht'>
+        {/* <nav className='mainWidht'>
             <a href="#">Навигация </a>
             <a href="#">Навигация </a>
             <a href="#">Навигация </a>
             <a href="#">Навигация </a>
-        </nav>
+        </nav> */}
         <div className="FreeCaseMain mainWidht">
           <FreeCaseCard color={'9830b3'}/>
           <FreeCaseCard color={'de7422'}/>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import './LogIn.scss'
 import link_img from '../../img/link_img'
+
 export default function LogIn({ LogInOpen, setLogInOpen }) {
-    const [NavActive, setNavActive] = useState('logIn')
+    const [NavActive, setNavActive] = useState('logIn');
+
     return (
         <div className={`LogIn ${LogInOpen ? 'open' : ''}`} >
             {NavActive == 'reg' ?
@@ -12,7 +14,7 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
                         <button onClick={() => setNavActive('reg')} className={NavActive == 'reg' ? 'active' : ''}>Регистрация</button>
                         <hr />
                     </div>
-                    <input className='lol' placeholder='Email' type="email" />
+                    <input className='lol' placeholder='Номер телефона' type="tel" />
                     <input className='lol' placeholder='Пароль' type="password" />
                     <input className='lol' placeholder='Подтверждение пароля' type="password" />
                     <p>Сложно сказать, почему независимые государства призывают нас к новым свершениям, которые, в свою очередь, должны быть преданы <span className="orange">персональных данных.</span></p>
@@ -25,7 +27,7 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
                     <div className="main passLow">
                         <h2>Восстановление пароля</h2>
                         <p>Укажите адрес электронной почты</p>
-                        <input className='lol' placeholder='Email' type="email" />
+                        <input className='lol' placeholder='Номер телефона' type="tel" />
                         <button className="orangeBtn">Получить ссылку на почту</button>
                         <button className='exit' onClick={e => { setLogInOpen(false); setNavActive('reg') }}><img src={link_img.close} /></button>
                     </div>
@@ -36,7 +38,7 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
                             <button onClick={() => setNavActive('reg')} className={NavActive == 'reg' ? 'active' : ''}>Регистрация</button>
                             <hr />
                         </div>
-                        <input className='lol' placeholder='Email' type="email" />
+                        <input className='lol' placeholder='Номер телефона' type="tel" />
                         <input className='lol' placeholder='Пароль' type="password" />
                         <buttom onClick={() => setNavActive('passLow')}><span className='orange'>Забыли пароль?</span></buttom>
                         <button className="orangeBtn">Вход</button>
