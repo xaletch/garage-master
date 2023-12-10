@@ -43,18 +43,20 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
 
     const handleSubmitRegister = async (e) => {
         e.preventDefault();
-        try {
+        // try {
             const data = { phone: reqPhone, password: reqPassword, password_confirmation: reqPasswordConfirmation };
             const registerData = await dispatch(fetchRegister(data));
             console.log(registerData);
             
-            setLogInOpen(false);
-            setMenuCode(true);
-        }
-          catch (err) {
-            console.log('Данное имя или логин уже используется другим пользователем: \n', err)
-            setLogInOpen(true);
-          }
+            if (!registerData?.error) {
+                setLogInOpen(false);
+                setMenuCode(true);
+            }
+        // }
+        //   catch (err) {
+            // console.log('Данное имя или логин уже используется другим пользователем: \n', err)
+            // setLogInOpen(true);
+        //   }
     };
 
     const session_id = useSelector((state) => state.registration?.data?.data?.session_id);
