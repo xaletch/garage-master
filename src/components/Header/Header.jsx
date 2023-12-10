@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
-import './Header.scss'
-import link_img from '../../img/link_img'
+import React, { useState } from 'react';
+import './Header.scss';
+import link_img from '../../img/link_img';
+import { Link } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
 
 export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
-  const [follower, setFollower] = useState(16900)
+  const [follower, setFollower] = useState(16900);
+
+  const isAuth = localStorage.getItem('access_token');
+
+  // USER INFORMATION
+  const userInfo = useSelector((state) => state.user?.data?.data.profile);
+
   return (
     <>
       <div className='Header'>
@@ -39,26 +48,44 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
 
             </div>
           </div>
-          <img className='logoImg' src={link_img.logo} alt="" />
+          <Link to={'/garage-master'}><img className='logoImg' src={link_img.logo} alt="" /></Link>
           <div className="navRight">
-            <div className="block wallet">
-              <div className="ico">
-                <img src={link_img.wallet} alt="" />
+            {userInfo &&
+              <div className="block wallet">
+                <div className="ico">
+                  <img src={link_img.wallet} alt="" />
+                </div>
+                <p>
+                  <span className="title">{userInfo?.balance} руб.</span>
+                  <span className="follower">Баланс</span>
+                </p>
               </div>
-              <p>
-                <span className="title">16 111 900 руб.</span>
-                <span className="follower">Баланс</span>
-              </p>
-            </div>
-            <div className="block user" style={{cursor: "pointer"}}>
-              <div className="ico">
-                <img src={link_img.user2} alt="" />
+            }
+            {!isAuth 
+            ?   
+              <div className="block user" style={{cursor: "pointer"}}>
+                <div className="ico">
+                  <img src={link_img.user2} alt="" />
+                </div>
+                <p>
+                  <span className="title" onClick={e => setLogInOpen(true)}>Вход/Регистрация</span>
+                  <span className="follower">Личный кабинет</span>
+                </p>
               </div>
-              <p>
-                <span className="title" onClick={e => setLogInOpen(true)}>Вход/Регистрация</span>
-                <span className="follower">Личный кабинет</span>
-              </p>
-            </div>
+            :
+            // ЗДЕСЬ ССЫЛКА КОТОРАЯ ВЕДЕТ НА ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ
+              <Link to={'/profile'}>
+                <div className="block user" style={{cursor: "pointer"}}>
+                  <div className="ico">
+                    <img src={link_img.user2} alt="" />
+                  </div>
+                  <p>
+                    <span className="title">Личный кабинет</span>
+                    <span className="follower">{userInfo?.name}</span>
+                  </p>
+                </div>
+              </Link>
+            }
             <div className="language">
               Ru
             </div>

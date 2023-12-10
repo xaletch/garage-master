@@ -12,18 +12,12 @@ export const AllCases = () => {
 
     return (
         <>
-            {cases.map((item) => (
-                <div className='CasesAll'>
+            {cases.map((item, index) => (
+                <div className='CasesAll' key={index}>
                     <h2>{item.category_name}</h2>
-                    <nav className='mainWidht'>
-                        <a href="#">Навигация </a>
-                        <a href="#">Навигация </a>
-                        <a href="#">Навигация </a>
-                        <a href="#">Навигация </a>
-                    </nav>
                     <div className="CasesAllMain mainWidht">
-                        {item.items.map((item) => (
-                            <div className='CaseCard c5'>
+                        {item.items.map((item, index) => (
+                            <div className='CaseCard c5' key={index}>
                                 <div className="price"><span>{item.price}</span> ₽</div>
                                 <img src={item.image} alt={item.url} />
                                 <p>{item.name}</p>

@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import axios from 'axios';
+import api from '../../http/axios';
 
 export const fetchCases = createAsyncThunk('cases/get', async() => {
-  const { data } = await axios.get('https://backend.aeep.ru/api/v1/cases/get');
+  const { data } = await api.get('/api/v1/cases/get');
   return data.data;
 });
 

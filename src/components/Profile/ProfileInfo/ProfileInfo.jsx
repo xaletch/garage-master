@@ -3,54 +3,60 @@ import link_img from '../../../img/link_img';
 
 import './ProfileInfo.scss' 
 
+import { useSelector } from 'react-redux';
+
 export const ProfileInfo = () => {
-  return (
-    <div className='ProfileInfo'>
-        <div className='ProfileInfoAvatar'>
-            <img src={link_img.userAvatar} alt=''/>
-        </div>
-        <div className='ProfileInfoUserName'>
-            <p className='userName'>ИмяЮзера#</p>
-            <div className='userId'>
-                ID
-                <span>#660990</span>
-                <div className='userIdCopy'>
-                    <img src={link_img.copy_userId} alt='' />
+
+    // USER INFORMATION
+    const userInfo = useSelector((state) => state.user?.data?.data.profile);
+
+    return (
+        <div className='ProfileInfo'>
+            <div className='ProfileInfoAvatar'>
+                <img src={userInfo?.avatar_img} alt=''/>
+            </div>
+            <div className='ProfileInfoUserName'>
+                <p className='userName'>{userInfo?.name}</p>
+                <div className='userId'>
+                    ID
+                    <span>#{userInfo?.id}</span>
+                    <div className='userIdCopy'>
+                        <img src={link_img.copy_userId} alt='' />
+                    </div>
+                </div>
+            </div>
+            <div class="ProfileInfoLine Line1" aria-hidden="true"></div>
+            <div className='ProfileInfoBlock'>
+                <div className='item countCase'>
+                    <div className='icon'>
+                        <img src={link_img.caseIco} alt=''/>
+                    </div>
+                    <p>
+                        <span className='itemName'>Кейсы</span>
+                        <span className='itemBottom itemCount'>{userInfo?.count_open_case}</span>
+                    </p>
+                </div>
+                <div class="ProfileInfoLine" aria-hidden="true"></div>
+                <div className='item countCase'>
+                    <div className='icon'>
+                        <img src={link_img.user2} alt=''/>
+                    </div>
+                    <p>
+                        <span className='itemName'>На сайте</span>
+                        <span className='itemBottom itemOnline'>{userInfo?.date_register}</span>
+                    </p>
+                </div>
+                <div class="ProfileInfoLine" aria-hidden="true"></div>
+                <div className='item countCase'>
+                    <div className='icon'>
+                        <img src={link_img.steam} alt=''/>
+                    </div>
+                    <p>
+                        <span className='itemName'>Профиль в</span>
+                        <span className='itemBottom itemProfile'>Steam</span>
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="ProfileInfoLine Line1" aria-hidden="true"></div>
-        <div className='ProfileInfoBlock'>
-            <div className='item countCase'>
-                <div className='icon'>
-                    <img src={link_img.caseIco} alt=''/>
-                </div>
-                <p>
-                    <span className='itemName'>Кейсы</span>
-                    <span className='itemBottom itemCount'>950</span>
-                </p>
-            </div>
-            <div class="ProfileInfoLine" aria-hidden="true"></div>
-            <div className='item countCase'>
-                <div className='icon'>
-                    <img src={link_img.user2} alt=''/>
-                </div>
-                <p>
-                    <span className='itemName'>На сайте</span>
-                    <span className='itemBottom itemOnline'>3 дня</span>
-                </p>
-            </div>
-            <div class="ProfileInfoLine" aria-hidden="true"></div>
-            <div className='item countCase'>
-                <div className='icon'>
-                    <img src={link_img.steam} alt=''/>
-                </div>
-                <p>
-                    <span className='itemName'>Профиль в</span>
-                    <span className='itemBottom itemProfile'>Steam</span>
-                </p>
-            </div>
-        </div>
-    </div>
-  )
+    )
 }

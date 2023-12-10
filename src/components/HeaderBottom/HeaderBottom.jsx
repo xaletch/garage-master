@@ -7,7 +7,7 @@ import Slider from 'react-slick';
 export default function HeaderBottom() {
   const [func,setFunc]=useState(false)
   let lol = window.innerWidth
-  console.log(lol);
+  // console.log(lol);
   if (window.innerWidth > 3000) {
     lol = Math.floor(lol / 110) - 10
   }

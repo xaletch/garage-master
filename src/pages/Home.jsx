@@ -23,7 +23,7 @@ export const Home = ({ setHeaderOpen }) => {
         <>
             <AllWinner setHeaderOpen={setHeaderOpen}/>
             <AllCases />
-            <FreeСase />
+            {/* <FreeСase /> */}
             {/* <CasesByRarity /> */}
             {/* <FreeСase /> */}
             <About />
