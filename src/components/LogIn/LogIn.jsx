@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import './LogIn.scss';
 import link_img from '../../img/link_img';
 
+import { useForm } from 'react-hook-form';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRegister } from '../../redux/slices/registration';
 import { fetchAuth } from '../../redux/slices/auth';
@@ -12,51 +14,81 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
     const dispatch = useDispatch();
 
     const [NavActive, setNavActive] = useState('logIn');
-    
-    // Auth
-    const [phone, setPhone] = useState('');
-    const [password, setPassword] = useState();
 
-    const handleSubmitAuth = async (e) => {
-        e.preventDefault();
+    const [incorrect, setIncorrect] = useState();
+
+    // AUTH
+    const {
+        register: registerAuth,
+        handleSubmit: handleSubmitAuth,
+        formState: { errors: errorsAuth, isValid: isValidAuth },
+    } = useForm({
+        defaultValues: {
+            phone: "",
+            password: "",
+        },
+        mode: "onSubmit",
+    });
+
+    const onSubmitAuth = async (values) => {
         try {
-            const data = { phone, password };
-            const loginData = await dispatch(fetchAuth(data));
-            console.log(loginData);
-      
-            if ('access_token' in loginData.payload.data) {
-                window.localStorage.setItem('access_token', loginData.payload.data.access_token);
+            const data = await dispatch(fetchAuth(values));
+
+            if ('access_token' in data.payload.data) {
+                window.localStorage.setItem('access_token', data.payload.data.access_token);
                 setLogInOpen(false);
             }
-          }
-          catch (err) {
-            console.log('', err)
-          }
-    }
+    
+            // console.log('VALUES: ', data);
+        }
+        catch (err) {
+            console.log(err);
+            setIncorrect('Неверный логин или пароль')
+        }
+    };
 
     // REGISTRATION
-    const [reqPhone, setRegPhone] = useState('');
-    const [reqPassword, setRegPassword] = useState('');
-    const [reqPasswordConfirmation, setRegPasswordConfirmation] = useState('');
     const [menuCode, setMenuCode] = useState(false);
     const [code, setCode] = useState('');
+    const [isRegistered, setRegistered] = useState('');
+    const [isPasswordMatch, setPasswordMatch] = useState('');
 
-    const handleSubmitRegister = async (e) => {
-        e.preventDefault();
-        // try {
-            const data = { phone: reqPhone, password: reqPassword, password_confirmation: reqPasswordConfirmation };
-            const registerData = await dispatch(fetchRegister(data));
-            console.log(registerData);
-            
-            if (!registerData?.error) {
-                setLogInOpen(false);
-                setMenuCode(true);
+    const {
+        register: registerRegister,
+        handleSubmit: handleSubmitRegister,
+        formState: { errors: errorsRegister, isValid: isValidRegister },
+    } = useForm({
+        defaultValues: {
+            phone: "",
+            password: "",
+            password_confirmation: "",
+        },
+        mode: "onSubmit",
+    });
+
+    const onSubmitRegister = async (values) => {
+        try {
+            const data = await dispatch(fetchRegister(values));
+    
+            if ('access_token' in data.payload.data) {
+                window.localStorage.setItem('access_token', data.payload.data.access_token);
             }
-        // }
-        //   catch (err) {
-            // console.log('Данное имя или логин уже используется другим пользователем: \n', err)
-            // setLogInOpen(true);
-        //   }
+
+            setMenuCode(true);
+            setLogInOpen(false);
+    
+            // console.log('VALUES: ', values);
+        }
+        catch (err) {
+            console.log('Произошла ошибка', err);
+            setRegistered('Пользователь с таким номером телефона уже зарегистрирован');
+        }
+
+        if (values.password !== values.password_confirmation) {
+            setPasswordMatch('Пароли не совпадают');
+        } else {
+            setPasswordMatch('');
+        };
     };
 
     const session_id = useSelector((state) => state.registration?.data?.data?.session_id);
@@ -83,10 +115,19 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
                         <button onClick={() => setNavActive('reg')} className={NavActive == 'reg' ? 'active' : ''} style={{cursor: 'pointer'}}>Регистрация</button>
                         <hr />
                     </div>
-                    <form onSubmit={handleSubmitRegister}>
-                        <input className='lol' value={reqPhone} onChange={(e) => setRegPhone(e.target.value)} placeholder='Номер телефона' type="tel" />
-                        <input className='lol' value={reqPassword} onChange={(e) => setRegPassword(e.target.value)} placeholder='Пароль' type="password" />
-                        <input className='lol' value={reqPasswordConfirmation} onChange={(e) => setRegPasswordConfirmation(e.target.value)} placeholder='Подтверждение пароля' type="password" />
+                    <form onSubmit={handleSubmitRegister(onSubmitRegister)}>
+                        <input className='lol' placeholder='Номер телефона' type="tel" {...registerRegister('phone', { required: 'Укажите номер телефона', minLength: { value: 7, message: "Минимальная длина телефона 7 символов" }, maxLength: { value: 15, message: "Максимальная длина телефона 15 символов" }, })} />
+                        {errorsRegister.phone && <label style={{color: 'red'}}>{errorsRegister.phone.message}</label>}
+                        {isRegistered && <label style={{color: 'red'}}>{isRegistered}</label>}
+
+                        <input className='lol' placeholder='Пароль' type="password" {...registerRegister('password', {required: 'Это поле обязательно', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                        {errorsRegister.password && <label style={{color: 'red'}}>{errorsRegister.password.message}</label>}
+                        {isPasswordMatch && <label style={{color: 'red'}}>{isPasswordMatch}</label>}
+
+                        <input className='lol' placeholder='Подтверждение пароля' type="password" {...registerRegister('password_confirmation', {required: 'Пароли должны совпадать', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                        {errorsRegister.password_confirmation && <label style={{color: 'red'}}>{errorsRegister.password_confirmation.message}</label>}
+                        {isPasswordMatch && <label style={{color: 'red'}}>{isPasswordMatch}</label>}
+
                         <p>Сложно сказать, почему независимые государства призывают нас к новым свершениям, которые, в свою очередь, должны быть преданы <span className="orange">персональных данных.</span></p>
                         <label className='politica' htmlFor="politica"><input type="checkbox" id='politica' /> Я согласен получать информацию об акция по электронной почте</label>
                         <button className="orangeBtn" type='submit'>Зарегистрироваться</button>
@@ -111,9 +152,15 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
                             <button onClick={() => setNavActive('reg')} className={NavActive == 'reg' ? 'active' : ''} style={{cursor: "pointer"}}>Регистрация</button>
                             <hr />
                         </div>
-                        <form onSubmit={handleSubmitAuth} >
-                            <input className='lol' value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Номер телефона' type="tel" />
-                            <input className='lol' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Пароль' type="password" />
+                        <form onSubmit={handleSubmitAuth(onSubmitAuth)} >
+                            <input className='lol' placeholder='Номер телефона' type="tel" {...registerAuth('phone', { required: 'Укажите номер телефона', minLength: { value: 7, message: "Минимальная длина телефона 7 символов" }, maxLength: { value: 15, message: "Максимальная длина телефона 15 символов" }, })}   />
+                            {errorsAuth.phone && <label style={{color: 'red'}}>{errorsAuth.phone.message}</label>}
+                            {incorrect && <label style={{color: 'red'}}>{incorrect}</label>}
+
+                            <input className='lol' placeholder='Пароль' type="password" {...registerAuth('password', {required: 'Это поле обязательно', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                            {errorsAuth.password && <label style={{color: 'red'}}>{errorsAuth.password.message}</label>}
+                            {incorrect && <label style={{color: 'red'}}>{incorrect}</label>}
+
                             <p onClick={() => setNavActive('passLow')}><span className='orange' style={{cursor: "pointer"}}>Забыли пароль?</span></p>
                             <button className="orangeBtn" type='submit'>Вход</button>
                         </form>
