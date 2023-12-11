@@ -7,15 +7,24 @@ import { SkinsOutput } from '../components/Profile/SkinsOutput/SkinsOutput';
 import { SortInventory } from '../components/Profile/SortInventory/SortInventory';
 import { ProfileBottom } from '../components/Profile/ProfileBottom/ProfileBottom';
 
+import { useSelector } from 'react-redux';
+
 export const Profile = () => {
+
+    const caseInfo = useSelector((state) => state.cases.case);
+
     return (
         <div className='Profile'>
             <div className='main mainWidht'>
                 <ToHome />
                 <ProfileInfo />
-                <SkinsOutput />
-                <SortInventory />
-                <ProfileBottom />
+                <SkinsOutput cls={!caseInfo?.items} />
+                {caseInfo?.items &&
+                    <>    
+                        <SortInventory />
+                        <ProfileBottom items={caseInfo?.items}/>
+                    </>
+                }
             </div>
         </div>
     )

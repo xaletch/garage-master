@@ -3,9 +3,9 @@ import React from 'react';
 import './SkinsOutput.scss';
 import link_img from '../../../img/link_img';
 
-export const SkinsOutput = () => {
+export const SkinsOutput = ({ cls }) => {
      return (
-        <div className='SkinsOutput'>
+        <div className='SkinsOutput' style={cls && {marginBottom: '160px'}} >
             <div className='SkinsOutputWrapper'>
                 <div className='SkinsOutputHead'>
                     <div className='item'>

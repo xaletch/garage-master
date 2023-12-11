@@ -16,7 +16,7 @@ import { SelectedCase } from '../../pages/SelectedCase';
 import { OpeningCase } from '../../pages/OpeningCase';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../../redux/slices/user';
+import { fetchUser, fetchUserItems } from '../../redux/slices/user';
 import { selectIsAuth } from '../../redux/slices/auth';
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
   useEffect(() => {
     // if (isAuth) {
       dispatch(fetchUser());
+      dispatch(fetchUserItems());
     // }
   }, [isAuth]);
 
