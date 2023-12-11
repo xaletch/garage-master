@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export const ToHome = () => {
     return (
         <>
-            <Link to='/' className='ToHome'>
+            <Link to='/garage-master' className='ToHome'>
                 <img src={link_img.arrowRight} alt=''/>
                 <span>вернуться на главную страницу</span>
             </Link>

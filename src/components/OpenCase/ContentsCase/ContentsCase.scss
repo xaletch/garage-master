@@ -57,8 +57,11 @@
         }
 
         .ContentCaseItem {
-            width: 150px;
+            width: 180px;
             padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             border-radius: 14px;
             border-width: 2px;
             border-style: solid;
@@ -79,16 +82,16 @@
     
             .ContentCaseItemRing {
                 border-radius: 100px;
-                width: 80px;
-                height: 80px;
+                width: 90px;
+                height: 90px;
                 margin: 0 auto;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 
                 img {
-                    width: 80px;
-                    height: 80px;
+                    width: 100px;
+                    height: 100px;
                 }
             }
     
@@ -96,7 +99,7 @@
                 margin-top: 20px;
     
                 .name, .categoryName {
-                    font-size: 18px;
+                    font-size: 16px;
                     line-height: 20px;
                 }
     
@@ -138,7 +141,7 @@
     .ContentsCase {
         .ContentCaseWrapper {
             display: grid;
-            grid-template-columns: repeat(5, 150px);
+            grid-template-columns: repeat(5, 180px);
             grid-template-rows: repeat(6fr, 1fr);
             justify-content: center;
         }
@@ -148,7 +151,7 @@
 @media(max-width:1050px) {
     .ContentsCase {
         .ContentCaseWrapper {
-            grid-template-columns: repeat(4, 150px);
+            grid-template-columns: repeat(4, 180px);
             grid-template-rows: repeat(1fr, 1fr);
             justify-content: center;
         }
@@ -158,17 +161,17 @@
 @media (max-width: 900px) {
     .ContentsCase {
         .ContentCaseWrapper {
-            grid-template-columns: repeat(4, 120px);
+            grid-template-columns: repeat(4, 140px);
             grid-template-rows: repeat(1fr, 1fr);
             gap: 16px;
             .ContentCaseItem {
-                width: 120px;
+                width: 140px;
                 .ContentCaseItemRing {
-                    width: 60px;
-                    height: 60px;
+                    width: 80px;
+                    height: 80px;
                     img {
-                        width: 60px;
-                        height: 60px;
+                        width: 80px;
+                        height: 80px;
                     }
                 }
                 .ContentCaseItemDescription {
@@ -179,7 +182,8 @@
                         line-height: 14px;
                     }
                     .categoryName {
-                        font-size: 10px;
+                        font-size: 12px;
+                        line-height: 12px;
                     }
                 }
             }
@@ -199,6 +203,24 @@
             grid-template-columns: repeat(3, 120px);
             grid-template-rows: repeat(1fr, 1fr);
             gap: 12px;
+            .ContentCaseItem {
+                width: 120px;
+                .ContentCaseItemRing {
+                    width: 60px;
+                    height: 60px;
+                    img {
+                        width: 60px;
+                        height: 60px;
+                    }
+                }
+                .ContentCaseItemDescription {
+                    margin-top: 12px;
+                    .name {
+                        font-size: 10px;
+                        line-height: 12px;
+                    }
+                }
+            }
         }
     }
 }
@@ -212,17 +234,18 @@
         }
         .ContentCaseWrapper {
             margin-top: 20px;
-            grid-template-columns: repeat(3, 95px);
+            grid-template-columns: repeat(3, 120px);
             grid-template-rows: repeat(1fr, 1fr);
             gap: 10px;
             .ContentCaseItem {
-                width: 95px;
+                width: 120px;
+                padding: 16px;
                 .ContentCaseItemRing {
-                    width: 50px;
-                    height: 50px;
+                    width: 60px;
+                    height: 60px;
                     img {
-                        width: 50px;
-                        height: 50px;
+                        width: 60px;
+                        height: 60px;
                     }
                 }
                 .ContentCaseItemDescription {
@@ -233,10 +256,65 @@
                         line-height: 12px;
                     }
                     .categoryName {
-                        font-size: 8px;
+                        font-size: 10px;
                         line-height: 10px;
                     }
                 }
+            }
+        }
+    }
+}
+
+@media(max-width: 390px) {
+    .ContentsCase {
+        .ContentCaseWrapper {
+            margin-top: 20px;
+            grid-template-columns: repeat(3, 110px);
+            grid-template-rows: repeat(1fr, 1fr);
+            gap: 10px;
+            .ContentCaseItem {
+                width: 110px;
+                padding: 14px;
+                .ContentCaseItemDescription {
+                    .categoryName {
+                        font-size: 9px;
+                        line-height: 9px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 360px) {
+    .ContentsCase {
+        .ContentCaseWrapper {
+            margin-top: 20px;
+            grid-template-columns: repeat(3, 98px);
+            grid-template-rows: repeat(1fr, 1fr);
+            gap: 6px;
+            .ContentCaseItem {
+                width: 98px;
+                padding: 12px;
+                .ContentCaseItemRing {
+                    width: 55px;
+                    height: 55px;
+                    img {
+                        width: 55px;
+                        height: 55px;
+                    }
+                }
+                .ContentCaseItemDescription {
+                    .categoryName {
+                        font-size: 9px;
+                        line-height: 9px;
+                    }
+                }
+            }
+            .ContentCaseItem::before {
+                width: 4px;
+                height: 30px;
+                left: -4px;
             }
         }
     }

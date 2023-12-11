@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const countCase = ["10", "25", "50", "100"]
 
-export const Case = () => {
+export const Case = ({ name, price, image }) => {
     const [selectCountCase, setSelectCountCase] = useState(2);
 
     const handleScrollTop = () => {
@@ -19,11 +19,11 @@ export const Case = () => {
         <div className='CaseWrapper'>
             <div className='CaseImg'>
                 <div className='CaseShadow'></div>
-                <img src={link_img.freeCase} alt=''/>
+                <img src={image} alt=''/>
             </div>
             <div className='BuyCase'>
-                <h2 className='CaseName'>Бесплатный кейс #1</h2>
-                <div className='CasePrice'>800 ₽</div>
+                <h2 className='CaseName'>{name}</h2>
+                <div className='CasePrice'>{price} ₽</div>
                 <div className='SelectCountCase'>
                     <span>Выберите количество открытий</span>
                     <div className='CountCaseBlock'>

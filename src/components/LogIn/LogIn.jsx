@@ -36,6 +36,7 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
 
             if ('access_token' in data.payload.data) {
                 window.localStorage.setItem('access_token', data.payload.data.access_token);
+                document.cookie = `access_token=${data.payload.data.access_token}; expires=Sun, 1 Jan 2024 00:00:00 UTC; path=/;`;
                 setLogInOpen(false);
             }
     
@@ -69,14 +70,11 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
     const onSubmitRegister = async (values) => {
         try {
             const data = await dispatch(fetchRegister(values));
-    
-            if ('access_token' in data.payload.data) {
-                window.localStorage.setItem('access_token', data.payload.data.access_token);
-            }
 
-            setMenuCode(true);
-            setLogInOpen(false);
-    
+            if (data.payload.data) {
+                setLogInOpen(false);
+                setMenuCode(true);
+            }
             // console.log('VALUES: ', values);
         }
         catch (err) {
@@ -161,7 +159,7 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
                             {errorsAuth.password && <label style={{color: 'red'}}>{errorsAuth.password.message}</label>}
                             {incorrect && <label style={{color: 'red'}}>{incorrect}</label>}
 
-                            <p onClick={() => setNavActive('passLow')}><span className='orange' style={{cursor: "pointer"}}>Забыли пароль?</span></p>
+                            {/* <p onClick={() => setNavActive('passLow')}><span className='orange' style={{cursor: "pointer"}}>Забыли пароль?</span></p> */}
                             <button className="orangeBtn" type='submit'>Вход</button>
                         </form>
                         <button className='exit' onClick={e => setLogInOpen(false)}><img src={link_img.close} /></button>

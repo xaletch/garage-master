@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 
 import './ReturnHomeButton.scss';
 
-export const ReturnHomeButton = () => {
+export const ReturnHomeButton = ({ name }) => {
     return (
         <div className='ReturnHomeButton'>
             <div className='ReturnHomeItem'>
-                <Link to='/'>Главная</Link>
+                <Link to='/garage-master'>Главная</Link>
             </div>
             /
             <div className='ReturnHomeItem'>
-                <span>Бесплатный кейс #1</span>
+                <span>{name}</span>
             </div>
         </div>
     )

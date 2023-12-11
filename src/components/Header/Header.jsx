@@ -48,7 +48,7 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
 
             </div>
           </div>
-          <Link to={'/garage-master'}><img className='logoImg' src={link_img.logo} alt="" /></Link>
+          <Link to={'/garage-master'} onClick={() => window.scrollTo(0, 0)}><img className='logoImg' src={link_img.logo} alt="" /></Link>
           <div className="navRight">
             {userInfo &&
               <div className="block wallet">
@@ -74,7 +74,7 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
               </div>
             :
             // ЗДЕСЬ ССЫЛКА КОТОРАЯ ВЕДЕТ НА ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ
-              <Link to={'/profile'}>
+              <Link to={'/profile'} onClick={() => window.scrollTo(0, 0)}>
                 <div className="block user" style={{cursor: "pointer"}}>
                   <div className="ico">
                     <img src={link_img.user2} alt="" />

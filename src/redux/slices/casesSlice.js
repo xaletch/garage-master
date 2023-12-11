@@ -7,8 +7,14 @@ export const fetchCases = createAsyncThunk('cases/get', async() => {
   return data.data;
 });
 
+export const fetchCase = createAsyncThunk('cases/get/case', async(url) => {
+  const { data } = await api.get('/api/v1/case/get/' + url);
+  return data.data;
+});
+
 const initialState = {
   items: [],
+  case: [],
   status: 'loading',
 };
 
@@ -28,6 +34,19 @@ export const casesSlice = createSlice({
     });
     builder.addCase(fetchCases.rejected, (state, action) => {
       state.items = [];
+      state.status = 'error';
+    });
+
+    builder.addCase(fetchCase.pending, (state, action) => {
+      state.case = [];
+      state.status = 'loading';
+    });
+    builder.addCase(fetchCase.fulfilled, (state, action) => {
+      state.case = action.payload;
+      state.status = 'success';
+    });
+    builder.addCase(fetchCase.rejected, (state, action) => {
+      state.case = [];
       state.status = 'error';
     });
   }

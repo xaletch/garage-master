@@ -12,7 +12,7 @@ import './App.scss';
 
 import { Profile } from '../../pages/Profile';
 import { Home } from '../../pages/Home';
-import { OpenCase } from '../../pages/OpenCase';
+import { SelectedCase } from '../../pages/SelectedCase';
 import { OpeningCase } from '../../pages/OpeningCase';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,7 +39,7 @@ function App() {
       <Routes>
         <Route path='garage-master' element={<Home setHeaderOpen={setHeaderOpen} />}></Route>
         <Route path='profile' element={<Profile />}></Route>
-        <Route path='open-case' element={<OpenCase />}></Route>
+        <Route path='selected-case/:url' element={<SelectedCase />}></Route>
         <Route path='opening-case' element={<OpeningCase />}></Route>
       </Routes>
       <Footer />
