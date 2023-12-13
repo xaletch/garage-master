@@ -18,20 +18,21 @@ import { OpeningCase } from '../../pages/OpeningCase';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser, fetchUserItems } from '../../redux/slices/user';
 import { selectIsAuth } from '../../redux/slices/auth';
+import { selectIsRegistration } from '../../redux/slices/registration';
 
 function App() {
   const [LogInOpen, setLogInOpen] = useState(false);
   const [HeaderOpen, setHeaderOpen] = useState(false);
 
   const dispatch = useDispatch();
-  const isAuth = useSelector(selectIsAuth);
 
+  const accessTokenCookie = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
   useEffect(() => {
-    // if (isAuth) {
+    if (accessTokenCookie) {
       dispatch(fetchUser());
       dispatch(fetchUserItems());
-    // }
-  }, [isAuth]);
+    }
+  }, [accessTokenCookie]);
 
   return (
     <div className="App">

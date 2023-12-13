@@ -25,7 +25,7 @@ export const ProfileInfo = () => {
                     </div>
                 </div>
             </div>
-            <div class="ProfileInfoLine Line1" aria-hidden="true"></div>
+            <div className="ProfileInfoLine Line1" aria-hidden="true"></div>
             <div className='ProfileInfoBlock'>
                 <div className='item countCase'>
                     <div className='icon'>
@@ -36,7 +36,7 @@ export const ProfileInfo = () => {
                         <span className='itemBottom itemCount'>{userInfo?.count_open_case}</span>
                     </p>
                 </div>
-                <div class="ProfileInfoLine" aria-hidden="true"></div>
+                <div className="ProfileInfoLine" aria-hidden="true"></div>
                 <div className='item countCase'>
                     <div className='icon'>
                         <img src={link_img.user2} alt=''/>
@@ -46,7 +46,7 @@ export const ProfileInfo = () => {
                         <span className='itemBottom itemOnline'>{userInfo?.date_register}</span>
                     </p>
                 </div>
-                <div class="ProfileInfoLine" aria-hidden="true"></div>
+                <div className="ProfileInfoLine" aria-hidden="true"></div>
                 <div className='item countCase'>
                     <div className='icon'>
                         <img src={link_img.steam} alt=''/>

@@ -13,16 +13,16 @@ export const AllCases = () => {
 
     return (
         <>
-            {cases.map((item, index) => (
-                <div className='CasesAll' key={index}>
+            {cases.map((item) => (
+                <div className='CasesAll'key={item.category_name}>
                     <h2>{item.category_name}</h2>
                     <div className="CasesAllMain mainWidht">
-                        {item.items.map((item, index) => (
-                            <Link to={`/selected-case/${item.url}`}>
-                                <div className='CaseCard c5' key={index}>
-                                    <div className="price"><span>{item.price}</span> ₽</div>
-                                    <img src={item.image} alt={item.url} />
-                                    <p>{item.name}</p>
+                        {item.items.map((subItem) => (
+                            <Link to={`/selected-case/${subItem.url}`}>
+                                <div className='CaseCard c5' key={subItem.url}>
+                                    <div className="price"><span>{subItem.price}</span> ₽</div>
+                                    <img src={subItem.image} alt={subItem.url} />
+                                    <p>{subItem.name}</p>
                                 </div>
                             </Link>
                         ))}

@@ -5,23 +5,23 @@ import link_img from '../../img/link_img';
 
 import { useForm } from 'react-hook-form';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchRegister } from '../../redux/slices/registration';
 import { fetchAuth } from '../../redux/slices/auth';
-import api from '../../http/axios';
+import { CodeConfirmation } from './CodeConfirmation';
 
 export default function LogIn({ LogInOpen, setLogInOpen }) {
     const dispatch = useDispatch();
 
     const [NavActive, setNavActive] = useState('logIn');
-
-    const [incorrect, setIncorrect] = useState();
+    const [menuCode, setMenuCode] = useState(false);
+    const [incorrect, setIncorrect] = useState('');
 
     // AUTH
     const {
         register: registerAuth,
         handleSubmit: handleSubmitAuth,
-        formState: { errors: errorsAuth, isValid: isValidAuth },
+        formState: { errors: errorsAuth },
     } = useForm({
         defaultValues: {
             phone: "",
@@ -49,15 +49,13 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
     };
 
     // REGISTRATION
-    const [menuCode, setMenuCode] = useState(false);
-    const [code, setCode] = useState('');
     const [isRegistered, setRegistered] = useState('');
     const [isPasswordMatch, setPasswordMatch] = useState('');
 
     const {
         register: registerRegister,
         handleSubmit: handleSubmitRegister,
-        formState: { errors: errorsRegister, isValid: isValidRegister },
+        formState: { errors: errorsRegister },
     } = useForm({
         defaultValues: {
             phone: "",
@@ -89,49 +87,35 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
         };
     };
 
-    const session_id = useSelector((state) => state.registration?.data?.data?.session_id);
-    const handleSubmitCode = async (e) => {
-        e.preventDefault();
-
-        try {
-            const data = { session_id: session_id, code: code }
-            const { response } = await api('/api/v1/account/signup-confirm', data);
-
-            console.log(response);
-        }
-        catch (err) {
-            console.log('Неверный код');
-        }
-    }
-
     return (
-        <div className={`LogIn ${LogInOpen ? 'open' : ''}`} >
-            {NavActive === 'reg' ?
-                <div className="main">
-                    <div className="nav">
-                        <button onClick={() => setNavActive('logIn')} className={NavActive == 'logIn' ? 'active' : ''} style={{cursor: 'pointer'}}>Вход</button>
-                        <button onClick={() => setNavActive('reg')} className={NavActive == 'reg' ? 'active' : ''} style={{cursor: 'pointer'}}>Регистрация</button>
-                        <hr />
+        <>
+            <div className={`LogIn ${LogInOpen ? 'open' : ''}`} >
+                {NavActive === 'reg' ?
+                    <div className="main">
+                        <div className="nav">
+                            <button onClick={() => setNavActive('logIn')} className={NavActive == 'logIn' ? 'active' : ''} style={{cursor: 'pointer'}}>Вход</button>
+                            <button onClick={() => setNavActive('reg')} className={NavActive == 'reg' ? 'active' : ''} style={{cursor: 'pointer'}}>Регистрация</button>
+                            <hr />
+                        </div>
+                        <form onSubmit={handleSubmitRegister(onSubmitRegister)}>
+                            <input className='lol' placeholder='Номер телефона' type="tel" {...registerRegister('phone', { required: 'Укажите номер телефона', minLength: { value: 7, message: "Минимальная длина телефона 7 символов" }, maxLength: { value: 15, message: "Максимальная длина телефона 15 символов" }, })} />
+                            {errorsRegister.phone && <label style={{color: 'red'}}>{errorsRegister.phone.message}</label>}
+                            {isRegistered && <label style={{color: 'red'}}>{isRegistered}</label>}
+
+                            <input className='lol' placeholder='Пароль' type="password" {...registerRegister('password', {required: 'Это поле обязательно', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                            {errorsRegister.password && <label style={{color: 'red'}}>{errorsRegister.password.message}</label>}
+                            {isPasswordMatch && <label style={{color: 'red'}}>{isPasswordMatch}</label>}
+
+                            <input className='lol' placeholder='Подтверждение пароля' type="password" {...registerRegister('password_confirmation', {required: 'Пароли должны совпадать', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                            {errorsRegister.password_confirmation && <label style={{color: 'red'}}>{errorsRegister.password_confirmation.message}</label>}
+                            {isPasswordMatch && <label style={{color: 'red'}}>{isPasswordMatch}</label>}
+
+                            <p>Сложно сказать, почему независимые государства призывают нас к новым свершениям, которые, в свою очередь, должны быть преданы <span className="orange">персональных данных.</span></p>
+                            <label className='politica' htmlFor="politica"><input type="checkbox" id='politica' /> Я согласен получать информацию об акция по электронной почте</label>
+                            <button className="orangeBtn" type='submit'>Зарегистрироваться</button>
+                        </form>
+                        <button className='exit' onClick={(e) => setLogInOpen(false)}><img src={link_img.close} /></button>
                     </div>
-                    <form onSubmit={handleSubmitRegister(onSubmitRegister)}>
-                        <input className='lol' placeholder='Номер телефона' type="tel" {...registerRegister('phone', { required: 'Укажите номер телефона', minLength: { value: 7, message: "Минимальная длина телефона 7 символов" }, maxLength: { value: 15, message: "Максимальная длина телефона 15 символов" }, })} />
-                        {errorsRegister.phone && <label style={{color: 'red'}}>{errorsRegister.phone.message}</label>}
-                        {isRegistered && <label style={{color: 'red'}}>{isRegistered}</label>}
-
-                        <input className='lol' placeholder='Пароль' type="password" {...registerRegister('password', {required: 'Это поле обязательно', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
-                        {errorsRegister.password && <label style={{color: 'red'}}>{errorsRegister.password.message}</label>}
-                        {isPasswordMatch && <label style={{color: 'red'}}>{isPasswordMatch}</label>}
-
-                        <input className='lol' placeholder='Подтверждение пароля' type="password" {...registerRegister('password_confirmation', {required: 'Пароли должны совпадать', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
-                        {errorsRegister.password_confirmation && <label style={{color: 'red'}}>{errorsRegister.password_confirmation.message}</label>}
-                        {isPasswordMatch && <label style={{color: 'red'}}>{isPasswordMatch}</label>}
-
-                        <p>Сложно сказать, почему независимые государства призывают нас к новым свершениям, которые, в свою очередь, должны быть преданы <span className="orange">персональных данных.</span></p>
-                        <label className='politica' htmlFor="politica"><input type="checkbox" id='politica' /> Я согласен получать информацию об акция по электронной почте</label>
-                        <button className="orangeBtn" type='submit'>Зарегистрироваться</button>
-                    </form>
-                    <button className='exit' onClick={(e) => setLogInOpen(false)}><img src={link_img.close} /></button>
-                </div>
                 :
                 NavActive === 'passLow' ?
                     <div className="main passLow">
@@ -164,16 +148,9 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
                         </form>
                         <button className='exit' onClick={e => setLogInOpen(false)}><img src={link_img.close} /></button>
                     </div>
-            }
-            {menuCode &&
-                <div className="main">
-                    <form onSubmit={handleSubmitCode}>
-                        <p className='code'>Мы отправили СМС с кодом подтверждения на ваш номер телефона. Пожалуйста, введите данный код ниже</p>
-                        <input className='lol' type="text" value={code} onChange={(e) => setCode(e.target.value)} placeholder='Код из СМС'/>
-                        <button className="orangeBtn" type="submit">Подтвердить</button>
-                    </form>
-                </div>
-            }
-        </div>
+                }
+            </div>
+            {menuCode && <CodeConfirmation menuCode={menuCode} setMenuCode={setMenuCode}/>}
+        </>
     )
 }
