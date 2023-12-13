@@ -15,10 +15,8 @@ import { Home } from '../../pages/Home';
 import { SelectedCase } from '../../pages/SelectedCase';
 import { OpeningCase } from '../../pages/OpeningCase';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchUser, fetchUserItems } from '../../redux/slices/user';
-import { selectIsAuth } from '../../redux/slices/auth';
-import { selectIsRegistration } from '../../redux/slices/registration';
 
 function App() {
   const [LogInOpen, setLogInOpen] = useState(false);

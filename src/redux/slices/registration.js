@@ -52,6 +52,4 @@ export const registration = createSlice({
   }
 })
 
-export const selectIsRegistration = state => Boolean(state.registration.confirmation);
-
 export default registration.reducer;
