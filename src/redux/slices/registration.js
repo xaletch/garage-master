@@ -50,6 +50,6 @@ export const registration = createSlice({
       state.status = 'error';
     });
   }
-})
+}) 
 
 export default registration.reducer;
