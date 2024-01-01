@@ -19,7 +19,7 @@ export const SortInventory = () => {
     
     const userItems = useSelector((state) => state.user.userItems?.data);
 
-    console.log(userItems);
+    // console.log(userItems);
     
     return (
         <div className='SortInventory'>

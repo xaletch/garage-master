@@ -17,8 +17,8 @@ export const AllCases = () => {
                 <div className='CasesAll'key={item.category_name}>
                     <h2>{item.category_name}</h2>
                     <div className="CasesAllMain mainWidht">
-                        {item.items.map((subItem) => (
-                            <Link to={`/selected-case/${subItem.url}`}>
+                        {item.items.map((subItem, index) => (
+                            <Link to={`/selected-case/${subItem.url}`} key={index}>
                                 <div className='CaseCard c5' key={subItem.url}>
                                     <div className="price"><span>{subItem.price}</span> ₽</div>
                                     <img src={subItem.image} alt={subItem.url} />

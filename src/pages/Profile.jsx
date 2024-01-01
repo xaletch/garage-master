@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 export const Profile = () => {
 
-    const caseInfo = useSelector((state) => state.cases.case);
+    const caseInfo = useSelector((state) => state.user?.userItems?.data?.items);
 
     return (
         <div className='Profile'>

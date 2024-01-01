@@ -36,7 +36,7 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
 
             if ('access_token' in data.payload.data) {
                 window.localStorage.setItem('access_token', data.payload.data.access_token);
-                document.cookie = `access_token=${data.payload.data.access_token}; expires=Sun, 1 Jan 2024 00:00:00 UTC; path=/;`;
+                document.cookie = `access_token=${data.payload.data.access_token}; expires=Sun, 1 Jan 2025 00:00:00 UTC; path=/;`;
                 setLogInOpen(false);
             }
     

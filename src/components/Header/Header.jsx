@@ -8,10 +8,10 @@ import { useSelector } from 'react-redux';
 export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
   const [follower, setFollower] = useState(16900);
 
-  const isAuth = localStorage.getItem('access_token');
-
   // USER INFORMATION
   const userInfo = useSelector((state) => state.user?.data?.data.profile);
+
+  const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
 
   return (
     <>
