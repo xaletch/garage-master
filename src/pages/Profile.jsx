@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '../components/Profile/Profile.scss';
 import { ToHome } from '../components/ToHome/ToHome';
@@ -7,24 +7,46 @@ import { SkinsOutput } from '../components/Profile/SkinsOutput/SkinsOutput';
 import { SortInventory } from '../components/Profile/SortInventory/SortInventory';
 import { ProfileBottom } from '../components/Profile/ProfileBottom/ProfileBottom';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserItems } from '../redux/slices/user';
 
 export const Profile = () => {
+    const dispatch = useDispatch();
 
-    const caseInfo = useSelector((state) => state.user?.userItems?.data?.items);
+    const [items, setItems] = useState([]);
+    
+    const { userItems, start_price, end_price } = useSelector((state) => state.user);
 
+    useEffect(() => {
+        dispatch(fetchUserItems());
+    }, [start_price, end_price])
+
+    useEffect(() => {
+        if (userItems?.data?.items) {
+            setItems(userItems?.data?.items);
+        }
+    }, [userItems]);
+
+    console.log(userItems);
+    
     return (
         <div className='Profile'>
             <div className='main mainWidht'>
                 <ToHome />
                 <ProfileInfo />
-                <SkinsOutput cls={!caseInfo?.items} />
-                {caseInfo?.items &&
-                    <>    
-                        <SortInventory />
-                        <ProfileBottom items={caseInfo?.items}/>
-                    </>
-                }
+                <SkinsOutput cls={items} />
+                {start_price !== null && end_price !== null && items.length === 0 ? (
+                    <SortInventory />
+                    ) : (
+                        items.length > 0 ? (
+                            <>
+                                <SortInventory cls={items} />
+                                <ProfileBottom items={items} />
+                            </>
+                        ) : (
+                            <div>У вас нет выбитых предметов</div>
+                        )
+                )}
             </div>
         </div>
     )

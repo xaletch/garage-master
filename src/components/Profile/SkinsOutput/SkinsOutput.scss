@@ -80,7 +80,7 @@
                 font-weight: 400;
                 line-height: 26px;
 
-                span {
+                a {
                     color: #ed771b;
                 }
             }
@@ -103,6 +103,19 @@
                     font-size: 18px;
                     font-weight: 400;
                     line-height: 18px;
+
+                    &::placeholder {
+                        color: #7257a8;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 18px;
+                    }
+                }
+
+                label {
+                    position: absolute;
+                    bottom: -20px;
+                    left: 5px;
                 }
 
                 .saveBtn {

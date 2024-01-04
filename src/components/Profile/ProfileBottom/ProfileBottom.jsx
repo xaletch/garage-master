@@ -3,6 +3,7 @@ import React from 'react'
 import './ProfileBottom.scss';
 
 export const ProfileBottom = ({ items }) => {
+  
   return (
     <div className='ProfileBottom'>
       {items?.map((item, index) => (

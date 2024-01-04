@@ -4,22 +4,13 @@ import './Case.scss';
 
 import { Link } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
-import { increaseBalance } from '../../../redux/slices/user';
-
 export const Case = ({ name, price, image }) => {
     const countCase = ["10", "25", "50", "100"];
-
-    const dispatch = useDispatch();
 
     const [selectCountCase, setSelectCountCase] = useState(2);
 
     const handleScrollTop = () => {
         window.scrollTo(0, 0);
-    };
-
-    const replenishmentBalance = () => {
-        dispatch(increaseBalance())
     };
 
   return (
@@ -45,7 +36,7 @@ export const Case = ({ name, price, image }) => {
                 <div className='TopUpBalance'>
                     <span>Недостаточно средств</span>
                     {/* <button className='TopUpBalanceBtn'><Link to='/opening-case' onClick={handleScrollTop}>Пополнение баланса</Link></button> */}
-                    <button className='TopUpBalanceBtn'  onClick={() => replenishmentBalance()}>Пополнение баланса</button>
+                    <button className='TopUpBalanceBtn'>Пополнение баланса</button>
                 </div>
                 <div className='warning'>
                     <h3>Ширп здесь вне закона!</h3>

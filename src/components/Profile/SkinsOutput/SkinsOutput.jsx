@@ -1,11 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './SkinsOutput.scss';
 import link_img from '../../../img/link_img';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
+
+import { fetchTradeUrl, fetchUser } from '../../../redux/slices/user';
+import { Link } from 'react-router-dom';
+
 export const SkinsOutput = ({ cls }) => {
-     return (
-        <div className='SkinsOutput' style={cls && {marginBottom: '160px'}} >
+    const [tradeUrlErr, setTradeUrlErr] = useState('');
+
+    const dispatch = useDispatch();
+
+    const tradeUrl = useSelector((state) => state.user?.data?.data.profile?.trade_url);
+
+    const {
+        register: registerTradeUrl,
+        handleSubmit: handleSubmitTradeUrl,
+        formState: { errors: errorsTradeUrl },
+    } = useForm({
+        defaultValues: {
+            trade_url: tradeUrl !== '' ? tradeUrl : '',
+        },
+        mode: "onSubmit",
+    });
+
+    const onSubmitTradeUrl = async (value) => {
+        try {
+            await dispatch(fetchTradeUrl(value));
+            dispatch(fetchUser());
+        }
+        catch (err) {
+            setTradeUrlErr('Ссылка на трейд неверная');
+        }
+    };
+
+    const styleMargin = { marginBottom: cls.length === 0 ? "160px" : "0" };
+
+    return (
+        <div className='SkinsOutput' style={styleMargin} >
             <div className='SkinsOutputWrapper'>
                 <div className='SkinsOutputHead'>
                     <div className='item'>
@@ -27,11 +62,12 @@ export const SkinsOutput = ({ cls }) => {
                     </div>
                 </div>
                 <div className='SkinsOutputContent'>
-                    <p className='SkinsOutputContentTitle'>Найти ссылку можно <span>на сайте Steam</span></p>
-                    <div className='inputLink'>
-                        <input type='text' />
-                        <button className='saveBtn'>Сохранить</button>
-                    </div>
+                    <p className='SkinsOutputContentTitle'>Найти ссылку можно <Link to={'http://steamcommunity.com/my/tradeoffers/privacy'}>на сайте Steam</Link></p>
+                    <form className='inputLink' onSubmit={handleSubmitTradeUrl(onSubmitTradeUrl)}>
+                        <input type='text' {...registerTradeUrl('trade_url', {required: 'Это поле обязательно', minLength: { value: 0, message: "Введите trade ссылку" }, })} placeholder='Введите свою trade ссылку' />
+                        {tradeUrlErr && <label style={{color: 'red'}}>{tradeUrlErr}</label>}
+                        <button className='saveBtn' type='submit'>Сохранить</button>
+                    </form>
                     <div className='outputAvailable'>
                         <span className='update'>
                             <img src={link_img.update} alt='' />

@@ -10,9 +10,6 @@ export const ProfileInfo = () => {
     // USER INFORMATION
     const userInfo = useSelector((state) => state.user?.data?.data.profile);
 
-    const tradeUrl = useSelector((state) => state.user?.data);
-    // console.log(tradeUrl);
-
     return (
         <div className='ProfileInfo'>
             <div className='ProfileInfoAvatar'>

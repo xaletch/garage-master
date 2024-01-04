@@ -7,23 +7,39 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
     return data;
 });
 
-export const fetchUserItems = createAsyncThunk('userItems/fetchUserItems', async () => {
-  const { data } = await api.get('/api/v1/user/items/list');
+export const fetchUserItems = createAsyncThunk('userItems/fetchUserItems', async (_, { getState }) => {
+  const { start_price, end_price } = getState().user;
+  const { data } = await api.get('/api/v1/user/items/list', { params: { start_price, end_price } });
+  return data;
+});
+
+export const fetchTradeUrl = createAsyncThunk('user/trade_url', async (url) => {
+  const { data } = await api.post('/api/v1/account/profile/set/trade_url', url);
   return data;
 });
 
 const initialState = {
   data: null,
   userItems: [],
+  trade_url: '',
   status: 'loading',
+
+  // FILTER CASE
+  start_price: 0,
+  end_price: 999999,
 };
 
 export const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // ПОПОЛНЕНИЕ БАЛАНСА
-    increaseBalance(state, action) {},
+    // FILTER CASE
+    setMinPrice: (state, action) => {
+      state.start_price = action.payload;
+    },
+    setMaxPrice: (state, action) => {
+      state.end_price = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUserItems.pending, (state, action) => {
@@ -51,9 +67,23 @@ export const user = createSlice({
       state.data = null;
       state.status = 'error';
     });
+
+    // trade url
+    builder.addCase(fetchTradeUrl.pending, (state, action) => {
+      state.trade_url = '';
+      state.status = 'loading';
+    });
+    builder.addCase(fetchTradeUrl.fulfilled, (state, action) => {
+      state.trade_url = action.payload;
+      state.status = 'success';
+    });
+    builder.addCase(fetchTradeUrl.rejected, (state, action) => {
+      state.trade_url = '';
+      state.status = 'error';
+    });
   }
 })
 
-export const { increaseBalance } = user.actions;
+export const { setMinPrice, setMaxPrice } = user.actions;
 
 export default user.reducer;

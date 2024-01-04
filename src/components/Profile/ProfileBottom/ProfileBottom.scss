@@ -1,7 +1,6 @@
 .ProfileBottom {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     gap: 22px;
     row-gap: 28px;
     margin-bottom: 160px;
@@ -47,8 +46,11 @@
     }
 
     .ProfileBottomCard {
-        width: 150px;
-        padding: 18px;
+        width: 170px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        padding: 18px 20px;
         border-radius: 14px;
         border-width: 2px;
         border-style: solid;
@@ -85,9 +87,13 @@
         .ProfileBottomBlockDescription {
             margin-top: 20px;
 
-            .name, .categoryName {
-                font-size: 18px;
-                line-height: 19px;
+            .name {
+                font-size: 16px;
+                line-height: 18px;
+            }
+            .categoryName {
+                font-size: 14px;
+                line-height: 16px;
             }
 
             .name {
