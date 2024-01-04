@@ -40,7 +40,7 @@ export const Profile = () => {
                     ) : (
                         items.length > 0 ? (
                             <>
-                                <SortInventory cls={items} />
+                                <SortInventory />
                                 <ProfileBottom items={items} />
                             </>
                         ) : (
