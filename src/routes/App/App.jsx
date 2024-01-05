@@ -40,7 +40,7 @@ function App() {
         <Route path='garage-master' element={<Home setHeaderOpen={setHeaderOpen} />}></Route>
         <Route path='profile' element={<Profile />}></Route>
         <Route path='selected-case/:url' element={<SelectedCase />}></Route>
-        <Route path='opening-case' element={<OpeningCase />}></Route>
+        <Route path='open/' element={<OpeningCase />}></Route>
       </Routes>
       <Footer />
       <LogIn LogInOpen={LogInOpen} setLogInOpen={setLogInOpen} />

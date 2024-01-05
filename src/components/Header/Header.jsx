@@ -16,7 +16,8 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
   return (
     <>
       <div className='Header'>
-        <nav className='mainWidht'>
+        <div className='main mainWidht'>
+        <nav>
           <div className="massager">
             <div className="block vk">
               <div className="ico">
@@ -91,6 +92,7 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
             </div>
           </div>
         </nav>
+        </div>
       </div>
       <div onClick={()=>{setHeaderOpen(false)}} className={`HeaderMedia ${HeaderOpen?'open':''}`}>
         <div className="HeaderMediaTop mainWidht">

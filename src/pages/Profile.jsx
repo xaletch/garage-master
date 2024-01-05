@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserItems } from '../redux/slices/user';
 
 export const Profile = () => {
+
     const dispatch = useDispatch();
 
     const [items, setItems] = useState([]);
@@ -26,25 +27,28 @@ export const Profile = () => {
             setItems(userItems?.data?.items);
         }
     }, [userItems]);
-
-    console.log(userItems);
     
     return (
         <div className='Profile'>
             <div className='main mainWidht'>
                 <ToHome />
                 <ProfileInfo />
-                <SkinsOutput cls={items} />
+                <SkinsOutput cls={items} start_price={start_price} end_price={end_price} />
                 {start_price !== null && end_price !== null && items.length === 0 ? (
-                    <SortInventory />
+                    <>
+                        <SortInventory />
+                        <div className='ProfileNoItems'>У вас нет предметов с ценой от {start_price}₽ до {end_price}₽</div>
+                    </>
                     ) : (
                         items.length > 0 ? (
                             <>
                                 <SortInventory />
-                                <ProfileBottom items={items} />
+                                <div className='ProfileBottom'>
+                                    {items.map((obj, index) => <ProfileBottom key={index} image={obj.image} id={obj.id} name={obj.name} price={obj.price} rarity={obj.rarity} />)}
+                                </div>
                             </>
                         ) : (
-                            <div>У вас нет выбитых предметов</div>
+                            <div className='ProfileNoItems'>У вас нет выбитых предметов</div>
                         )
                 )}
             </div>

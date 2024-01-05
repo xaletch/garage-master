@@ -10,8 +10,8 @@
 
     .ContentCaseWrapper {
         margin-top: 42px;
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
         gap: 22px;
         row-gap: 28px;
         margin-bottom: 100px;
@@ -57,7 +57,7 @@
         }
 
         .ContentCaseItem {
-            width: 180px;
+            width: 175px;
             padding: 18px;
             display: flex;
             flex-direction: column;

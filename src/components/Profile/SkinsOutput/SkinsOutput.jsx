@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { fetchTradeUrl, fetchUser } from '../../../redux/slices/user';
 import { Link } from 'react-router-dom';
 
-export const SkinsOutput = ({ cls }) => {
+export const SkinsOutput = ({ cls, start_price, end_price }) => {
     const [tradeUrlErr, setTradeUrlErr] = useState('');
 
     const dispatch = useDispatch();
@@ -37,10 +37,10 @@ export const SkinsOutput = ({ cls }) => {
         }
     };
 
-    const styleMargin = { marginBottom: cls.length === 0 ? "160px" : "0" };
+    // const styleMargin = { marginBottom: cls.length === 0 && end_price === null && start_price === null ? "160px" : "0" };
 
     return (
-        <div className='SkinsOutput' style={styleMargin} >
+        <div className='SkinsOutput' >
             <div className='SkinsOutputWrapper'>
                 <div className='SkinsOutputHead'>
                     <div className='item'>

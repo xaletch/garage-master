@@ -18,6 +18,11 @@ export const fetchTradeUrl = createAsyncThunk('user/trade_url', async (url) => {
   return data;
 });
 
+export const fetchSaleItem = createAsyncThunk('user/delete_item', async (id) => {
+  const { data } = await api.get('/api/v1/user/item/sale/' + id);
+  return data;
+});
+
 const initialState = {
   data: null,
   userItems: [],
@@ -25,8 +30,8 @@ const initialState = {
   status: 'loading',
 
   // FILTER CASE
-  start_price: 0,
-  end_price: 999999,
+  start_price: null,
+  end_price: null,
 };
 
 export const user = createSlice({
@@ -40,6 +45,11 @@ export const user = createSlice({
     setMaxPrice: (state, action) => {
       state.end_price = action.payload;
     },
+
+    // DELETE ITEM
+    // deleteItem: (state, action) => {
+    //   state.userItems = state.userItems.filter((item) => item.id !== action.payload);
+    // }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUserItems.pending, (state, action) => {
@@ -79,6 +89,18 @@ export const user = createSlice({
     });
     builder.addCase(fetchTradeUrl.rejected, (state, action) => {
       state.trade_url = '';
+      state.status = 'error';
+    });
+
+    // DELETE ITEMS
+    builder.addCase(fetchSaleItem.pending, (state, action) => {
+      state.status = 'loading';
+    });
+    builder.addCase(fetchSaleItem.fulfilled, (state, action) => {
+      state.userItems.data.items = state.userItems.data.items.filter((item) => item.id !== action.meta.arg);
+      state.status = 'success';
+    });
+    builder.addCase(fetchSaleItem.rejected, (state, action) => {
       state.status = 'error';
     });
   }

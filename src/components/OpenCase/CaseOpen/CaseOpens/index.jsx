@@ -31,10 +31,10 @@ export const CaseOpens = () => {
                 <img src={link_img.case_open_arrow_bottom} alt=''/>
             </div>
         </div>
-        <div className='winnings'>
+        {/* <div className='winnings'>
             <div className='CaseShadow'></div>
             <img src={link_img.winnings} alt=''/>
-        </div>
+        </div> */}
     </div>
   )
 }

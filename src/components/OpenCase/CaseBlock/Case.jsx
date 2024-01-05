@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 
 import './Case.scss';
+import { useSelector } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
-export const Case = ({ name, price, image }) => {
-    const countCase = ["10", "25", "50", "100"];
+export const Case = ({ name, price, image, url }) => {
+    const countCase = ["1", "25", "50", "100"];
 
-    const [selectCountCase, setSelectCountCase] = useState(2);
+    const [selectCountCase, setSelectCountCase] = useState(0);
+
+    const balance = useSelector((state) => state.user?.data?.data.profile?.balance);
+
+    console.log(balance);
 
     const handleScrollTop = () => {
         window.scrollTo(0, 0);
@@ -34,9 +39,21 @@ export const Case = ({ name, price, image }) => {
                     </div>
                 </div>
                 <div className='TopUpBalance'>
-                    <span>Недостаточно средств</span>
-                    {/* <button className='TopUpBalanceBtn'><Link to='/opening-case' onClick={handleScrollTop}>Пополнение баланса</Link></button> */}
-                    <button className='TopUpBalanceBtn'>Пополнение баланса</button>
+                    {balance >= price ?
+                    (
+                        <>
+                            <Link to={`/open/`} className='TopUpBalanceBtn' onClick={handleScrollTop}>Открыть кейс</Link>
+                        </>
+                    )
+                    :
+                    (
+                        <>
+                            <span>Недостаточно средств</span>
+                            {/* <button className='TopUpBalanceBtn'><Link to='/opening-case' onClick={handleScrollTop}>Пополнение баланса</Link></button> */}
+                            <button className='TopUpBalanceBtn'>Пополнение баланса</button>
+                        </>
+                    )
+                    }
                 </div>
                 <div className='warning'>
                     <h3>Ширп здесь вне закона!</h3>

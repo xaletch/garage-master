@@ -39,6 +39,7 @@ body {
   color: white;
   background-position: top center;
   font-size: 13px;
+  display: block;
 }
 
 h2 {
@@ -51,8 +52,9 @@ a {
 }
 
 .mainWidht {
-  width: 1358px;
+  max-width: 1358px;
   margin: auto;
+  padding: 0 20px;
 }
 
 .orangeBtn {
@@ -82,6 +84,97 @@ span.orange {
   background-position: -2px -2px;
 }
 
+.c1 {
+  background: linear-gradient(45deg, #3a1359 0%, #180838 100%);
+
+  &::before {
+      background-color: #9830b3;
+  }
+}
+
+.c2 {
+  background: linear-gradient(45deg, #173366 0%, #180939 100%);
+
+  &::before {
+      background-color: #3092bb;
+  }
+}
+
+.c3 {
+  background: linear-gradient(45deg, #40143f 0%, #190838 100%);
+
+  &::before {
+      background-color: #c9405d;
+  }
+}
+
+.c4 {
+  background: linear-gradient(45deg, #193447 0%, #180938 100%);
+
+  &::before {
+      background-color: #1dd87e;
+  }
+}
+
+.c5 {
+  background: linear-gradient(45deg, #59292f 0%, #190938 100%);
+
+  &::before {
+      background-color: #de7422;
+  }
+}
+
+.c6 {
+  background: linear-gradient(45deg, #594c29 0%, #382809 100%);
+
+  &::before {
+      background-color: #cbde22;
+  }
+}
+
+.c7 {
+  background: linear-gradient(45deg, #2a2959 0%, #091238 100%);
+
+  &::before {
+      background-color: #4b22de;
+  }
+}
+
+.c1:hover {
+  border: #9830b3 2px solid !important;
+  padding: 0;
+}
+
+.c2:hover {
+  border: #3092bb 2px solid !important;
+  padding: 0;
+}
+
+.c3:hover {
+  border: #c9405d 2px solid !important;
+  padding: 0;
+}
+
+.c4:hover {
+  border: #1dd87e 2px solid !important;
+  padding: 0;
+}
+
+.c5:hover {
+  border: #de7422 2px solid !important;
+  padding: 0;
+}
+
+.c6:hover {
+  border: #cbde22 2px solid !important;
+  padding: 0;
+}
+
+.c7:hover {
+  border: #4b22de 2px solid !important;
+  padding: 0;
+}
+
 @media(min-width:1300px) {
   .AllWinner .main .offers {
     width: 46% !important;
@@ -89,9 +182,6 @@ span.orange {
 }
 
 @media(max-width:1300px) {
-  .mainWidht {
-    width: 1000px;
-  }
 
   .App {
     padding-top: 20px;
@@ -117,10 +207,6 @@ span.orange {
 
   .AllWinner .main {
     margin: 100px auto !important;
-  }
-
-  .mainWidht {
-    width: 800px;
   }
 
   .WinnerCard:nth-child(2) {
@@ -177,10 +263,6 @@ span.orange {
 
   body {
     font-size: 10px;
-  }
-
-  .mainWidht {
-    width: 600px;
   }
 
   .WinnerCard:nth-child(3),
@@ -294,10 +376,6 @@ span.orange {
   }
   .AllWinner .main .offers {
     width: 100% !important;
-  }
-
-  .mainWidht {
-    width: 400px;
   }
 
 
