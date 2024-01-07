@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 
 import { useForm } from 'react-hook-form';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchConfirmation } from '../../redux/slices/registration';
+import { useFetchCodeMutation } from '../../redux/cases/cases';
 
-export const CodeConfirmation = ({ menuCode, setMenuCode }) => {
+export const CodeConfirmation = ({ menuCode, setMenuCode, sessionId }) => {
     const [incorrectCode, setIncorrectCode] = useState('');
-    const dispatch = useDispatch();
-    const session_id = useSelector((state) => state.registration?.data?.data?.session_id);
+
+    const [fetchCode] = useFetchCodeMutation();
 
     const {
         register: registerConfirmation,
@@ -21,13 +20,20 @@ export const CodeConfirmation = ({ menuCode, setMenuCode }) => {
         mode: "onSubmit",
     });
 
+    const setCookieWithExpiration = (cookieName, cookieValue, expHours) => {
+        const date = new Date();
+        date.setTime(date.getTime() + (expHours * 60 * 60 * 1000));
+        const expires = date.toUTCString();
+        document.cookie = `${cookieName}=${cookieValue}; expires=${expires}; path=/;`;
+    }
+
     const onSubmitConfirmation = async (values) => {
         try {
-            const successfully = await dispatch(fetchConfirmation({ session_id: session_id, code: values.code }));
+            const successfully = await fetchCode({ session_id: sessionId, code: values.code });
 
-            if ('access_token' in successfully.payload.data) {
-                window.localStorage.setItem('access_token', successfully.payload.data.access_token);
-                document.cookie = `access_token=${successfully.payload.data.access_token}; expires=Sun, 1 Jan 2025 00:00:00 UTC; path=/;`;
+            if (successfully.data.data.access_token) {
+                window.localStorage.setItem('access_token', successfully.data.data.access_token);
+                setCookieWithExpiration('access_token', successfully.data.data.access_token, 24);
                 setMenuCode(false);
             }
         }

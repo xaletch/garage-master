@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { setupListeners } from '@reduxjs/toolkit/query'
 
-import casesSlice from './slices/casesSlice';
-import registration from './slices/registration';
-import auth from './slices/auth';
-import user from './slices/user';
+import filterCase from './slices/filterCase';
+import { casesApi } from './cases/cases';
 
 export const store = configureStore({
   reducer: {
-    cases: casesSlice,
-    registration,
-    auth,
-    user,
+    filterCase,
+    [casesApi.reducerPath]: casesApi.reducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(casesApi.middleware),
 })
+
+setupListeners(store.dispatch)

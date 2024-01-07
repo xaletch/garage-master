@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import './SortInventory.scss';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserItems, setMaxPrice, setMinPrice } from '../../../redux/slices/user';
+
+import { useDispatch } from 'react-redux';
+import { setMaxPrice, setMinPrice } from '../../../redux/slices/filterCase';
 
 const category = ["Дропы", "Кейсы", "Ежедневные бонусы"];
 const priceList = [

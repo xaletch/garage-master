@@ -5,17 +5,17 @@ import link_img from '../../img/link_img';
 
 import { useForm } from 'react-hook-form';
 
-import { useDispatch } from 'react-redux';
-import { fetchRegister } from '../../redux/slices/registration';
-import { fetchAuth } from '../../redux/slices/auth';
 import { CodeConfirmation } from './CodeConfirmation';
+import { useAddRegistrationMutation, useFetchAuthMutation } from '../../redux/cases/cases';
 
 export default function LogIn({ LogInOpen, setLogInOpen }) {
-    const dispatch = useDispatch();
-
     const [NavActive, setNavActive] = useState('logIn');
     const [menuCode, setMenuCode] = useState(false);
     const [incorrect, setIncorrect] = useState('');
+    const [sessionId, setSessionId] = useState();
+
+
+    const [fetchAuth] = useFetchAuthMutation();
 
     // AUTH
     const {
@@ -30,17 +30,24 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
         mode: "onSubmit",
     });
 
+    const setCookieWithExpiration = (cookieName, cookieValue, expHours) => {
+        const date = new Date();
+        date.setTime(date.getTime() + (expHours * 60 * 60 * 1000));
+        const expires = date.toUTCString();
+        document.cookie = `${cookieName}=${cookieValue}; expires=${expires}; path=/;`;
+    }
+
     const onSubmitAuth = async (values) => {
         try {
-            const data = await dispatch(fetchAuth(values));
+            const data = await fetchAuth(values);
 
-            if ('access_token' in data.payload.data) {
-                window.localStorage.setItem('access_token', data.payload.data.access_token);
-                document.cookie = `access_token=${data.payload.data.access_token}; expires=Sun, 1 Jan 2025 00:00:00 UTC; path=/;`;
-                setLogInOpen(false);
+            if (data.data.data.access_token) {
+              window.localStorage.setItem('access_token', data.data.data.access_token);
+              setCookieWithExpiration('access_token', data.data.data.access_token, 24);
+              setLogInOpen(false);
+            } else {
+              setIncorrect('Неверный логин или пароль')
             }
-    
-            // console.log('VALUES: ', data);
         }
         catch (err) {
             console.log(err);
@@ -51,6 +58,8 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
     // REGISTRATION
     const [isRegistered, setRegistered] = useState('');
     const [isPasswordMatch, setPasswordMatch] = useState('');
+
+    const [addRegistration] = useAddRegistrationMutation();
 
     const {
         register: registerRegister,
@@ -67,13 +76,13 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
 
     const onSubmitRegister = async (values) => {
         try {
-            const data = await dispatch(fetchRegister(values));
+            const data = await addRegistration(values);
 
-            if (data.payload.data) {
+            if (data.data.data.session_id) {
                 setLogInOpen(false);
                 setMenuCode(true);
+                setSessionId(data.data.data.session_id);
             }
-            // console.log('VALUES: ', values);
         }
         catch (err) {
             console.log('Произошла ошибка', err);
@@ -150,7 +159,7 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
                     </div>
                 }
             </div>
-            {menuCode && <CodeConfirmation menuCode={menuCode} setMenuCode={setMenuCode}/>}
+            {menuCode && <CodeConfirmation menuCode={menuCode} setMenuCode={setMenuCode} sessionId={sessionId} />}
         </>
     )
 }

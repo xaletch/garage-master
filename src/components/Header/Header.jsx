@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.scss';
 import link_img from '../../img/link_img';
 import { Link } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { useGetUserQuery } from '../../redux/cases/cases';
 
 export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
   const [follower, setFollower] = useState(16900);
+  const [userData, setUserData] = useState(null);
+  const { data, isFetching } = useGetUserQuery(null);
 
-  // USER INFORMATION
-  const userInfo = useSelector((state) => state.user?.data?.data.profile);
+  useEffect(() => {
+    if (data && !isFetching) {
+      setUserData(data?.data?.profile);
+      console.log('update')
+    }
+  }, [isFetching]);
 
   const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
 
@@ -51,13 +57,13 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
           </div>
           <Link to={'/garage-master'} onClick={() => window.scrollTo(0, 0)}><img className='logoImg' src={link_img.logo} alt="" /></Link>
           <div className="navRight">
-            {userInfo &&
+            {userData?.balance &&
               <div className="block wallet">
                 <div className="ico">
                   <img src={link_img.wallet} alt="" />
                 </div>
                 <p>
-                  <span className="title">{userInfo?.balance} руб.</span>
+                  <span className="title">{userData?.balance} руб.</span>
                   <span className="follower">Баланс</span>
                 </p>
               </div>
@@ -82,7 +88,7 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
                   </div>
                   <p>
                     <span className="title">Личный кабинет</span>
-                    <span className="follower">{userInfo?.name}</span>
+                    <span className="follower">{userData?.name}</span>
                   </p>
                 </div>
               </Link>

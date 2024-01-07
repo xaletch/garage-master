@@ -1,19 +1,20 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
 
 import './AllCases.scss';
 import { Link } from 'react-router-dom';
+import { useGetCasesQuery } from '../../redux/cases/cases';
 
 export const AllCases = () => {
-    const cases = useSelector((state) => state.cases.items?.cases);
 
-    if (!cases) {
-        return <div>Loading...</div>;
+    const data = useGetCasesQuery(null);
+
+    if (data?.isLoading) {
+        return <div style={{textAlign: 'center', fontSize: '24px'}}>Loading...</div>;
     }
 
     return (
         <>
-            {cases.map((item) => (
+            {data?.data?.data?.cases.map((item) => (
                 <div className='CasesAll'key={item.category_name}>
                     <h2>{item.category_name}</h2>
                     <div className="CasesAllMain mainWidht">

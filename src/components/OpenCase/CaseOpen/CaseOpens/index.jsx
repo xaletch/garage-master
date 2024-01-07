@@ -6,8 +6,9 @@ import link_img from '../../../../img/link_img';
 
 import { ContentCaseItem } from '../../ContentsCase/ContentCaseItem';
 
-export const CaseOpens = () => {
-  return (
+export const CaseOpens = ({ drop, itemSale }) => {
+
+    return (
     <div className='CaseOpens'>
         <div className='CaseOpensContent'>
             <ContentCaseItem img={link_img.gun} color={'9830b3'}/>
@@ -31,10 +32,15 @@ export const CaseOpens = () => {
                 <img src={link_img.case_open_arrow_bottom} alt=''/>
             </div>
         </div>
-        {/* <div className='winnings'>
-            <div className='CaseShadow'></div>
-            <img src={link_img.winnings} alt=''/>
-        </div> */}
+        {drop && itemSale && (
+            drop.map((item, index) => (
+                <div className='winnings' key={index}>
+                    <div className='CaseShadow'></div>
+                    <img src={item.image} alt={item.name} />
+                    <h3>{item.name}</h3>
+                </div>
+            ))
+        )}
     </div>
   )
 }

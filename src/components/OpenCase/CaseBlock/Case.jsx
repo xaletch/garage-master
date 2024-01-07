@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './Case.scss';
-import { useSelector } from 'react-redux';
 
 import { Link } from 'react-router-dom';
+import { useGetUserQuery } from '../../../redux/cases/cases';
 
 export const Case = ({ name, price, image, url }) => {
     const countCase = ["1", "25", "50", "100"];
 
     const [selectCountCase, setSelectCountCase] = useState(0);
 
-    const balance = useSelector((state) => state.user?.data?.data.profile?.balance);
-
-    console.log(balance);
+    const {data: balance } = useGetUserQuery(null);
+    const casePrice = parseFloat(price);
+    const userBalance = parseFloat(balance?.data?.profile.balance);
 
     const handleScrollTop = () => {
         window.scrollTo(0, 0);
@@ -39,17 +39,16 @@ export const Case = ({ name, price, image, url }) => {
                     </div>
                 </div>
                 <div className='TopUpBalance'>
-                    {balance >= price ?
+                    {userBalance >= casePrice ?
                     (
                         <>
-                            <Link to={`/open/`} className='TopUpBalanceBtn' onClick={handleScrollTop}>Открыть кейс</Link>
+                            <Link to={`/open/${url}`} className='TopUpBalanceBtn' onClick={handleScrollTop}>Открыть кейс</Link>
                         </>
                     )
                     :
                     (
                         <>
                             <span>Недостаточно средств</span>
-                            {/* <button className='TopUpBalanceBtn'><Link to='/opening-case' onClick={handleScrollTop}>Пополнение баланса</Link></button> */}
                             <button className='TopUpBalanceBtn'>Пополнение баланса</button>
                         </>
                     )

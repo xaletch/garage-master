@@ -1,34 +1,48 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 
 import './CaseOpen.scss';
 
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-
-
 import { CaseOpens } from './CaseOpens';
-import { fetchCase } from '../../../redux/slices/casesSlice';
+import { useLazyGetItemSaleQuery, useLazyGetOpenCaseQuery } from '../../../redux/cases/cases';
 
 
-export const CaseOpen = () => {
-    const dispatch = useDispatch();
+export const CaseOpen = ({ name, url }) => {
+    const [itemSale, setItemSale] = useState(false);
 
-    const { url } = useParams();
+    const [open, { data, isLoading }] = useLazyGetOpenCaseQuery();
+    const [sale] = useLazyGetItemSaleQuery();
 
-    useEffect(() => {
-        if (url) {
-            dispatch(fetchCase(url));
+    const handleOpenCase = () => {
+        open(url);
+        setItemSale(true);
+    };
+
+    const handleSaleItem = (id) => {
+        const price = data?.data.drops.map((price) => price.price);
+        
+        if (id) {
+            alert(`Вы действительно хотите продать данный предмет за ${price}₽`);
+            sale(id);
+            setItemSale(false);
         }
-    }, [url]);
+    };
 
     return (
-        <div className='CaseOpen'>
-            <h2 className='CaseName'>Бесплатный кейс #1</h2>
-            <CaseOpens />
+        <>
+            <h2 className='CaseName'>{name}</h2>
+            <CaseOpens drop={data?.data.drops} itemSale={itemSale} />
             <div className='CaseOpenBtn'>
-                {/* <button className='tryAgain btn'>Попробовать еще</button>
-                <button className='sell btn'>Продать предмет</button> */}
+                {!data ? (
+                    <>
+                        <button className='sell btn' onClick={handleOpenCase}>Открыть</button>
+                    </>
+                ) : data && data?.data.drops.map((item, index) => (
+                    <div key={index} className='button'>
+                        <button className='tryAgain btn' onClick={handleOpenCase}>Попробовать еще</button>
+                        <button className='sell btn' onClick={() => handleSaleItem(item.id)}>Продать предмет</button>
+                    </div>
+                ))}
             </div>
-        </div>
+        </>
     )
 }

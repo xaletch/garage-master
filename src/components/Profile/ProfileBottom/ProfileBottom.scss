@@ -67,7 +67,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 18px 20px;
+        padding: 18px 10px;
         border-radius: 14px;
         border-width: 2px;
         border-style: solid;
@@ -84,6 +84,16 @@
             bottom: 40px;
             left: -8px;
             border-radius: 5px 0 0 5px;
+        }
+
+        .status {
+            position: absolute;
+            top: 5px;
+            right: 2px;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            line-height: 14px;
         }
 
         .ProfileBottomBlockRing {
@@ -105,12 +115,12 @@
             margin-top: 20px;
 
             .name {
-                font-size: 16px;
-                line-height: 18px;
-            }
-            .categoryName {
                 font-size: 14px;
                 line-height: 16px;
+            }
+            .categoryName {
+                font-size: 12px;
+                line-height: 14px;
             }
 
             .name {
@@ -197,12 +207,12 @@
                 margin-top: 10px;
                 .name {
                     margin-bottom: 2px;
-                    font-size: 14px;
-                    line-height: 16px;
-                }
-                .categoryName {
                     font-size: 12px;
                     line-height: 14px;
+                }
+                .categoryName {
+                    font-size: 10px;
+                    line-height: 12px;
                 }
             }
         }
@@ -212,6 +222,14 @@
     .ProfileBottom {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
+        .ProfileBottomCard {
+            .status {
+                top: 10px;
+                right: 10px;
+                font-size: 10px;
+                line-height: 12px;
+            }
+        }
     }
 }
 
@@ -226,7 +244,9 @@
                     height: 60px;
                 }
             }
-            .ProfileBottomBlockDescription {
+            .status {
+                top: 5px;
+                right: 5px;
             }
         }
     }

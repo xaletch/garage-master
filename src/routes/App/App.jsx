@@ -15,20 +15,13 @@ import { Home } from '../../pages/Home';
 import { SelectedCase } from '../../pages/SelectedCase';
 import { OpeningCase } from '../../pages/OpeningCase';
 
-import { useDispatch } from 'react-redux';
-import { fetchUser, fetchUserItems } from '../../redux/slices/user';
-
 function App() {
   const [LogInOpen, setLogInOpen] = useState(false);
   const [HeaderOpen, setHeaderOpen] = useState(false);
 
-  const dispatch = useDispatch();
-
   const accessTokenCookie = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
   useEffect(() => {
     if (accessTokenCookie) {
-      dispatch(fetchUser());
-      dispatch(fetchUserItems());
     }
   }, [accessTokenCookie]);
 
@@ -40,7 +33,7 @@ function App() {
         <Route path='garage-master' element={<Home setHeaderOpen={setHeaderOpen} />}></Route>
         <Route path='profile' element={<Profile />}></Route>
         <Route path='selected-case/:url' element={<SelectedCase />}></Route>
-        <Route path='open/' element={<OpeningCase />}></Route>
+        <Route path='open/:url' element={<OpeningCase />}></Route>
       </Routes>
       <Footer />
       <LogIn LogInOpen={LogInOpen} setLogInOpen={setLogInOpen} />

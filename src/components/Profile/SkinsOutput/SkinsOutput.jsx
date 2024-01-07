@@ -1,36 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './SkinsOutput.scss';
 import link_img from '../../../img/link_img';
 
-import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
-import { fetchTradeUrl, fetchUser } from '../../../redux/slices/user';
 import { Link } from 'react-router-dom';
+import { useFetchTradeUrlMutation, useGetUserQuery } from '../../../redux/cases/cases';
 
 export const SkinsOutput = ({ cls, start_price, end_price }) => {
     const [tradeUrlErr, setTradeUrlErr] = useState('');
 
-    const dispatch = useDispatch();
-
-    const tradeUrl = useSelector((state) => state.user?.data?.data.profile?.trade_url);
+    const [addTradeUrl] = useFetchTradeUrlMutation()
+    const {data: userData} = useGetUserQuery();
 
     const {
         register: registerTradeUrl,
         handleSubmit: handleSubmitTradeUrl,
         formState: { errors: errorsTradeUrl },
+        setValue: setTradeUrlValue,
     } = useForm({
         defaultValues: {
-            trade_url: tradeUrl !== '' ? tradeUrl : '',
+            trade_url: userData?.data?.profile.trade_url ? userData?.data?.profile.trade_url : '',
         },
         mode: "onSubmit",
     });
 
+    useEffect(() => {
+        if (userData && userData.data && userData.data.profile.trade_url) {
+          setTradeUrlValue("trade_url", userData.data.profile.trade_url);
+        }
+      }, [userData]);
+
     const onSubmitTradeUrl = async (value) => {
         try {
-            await dispatch(fetchTradeUrl(value));
-            dispatch(fetchUser());
+            await addTradeUrl(value);
+            userData();
         }
         catch (err) {
             setTradeUrlErr('Ссылка на трейд неверная');
@@ -38,7 +43,6 @@ export const SkinsOutput = ({ cls, start_price, end_price }) => {
     };
 
     // const styleMargin = { marginBottom: cls.length === 0 && end_price === null && start_price === null ? "160px" : "0" };
-
     return (
         <div className='SkinsOutput' >
             <div className='SkinsOutputWrapper'>

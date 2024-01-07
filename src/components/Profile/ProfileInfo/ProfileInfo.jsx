@@ -1,25 +1,24 @@
-import React from 'react'
+import React from 'react';
 import link_img from '../../../img/link_img';
 
-import './ProfileInfo.scss' 
+import './ProfileInfo.scss' ;
 
-import { useSelector } from 'react-redux';
+import { useGetUserQuery } from '../../../redux/cases/cases';
 
 export const ProfileInfo = () => {
 
-    // USER INFORMATION
-    const userInfo = useSelector((state) => state.user?.data?.data.profile);
+    const { data, isLoading } = useGetUserQuery(null);
 
     return (
         <div className='ProfileInfo'>
             <div className='ProfileInfoAvatar'>
-                <img src={userInfo?.avatar_img} alt=''/>
+                <img src={data?.data?.profile?.avatar_img} alt=''/>
             </div>
             <div className='ProfileInfoUserName'>
-                <p className='userName'>{userInfo?.name}</p>
+                <p className='userName'>{data?.data?.profile?.name}</p>
                 <div className='userId'>
                     ID
-                    <span>#{userInfo?.id}</span>
+                    <span>#{data?.data?.profile?.id}</span>
                     <div className='userIdCopy'>
                         <img src={link_img.copy_userId} alt='' />
                     </div>
@@ -33,7 +32,7 @@ export const ProfileInfo = () => {
                     </div>
                     <p>
                         <span className='itemName'>Кейсы</span>
-                        <span className='itemBottom itemCount'>{userInfo?.count_open_case}</span>
+                        <span className='itemBottom itemCount'>{data?.data?.profile?.count_open_case}</span>
                     </p>
                 </div>
                 <div className="ProfileInfoLine" aria-hidden="true"></div>
@@ -43,7 +42,7 @@ export const ProfileInfo = () => {
                     </div>
                     <p>
                         <span className='itemName'>На сайте</span>
-                        <span className='itemBottom itemOnline'>{userInfo?.date_register}</span>
+                        <span className='itemBottom itemOnline'>{data?.data?.profile?.date_register}</span>
                     </p>
                 </div>
                 <div className="ProfileInfoLine" aria-hidden="true"></div>
