@@ -26,7 +26,7 @@ export const OpeningCase = () => {
             <div className='main mainWidht'>
                 <div className='CaseOpen'>
                     <ReturnHomeButton name={caseInfo?.data.name} />
-                    <CaseOpen name={caseInfo?.data.name} url={caseInfo?.data.url} />
+                    <CaseOpen name={caseInfo?.data.name} url={caseInfo?.data.url} item={caseInfo?.data.items} isLoading={isLoading} />
                     <ContentsCase items={caseInfo?.data.items} />
                 </div>
             </div>
