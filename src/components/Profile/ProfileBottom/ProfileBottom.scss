@@ -3,7 +3,7 @@
     grid-template-columns: repeat(7, 1fr);
     gap: 22px;
     row-gap: 28px;
-    margin-bottom: 160px;
+    margin-bottom: 60px;
 
     .ProfileBottomCard.c1 {
         background: linear-gradient(45deg, #3a1359 0%, #180838 100%);
@@ -88,12 +88,33 @@
 
         .status {
             position: absolute;
-            top: 5px;
-            right: 2px;
-            padding: 2px 8px;
-            border-radius: 8px;
+            top: 8px;
+            left: -10px;
+            padding: 4px 6px;
+            border: 2px solid #1dd87e;
+            background: #058648;
+            border-radius: 4px;
             font-size: 12px;
-            line-height: 14px;
+            line-height: 12px;
+            cursor: pointer;
+            display: flex;
+            gap: 4px;
+            overflow: hidden;
+            transition: width 0.5s ease;
+          
+            span {
+              display: none;
+            }
+          
+            &:hover span{
+                display: block;
+            }
+          }
+        .status.sold {
+            cursor: default;
+            border-color: #360d83;
+            background: #190938;
+            opacity: 0.9;
         }
 
         .ProfileBottomBlockRing {
@@ -182,7 +203,7 @@
 
 @media(max-width:720px) {
     .ProfileBottom {
-        margin-bottom: 80px;
+        margin-bottom: 40px;
         grid-template-columns: repeat(3, 1fr);
     }
 }
@@ -225,7 +246,7 @@
         .ProfileBottomCard {
             .status {
                 top: 10px;
-                right: 10px;
+                left: 10px;
                 font-size: 10px;
                 line-height: 12px;
             }
@@ -246,7 +267,7 @@
             }
             .status {
                 top: 5px;
-                right: 5px;
+                left: 5px;
             }
         }
     }

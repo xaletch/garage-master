@@ -58,7 +58,7 @@ export const casesApi = createApi({
       providesTags: ['UserInfo'],
     }),
     getUserItems: builder.query({
-      query: ({ start_price, end_price }) => {
+      query: ({ start_price, end_price, page }) => {
         const params = {};
         if (start_price !== null) {
           params.start_price = start_price;
@@ -66,8 +66,9 @@ export const casesApi = createApi({
         if (end_price !== null) {
           params.end_price = end_price;
         }
+
         return {
-          url: 'api/v1/user/items/list',
+          url: `api/v1/user/items/list?page=${page}`,
           method: 'GET',
           params,
         };
@@ -78,6 +79,7 @@ export const casesApi = createApi({
         url: `api/v1/user/item/sale/${id}`,
         method: "GET",
       }),
+      invalidatesTags: ["UserInfo"],
     }),
     fetchTradeUrl: builder.mutation({
       query: (body) => ({
@@ -90,6 +92,7 @@ export const casesApi = createApi({
     // CASE
     getCases: builder.query({
       query: () => `api/v1/cases/get`,
+      method: "GET"
     }),
     getCaseByUrl: builder.query({
       query: (url) => ({
@@ -101,7 +104,8 @@ export const casesApi = createApi({
       query: (url) => ({
         url: `api/v1/case/open/${url}`,
         method: "GET"
-      }) 
+      }),
+      invalidatesTags: ["UserInfo"],
     }),
   }),
 })

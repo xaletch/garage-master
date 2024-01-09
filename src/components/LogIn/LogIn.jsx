@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './LogIn.scss';
 import link_img from '../../img/link_img';
@@ -6,7 +6,7 @@ import link_img from '../../img/link_img';
 import { useForm } from 'react-hook-form';
 
 import { CodeConfirmation } from './CodeConfirmation';
-import { useAddRegistrationMutation, useFetchAuthMutation } from '../../redux/cases/cases';
+import { useAddRegistrationMutation, useFetchAuthMutation, useGetUserQuery } from '../../redux/cases/cases';
 
 export default function LogIn({ LogInOpen, setLogInOpen }) {
     const [NavActive, setNavActive] = useState('logIn');
@@ -15,7 +15,10 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
     const [sessionId, setSessionId] = useState();
 
 
+    const { refetch: refetchUserData, error: errorUserData } = useGetUserQuery(null);
+
     const [fetchAuth] = useFetchAuthMutation();
+    const [addRegistration] = useAddRegistrationMutation();
 
     // AUTH
     const {
@@ -59,8 +62,6 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
     const [isRegistered, setRegistered] = useState('');
     const [isPasswordMatch, setPasswordMatch] = useState('');
 
-    const [addRegistration] = useAddRegistrationMutation();
-
     const {
         register: registerRegister,
         handleSubmit: handleSubmitRegister,
@@ -95,6 +96,12 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
             setPasswordMatch('');
         };
     };
+    const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
+    useEffect(() => {
+        setTimeout(() => {
+            refetchUserData();
+        }, 500);
+    }, [isAuth]);
 
     return (
         <>

@@ -8,12 +8,16 @@ import { AllCases } from '../components/AllCases/AllCases.jsx';
 export const Home = ({ setHeaderOpen }) => {
     return (
         <>
-            <AllWinner setHeaderOpen={setHeaderOpen}/>
+            {/* РАЗДАЧИ */}
+            {/* <AllWinner setHeaderOpen={setHeaderOpen}/> */}
+
             <AllCases />
             {/* <FreeСase /> */}
             {/* <CasesByRarity /> */}
             {/* <FreeСase /> */}
-            <About />
+            
+            {/* КЕЙСЫ, КОНТРАКТЫ, АПРГРЕЙДЫ, ПОЛЬЗОВАТЕЛЕЙ, ОНЛАЙН */}
+            {/* <About /> */}
         </>
     )
 }

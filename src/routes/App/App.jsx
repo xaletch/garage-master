@@ -28,7 +28,8 @@ function App() {
   return (
     <div className="App">
       <Header setHeaderOpen={setHeaderOpen} HeaderOpen={HeaderOpen} setLogInOpen={setLogInOpen} />
-      <HeaderBottom />
+      {/* Все выигрыши */}
+      {/* <HeaderBottom /> */}
       <Routes>
         <Route path='garage-master' element={<Home setHeaderOpen={setHeaderOpen} />}></Route>
         <Route path='profile' element={<Profile />}></Route>

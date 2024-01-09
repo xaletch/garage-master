@@ -28,7 +28,9 @@ export const Case = ({ name, price, image, url }) => {
             <div className='BuyCase'>
                 <h2 className='CaseName'>{name}</h2>
                 <div className='CasePrice'>{price} ₽</div>
-                <div className='SelectCountCase'>
+
+                {/* КОЛИЧЕСТВО ОТКРЫТИЙ КЕЙСА */}
+                {/* <div className='SelectCountCase'>
                     <span>Выберите количество открытий</span>
                     <div className='CountCaseBlock'>
                         <ul className='CountCaseList'>
@@ -37,7 +39,7 @@ export const Case = ({ name, price, image, url }) => {
                             ))}
                         </ul>
                     </div>
-                </div>
+                </div> */}
                 <div className='TopUpBalance'>
                     {userBalance >= casePrice ?
                     (

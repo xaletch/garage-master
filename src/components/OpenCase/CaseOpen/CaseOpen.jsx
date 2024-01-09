@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react';
 
 import './CaseOpen.scss';
 
+import { useSelector } from 'react-redux';
+
 import { CaseOpens } from './CaseOpens';
-import { useLazyGetItemSaleQuery, useLazyGetOpenCaseQuery } from '../../../redux/cases/cases';
+import { useLazyGetItemSaleQuery, useLazyGetOpenCaseQuery, useGetUserItemsQuery, useGetUserQuery } from '../../../redux/cases/cases';
 
 
 export const CaseOpen = ({ name, url, item, isLoading }) => {
-    const [itemSale, setItemSale] = useState(false);
     const [multipliedItems, setMultipliedItems] = useState([]);
+    const { start_price, end_price } = useSelector((state) => state.filterCase);
+
+    const {refetch: refetchUserItems } = useGetUserItemsQuery({ start_price, end_price });
+    const { refetch: refetchUserData } = useGetUserQuery(null);
 
     const [open, { data }] = useLazyGetOpenCaseQuery();
     const [sale] = useLazyGetItemSaleQuery();
@@ -64,6 +69,9 @@ export const CaseOpen = ({ name, url, item, isLoading }) => {
     const itemWidth = 191;
     const handleOpenCase = async () => {
         await open(url);
+
+        refetchUserItems({ start_price, end_price });
+        refetchUserData();
     };
 
     const handleOpenMore = async () => {
@@ -72,6 +80,10 @@ export const CaseOpen = ({ name, url, item, isLoading }) => {
         setTranslateX(0);
         setWinner(false);
         setCaseOpening(!caseOpening);
+        
+        
+        refetchUserItems({ start_price, end_price });
+        refetchUserData();
     }
 
     useEffect(() => {
@@ -95,22 +107,28 @@ export const CaseOpen = ({ name, url, item, isLoading }) => {
                     }
                 }
             }
-        }, 1000);
+        }, 500);
     }, [data, caseOpening]);
 
     const price = data?.data.drops.map((price) => price.price);
+    
     const handleSaleItem = (id) => {        
-        if (id) {
-            alert(`Вы действительно хотите продать данный предмет за ${price}₽`);
-            sale(id);
-            setItemSale(false);
-        }
+        sale(id);
+
+        setWinner(false);
+        initializeAndShuffleItems();
+        setTranslateX(0);
+
+        refetchUserItems({ start_price, end_price });
+        setTimeout(() => {
+            refetchUserData();
+        }, 100);
     };
 
     return (
         <>
             <h2 className='CaseName'>{name}</h2>
-            <CaseOpens drop={data?.data.drops} itemSale={itemSale} item={item} multipliedItems={multipliedItems} translateX={translateX} winner={winner} />
+            <CaseOpens drop={data?.data.drops} item={item} multipliedItems={multipliedItems} translateX={translateX} winner={winner} />
             <div className='CaseOpenBtn'>
                 {!winner ? (
                     <>

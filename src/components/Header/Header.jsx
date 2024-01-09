@@ -8,14 +8,14 @@ import { useGetUserQuery } from '../../redux/cases/cases';
 export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
   const [follower, setFollower] = useState(16900);
   const [userData, setUserData] = useState(null);
-  const { data, isFetching } = useGetUserQuery(null);
+  const { data, isFetching, refetch: refetchUserData } = useGetUserQuery(null);
 
   useEffect(() => {
     if (data && !isFetching) {
       setUserData(data?.data?.profile);
       console.log('update')
     }
-  }, [isFetching]);
+  }, [isFetching, refetchUserData]);
 
   const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
 
@@ -100,7 +100,9 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
         </nav>
         </div>
       </div>
-      <div onClick={()=>{setHeaderOpen(false)}} className={`HeaderMedia ${HeaderOpen?'open':''}`}>
+
+      {/* меню */}
+      {/* <div onClick={()=>{setHeaderOpen(false)}} className={`HeaderMedia ${HeaderOpen?'open':''}`}>
         <div className="HeaderMediaTop mainWidht">
           <img src={link_img.logo} alt="" className="logo" />
           <h1>Меню</h1>
@@ -162,7 +164,7 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
             <a href="#">Раритетные кейсы</a>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
