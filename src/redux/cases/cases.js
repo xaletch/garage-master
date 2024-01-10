@@ -66,9 +66,11 @@ export const casesApi = createApi({
         if (end_price !== null) {
           params.end_price = end_price;
         }
-
+        if (page !== undefined) {
+          params.page = page;
+        }
         return {
-          url: `api/v1/user/items/list?page=${page}`,
+          url: `api/v1/user/items/list`,
           method: 'GET',
           params,
         };

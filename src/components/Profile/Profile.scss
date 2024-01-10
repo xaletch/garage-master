@@ -94,9 +94,30 @@
                 border: 1px solid #872ba1;
                 list-style: none;
                 cursor: pointer;
+                user-select: none;
+
+                span {
+                    display: flex;
+                    line-height: 14px;
+                }
                 
                 &.active {
                     background: #872ba1;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 900px) {
+    .Profile {
+        margin-top: 250px;
+    }
+    .saleMenu {
+        .saleMenuBlock {
+            text-align: center;
+            .saleMenuButtons {
+                button {
+                    height: 36px;
                 }
             }
         }
@@ -106,10 +127,30 @@
     .Profile {
         margin-top: 260px;
     }
+    .saleMenu {
+        padding: 0 20px;
+        .saleMenuBlock {
+            padding: 18px;
+            width: 100%;
+
+            .saleMenuButtons {
+                width: 100%;
+            }
+        }
+    }
 }
 
 @media (max-width: 550px) {
     .Profile {
         margin-top: 250px;
+    }
+    .saleMenu {
+        padding: 0 20px;
+        .saleMenuBlock {
+            padding: 16px;
+
+            .saleMenuButtons {
+            }
+        }
     }
 }

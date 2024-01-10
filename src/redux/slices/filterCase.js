@@ -4,6 +4,7 @@ const initialState = {
   // FILTER CASE
   start_price: null,
   end_price: null,
+  page: 1,
 };
 
 export const filterCase = createSlice({
@@ -17,9 +18,12 @@ export const filterCase = createSlice({
     setMaxPrice: (state, action) => {
       state.end_price = action.payload;
     },
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
   },
 })
 
-export const { setMinPrice, setMaxPrice } = filterCase.actions;
+export const { setMinPrice, setMaxPrice, setPage } = filterCase.actions;
 
 export default filterCase.reducer;

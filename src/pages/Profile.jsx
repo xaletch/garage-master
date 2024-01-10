@@ -13,26 +13,23 @@ import { Pagination } from '../components/Profile/Pagination/Pagination';
 
 export const Profile = () => {
     
-    const { start_price, end_price } = useSelector((state) => state.filterCase) || {};
-
-    const {refetch: refetchUserItems} = useGetUserItemsQuery({ start_price, end_price });
+    const { start_price, end_price, page } = useSelector((state) => state.filterCase || {});
+    const {refetch: refetchUserItems} = useGetUserItemsQuery({ start_price, end_price, page });
     const { refetch: refetchUserData } = useGetUserQuery(null);
 
     const [openSaleMenu, setOpenSaleMenu] = useState(false);
     const [itemId, setItemId] = useState();
     const [itemPrice, setItemPrice] = useState();
 
-    const { data } = useGetUserItemsQuery({ start_price, end_price });
+    const { data } = useGetUserItemsQuery({ start_price, end_price, page });
     const [sale] = useLazyGetItemSaleQuery();
 
     const handleSaleItem = async () => {
         await sale(itemId);
-        refetchUserItems({ start_price, end_price });
+        refetchUserItems({ start_price, end_price, page });
         refetchUserData();
         setOpenSaleMenu(false);
     };
-
-    // console.log(data?.data)
 
     return (
         <div className='Profile'>
@@ -52,12 +49,12 @@ export const Profile = () => {
                                 <div className='ProfileBottom'>
                                     {data?.data?.items.map((obj, index) => <ProfileBottom key={index} image={obj.image} id={obj.id} name={obj.name} price={obj.price} rarity={obj.rarity} status={obj.status} setOpenSaleMenu={setOpenSaleMenu} setItemId={setItemId} setItemPrice={setItemPrice} />)}
                                 </div>
+                                <Pagination pageCount={data?.data?.page_count} page={page} />
                             </>
                         ) : (
                             <div className='ProfileNoItems'>У вас нет предметов</div>
                         )
                 )}
-                {/* <Pagination pageCount={data?.data?.page_count} pageSize={data?.data?.page_size} currentPage={data?.data?.current_page} start_price={start_price} end_price={end_price} /> */}
                 {openSaleMenu && (
                     <div className='saleMenu' onClick={() => setOpenSaleMenu(false)}>
                         <div className='saleMenuBlock' onClick={(e) => e.stopPropagation()}>

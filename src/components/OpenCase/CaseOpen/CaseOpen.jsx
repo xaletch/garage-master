@@ -8,11 +8,11 @@ import { CaseOpens } from './CaseOpens';
 import { useLazyGetItemSaleQuery, useLazyGetOpenCaseQuery, useGetUserItemsQuery, useGetUserQuery } from '../../../redux/cases/cases';
 
 
-export const CaseOpen = ({ name, url, item, isLoading }) => {
+export const CaseOpen = ({ name, url, item, casePrice, isLoading }) => {
     const [multipliedItems, setMultipliedItems] = useState([]);
-    const { start_price, end_price } = useSelector((state) => state.filterCase);
+    const { start_price, end_price, page } = useSelector((state) => state.filterCase);
 
-    const {refetch: refetchUserItems } = useGetUserItemsQuery({ start_price, end_price });
+    const {refetch: refetchUserItems } = useGetUserItemsQuery({ start_price, end_price, page });
     const { refetch: refetchUserData } = useGetUserQuery(null);
 
     const [open, { data }] = useLazyGetOpenCaseQuery();
@@ -70,7 +70,7 @@ export const CaseOpen = ({ name, url, item, isLoading }) => {
     const handleOpenCase = async () => {
         await open(url);
 
-        refetchUserItems({ start_price, end_price });
+        refetchUserItems({ start_price, end_price, page });
         refetchUserData();
     };
 
@@ -82,7 +82,7 @@ export const CaseOpen = ({ name, url, item, isLoading }) => {
         setCaseOpening(!caseOpening);
         
         
-        refetchUserItems({ start_price, end_price });
+        refetchUserItems({ start_price, end_price, page });
         refetchUserData();
     }
 
@@ -119,7 +119,7 @@ export const CaseOpen = ({ name, url, item, isLoading }) => {
         initializeAndShuffleItems();
         setTranslateX(0);
 
-        refetchUserItems({ start_price, end_price });
+        refetchUserItems({ start_price, end_price, page });
         setTimeout(() => {
             refetchUserData();
         }, 100);
@@ -132,7 +132,7 @@ export const CaseOpen = ({ name, url, item, isLoading }) => {
             <div className='CaseOpenBtn'>
                 {!winner ? (
                     <>
-                        <button className='sell btn openBtn' onClick={handleOpenCase} disabled={isSpinning}>Открыть</button>
+                        <button className='sell btn openBtn' onClick={handleOpenCase} disabled={isSpinning}>Открыть кейс за {casePrice} ₽</button>
                     </>
                 ) : data && data?.data.drops.map((item, index) => (
                     <div key={index} className='button'>
