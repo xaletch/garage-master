@@ -1,5 +1,5 @@
 .CasesAll {
-    margin-top: 50px;
+    margin-top: 90px;
     nav{
         display: flex;
         justify-content: center;
@@ -18,48 +18,87 @@
     }
     
     .CasesAllMain {
-        margin-top: 50px;
+        margin-top: 38px;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 38px;
-        .CaseCard.c1{
-            background-image: url('../../img/raritet_card_1.png');
+        gap: 30px;
+         // ЦВЕТА ДЛЯ КЕЙСА
+         .CaseCard.pink{
+            background-color: #180838;
             .price{
-                border: #8b2ca5 solid 1px;
-                box-shadow: 0 0 10px #972eb4;
+                border: #c9405d solid 1px;
+                box-shadow: 0 0 5px #c9405d, inset 0 0 5px #c9405d;
             }
         }
-        .CaseCard.c1:hover{
-            border: #8b2ca5 solid 2px;
-        }
-        .CaseCard.c1::after{
-            background-color: #8b2ca5;
+        .CaseCard.pink::after{
+            background-color: #c9405d;
         }
 
-        .CaseCard.c5{
-            background-image: url('../../img/raritet_card_5.png');
+        .CaseCard.darkblue{
+            background-color: #180838;
             .price{
-                border: #de7422 solid 1px;
-                box-shadow: 0 0 10px #de7422;
+                border: #4b22de solid 1px;
+                box-shadow: 0 0 5px #4b22de, inset 0 0 5px #4b22de;
             }
         }
-        .CaseCard.c5:hover{
-            border: #de7422 solid 2px;
-        }
-        .CaseCard.c5::after{
-            background-color: #de7422;
+        .CaseCard.darkblue::after{
+            background-color: #4b22de;
         }
 
+        .CaseCard.green{
+            background-color: #180838;
+            .price{
+                border: #1dd87e solid 1px;
+                box-shadow: 0 0 5px #1dd87e, inset 0 0 5px #1dd87e;
+            }
+        }
+        .CaseCard.green::after{
+            background-color: #1dd87e;
+        }
 
-        .CaseCard:hover::after{
+        .CaseCard.purple{
+            background-color: #180838;
+            .price{
+                border: #9830b3 solid 1px;
+                box-shadow: 0 0 5px #9830b3, inset 0 0 5px #9830b3;
+            }
+        }
+        .CaseCard.purple::after{
+            background-color: #9830b3;
+        }
+
+        .CaseCard.yellow{
+            background-color: #180838;
+            .price{
+                border: #cbde22 solid 1px;
+                box-shadow: 0 0 5px #cbde22, inset 0 0 5px #cbde22;
+            }
+        }
+        .CaseCard.yellow::after{
+            background-color: #cbde22;
+        }
+
+        .CaseCard.blue{
+                background-color: #180838;
+                // background-image: linear-gradient(to bottom right, #173366, #180939);
+            .price{
+                border: #3092bb solid 1px;
+                box-shadow: 0 0 5px #3092bb, inset 0 0 5px #3092bb;
+            }
+        }
+        .CaseCard.blue::after {
+            background-color: #3092bb;
+        }
+
+        .CaseCard:hover::after {
             width: 6px;
-            left: -8px;
+            left: -6px;
         }
 
         .CaseCard::after{
             position: absolute;
             content: '';
-            left: 0;
+            left: 2px;
             width: 0;
             height: 40px;
             border-radius: 50px 0 0 50px;
@@ -67,28 +106,109 @@
             transition: .4s;
         }
 
-
         .CaseCard {
-            transition: .4s;
-            border: #ffffff00 solid 2px;
             position: relative;
             font-size: 14px;
-            width: fit-content;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            max-height: 290px;
-            gap: 35px;
             border-radius: 18px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.589);
+            z-index: 1;
+
+            .CaseCardWrapper {
+                transition: .4s;
+                border: #ffffff00 solid 2px;
+                border-radius: 18px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.589);
+                overflow: hidden;
+                &.pink:hover{
+                    border: #c9405d solid 2px;
+                }
+        
+                &.darkblue:hover{
+                    border: #4b22de solid 2px;
+                }
+        
+                &.green:hover{
+                    border: #1dd87e solid 2px;
+                }
+        
+                &.purple:hover{
+                    border: #9830b3 solid 2px;
+                }
+
+                &.yellow:hover{
+                    border: #cbde22 solid 2px;
+                }
+        
+                &.blue:hover{
+                    border: #3092bb solid 2px;
+                }
+            }
+            .CaseCardInner {
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                max-height: 290px;
+                gap: 35px;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+
+                &::before, &::after {
+                    content: '';
+                    position: absolute;
+                    width: 180px;
+                    height: 180px;
+                    border-radius: 100%;
+                    backdrop-filter: blur(30px);
+                    filter: blur(30px);
+                    z-index: 1;
+                }
+                
+                &::before {
+                    top: -70px;
+                    left: -70px;
+                }
+                &::after {
+                    bottom: -70px;
+                    right: -70px;
+                }
+
+                &.purple::before, &.purple::after {
+                    background: radial-gradient(circle at center, #2d0e4c, #2d0e4c00);
+                }
+                &.pink::before, &.pink::after {
+                    background: radial-gradient(circle at center, #461641, #46164100);
+                }
+                &.darkblue::before, &.darkblue::after {
+                    background: radial-gradient(circle at center, #1a0c4b, #1a0c4b00);
+                }
+                &.green::before, &.green::after {
+                    background: radial-gradient(circle at center, #193447, #19344700);
+                }
+                &.yellow::before, &.yellow::after {
+                    background: radial-gradient(circle at center, #5d6419, #5c641900);
+                }
+                &.blue::before, &.blue::after {
+                    background: radial-gradient(circle at center, #173266, #17336600);
+                }
+            }
             .price{
-                padding: 5px 30px;
+                padding: 7px 25px;
                 width: fit-content;
                 border-radius: 18px;
+                position: relative;
+                z-index: 3;
             }
             img{
                 max-width: 170px;
                 width: 100%;
+                position: relative;
+                z-index: 2;
+            }
+            p {
+                font-size: 18px;
+                line-height: 22px;
+                position: relative;
+                z-index: 2;
             }
         } 
     }
@@ -106,7 +226,7 @@
     .CasesAll {
         .CasesAllMain {
             grid-template-columns: repeat(3, 1fr);
-            gap: 86px;
+            gap: 28px;
         }
     }
 }
@@ -114,7 +234,7 @@
 @media (max-width: 900px) {
     .CasesAll {
         .CasesAllMain {
-            gap: 40px;
+            // gap: 28px;
         }
     }
 }
@@ -123,7 +243,6 @@
     .CasesAll {
         .CasesAllMain {
             grid-template-columns: repeat(2, 1fr);
-            gap: 80px;
         }
     }
 }

@@ -86,10 +86,21 @@
                     color: #ed771b;
                 }
             }
-
-            .inputLink {
+            .TradeUrlForm {
                 width: 1000px;
                 margin: 0 auto;
+
+                .errorMessage {
+                    margin-top: 4px;
+                    margin-left: 4px;
+                    position: absolute;
+                    color: #ed771b;
+                    font-size: 14px;
+                    line-height: 16px;
+                    font-weight: 400;
+                }
+            }
+            .inputLink {
                 margin-top: 28px;
                 position: relative;
                 border-radius: 14px;
@@ -118,8 +129,8 @@
 
                 label {
                     position: absolute;
-                    bottom: -20px;
                     left: 5px;
+                    z-index: 10;
                 }
 
                 .saveBtn {
@@ -196,9 +207,11 @@
                     font-size: 18px;
                     line-height: 20px;
                 }
-                .inputLink {
+                .TradeUrlForm {
                     width: 700px;
                     margin-top: 22px;
+                }
+                .inputLink {
                     input {
                         padding: 24px 220px 24px 26px;
                         font-size: 16px;
@@ -253,9 +266,11 @@
                     font-size: 16px;
                     line-height: 18px;
                 }
-                .inputLink {
+                .TradeUrlForm {
                     width: 90%;
                     margin-top: 22px;
+                }
+                .inputLink {
                     input {
                         padding: 18px 160px 18px 0;
                         font-size: 14px;
@@ -333,9 +348,11 @@
                     font-size: 12px;
                     line-height: 14px;
                 }
-                .inputLink {
+                .TradeUrlForm  {
                     width: 90%;
                     margin-top: 22px;
+                }
+                .inputLink {
                     input {
                         padding: 14px 100px 14px 0;
                         font-size: 9px;

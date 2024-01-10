@@ -5,73 +5,76 @@
     row-gap: 28px;
     margin-bottom: 60px;
 
-    .ProfileBottomCard.c1 {
-        background: linear-gradient(45deg, #3a1359 0%, #180838 100%);
-
+    .ProfileBottomCard.purple {
         &::before {
             background-color: #9830b3;
         }
     }
 
-    .ProfileBottomCard.c2 {
-        background: linear-gradient(45deg, #173366 0%, #180939 100%);
-
+    .ProfileBottomCard.blue {
         &::before {
             background-color: #3092bb;
         }
     }
 
-    .ProfileBottomCard.c3 {
-        background: linear-gradient(45deg, #40143f 0%, #190838 100%);
-
+    .ProfileBottomCard.pink {
         &::before {
             background-color: #c9405d;
         }
     }
 
-    .ProfileBottomCard.c4 {
-        background: linear-gradient(45deg, #193447 0%, #180938 100%);
-
+    .ProfileBottomCard.green {
         &::before {
             background-color: #1dd87e;
         }
     }
 
-    .ProfileBottomCard.c5 {
-        background: linear-gradient(45deg, #59292f 0%, #190938 100%);
-
-        &::before {
-            background-color: #de7422;
-        }
-    }
-
-    .ProfileBottomCard.c6 {
-        background: linear-gradient(45deg, #594c29 0%, #382809 100%);
-
+    .ProfileBottomCard.yellow {
         &::before {
             background-color: #cbde22;
         }
     }
 
-    .ProfileBottomCard.c7 {
-        background: linear-gradient(45deg, #2a2959 0%, #091238 100%);
-
+    .ProfileBottomCard.red {
         &::before {
-            background-color: #4b22de;
+            background-color: #de2222;
         }
     }
+
+    .ProfileBottomCard.purple:hover {
+        border: #9830b3 solid 2px;
+    }
+
+    .ProfileBottomCard.blue:hover {
+        border: #3092bb solid 2px;
+    }
+
+    .ProfileBottomCard.pink:hover {
+        border: #c9405d solid 2px;
+    }
+
+    .ProfileBottomCard.green:hover {
+        border: #1dd87e solid 2px;
+    }
+
+    .ProfileBottomCard.yellow:hover {
+        border: #cbde22 solid 2px;
+    }
+
+    .ProfileBottomCard.red:hover {
+        border: #de2222 solid 2px;
+    }
+
+    
 
     .ProfileBottomCard {
         width: 170px;
         height: 200px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 18px 10px;
         border-radius: 14px;
         border-width: 2px;
         border-style: solid;
         border-color: #180838;
+        background: #180838;
         position: relative;
         cursor: pointer;
         transition: all .4s;
@@ -85,7 +88,59 @@
             left: -8px;
             border-radius: 5px 0 0 5px;
         }
+        
+        .ProfileCardInner {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 18px 10px;
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
 
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                width: 90px;
+                height: 90px;
+                border-radius: 100%;
+                backdrop-filter: blur(30px);
+                filter: blur(30px);
+                z-index: 1;
+            }
+            
+            &::before {
+                top: -20px;
+                left: -20px;
+            }
+            &::after {
+                bottom: -20px;
+                right: -20px;
+            }
+
+            &.purple::before, &.purple::after {
+                background: radial-gradient(circle at center, #551a85, #551a8500);
+            }
+            &.pink::before, &.pink::after {
+                background: radial-gradient(circle at center, #681960, #68196000);
+            }
+            &.darkblue::before, &.darkblue::after {
+                background: radial-gradient(circle at center, #402899, #40289900);
+            }
+            &.green::before, &.green::after {
+                background: radial-gradient(circle at center, #26638f, #26638f00);
+            }
+            &.yellow::before, &.yellow::after {
+                background: radial-gradient(circle at center, #bed110, #bed1101e);
+            }
+            &.blue::before, &.blue::after {
+                background: radial-gradient(circle at center, #204791, #20489100);
+            }
+            &.red::before, &.red::after {
+                background: radial-gradient(circle at center, #631a1a, #631a1a00);
+            }
+        }
         .status {
             position: absolute;
             top: 8px;
@@ -101,6 +156,7 @@
             gap: 4px;
             overflow: hidden;
             transition: width 0.5s ease;
+            z-index: 3;
           
             span {
               display: none;
@@ -122,18 +178,22 @@
             width: 80px;
             height: 80px;
             margin: 0 auto;
+            margin-top: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            z-index: 2;
             
             img {
-                width: 80px;
-                height: 80px;
+                width: 110px;
+                height: auto;
             }
         }
 
         .ProfileBottomBlockDescription {
-            margin-top: 20px;
+            position: relative;
+            z-index: 2;
 
             .name {
                 font-size: 14px;
@@ -217,15 +277,16 @@
             padding: 22px 16px;
             height: 170px;
             .ProfileBottomBlockRing {
+                margin-top: 4px;
                 width: 70px;
                 height: 70px;
                 img {
-                    width: 70px;
-                    height: 70px;
+                    width: 80px;
+                    height: auto
                 }
             }
             .ProfileBottomBlockDescription {
-                margin-top: 10px;
+                // margin-top: 10px;
                 .name {
                     margin-bottom: 2px;
                     font-size: 12px;
@@ -262,8 +323,8 @@
                 width: 60px;
                 height: 60px;
                 img {
-                    width: 60px;
-                    height: 60px;
+                    width: 70px;
+                    height: auto;
                 }
             }
         }

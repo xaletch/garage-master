@@ -6,7 +6,7 @@ import './SortInventory.scss';
 import { useDispatch } from 'react-redux';
 import { setMaxPrice, setMinPrice, setPage } from '../../../redux/slices/filterCase';
 
-const category = ["Дропы", "Кейсы", "Ежедневные бонусы"];
+const category = ["Кейсы"];
 const priceList = [
     {min: "0", max: "9", name: "0-9", id: 1},
     {min: "10", max: "49", name: "10-49", id: 2},
@@ -16,7 +16,7 @@ const priceList = [
 ];
 
 export const SortInventory = ({ page }) => {
-    const [selectCategory, setSelectCategory] = useState(1);
+    const [selectCategory, setSelectCategory] = useState(0);
     const [selectedCategoryPrice, setSelectedCategoryPrice] = useState(null);
 
     const dispatch = useDispatch();

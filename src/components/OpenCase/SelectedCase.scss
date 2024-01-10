@@ -2,16 +2,45 @@
     margin-top: 280px;
     position: relative;
 
+    .CaseOpenWrapper {
+        position: fixed;
+        z-index: 9;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .CaseShadow {
         width: 629px;
         height: 340px;
-        background: #6e238a;
         border-radius: 100%;
         position: absolute;
         left: -50px;
         transform: rotate(10deg);
         z-index: -1;
-        filter: blur(80px)
+        filter: blur(80px);
+
+        &.purple {
+            background: #6e238a;
+        }
+        &.pink {
+            background: #722334;
+        }
+        &.darkblue {
+            background: #36237c;
+        }
+        &.green {
+            background: #278658;
+        }
+        &.yellow {
+            background: #747e1f;
+        }
+        &.blue {
+            background: #235f79;
+        }
     }
 }
 

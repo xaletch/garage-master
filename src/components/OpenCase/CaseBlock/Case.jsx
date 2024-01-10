@@ -3,31 +3,49 @@ import React, { useState, useEffect } from 'react'
 import './Case.scss';
 
 import { Link } from 'react-router-dom';
-import { useGetUserQuery } from '../../../redux/cases/cases';
+import { useGetUserQuery, useGetUserItemsQuery } from '../../../redux/cases/cases.js';
 
-export const Case = ({ name, price, image, url }) => {
+import { useSelector } from 'react-redux';
+
+export const Case = ({ name, price, image, url, color, setOpen, open }) => {
     const countCase = ["1", "25", "50", "100"];
 
     const [selectCountCase, setSelectCountCase] = useState(0);
+    const [isDisabled, setIsDisabled] = useState(false);
+
+    const { start_price, end_price, page } = useSelector((state) => state.filterCase);
+
+    const {refetch: refetchUserItems } = useGetUserItemsQuery({ start_price, end_price, page });
+    const { refetch: refetchUserData } = useGetUserQuery(null);
 
     const {data: balance } = useGetUserQuery(null);
     const casePrice = parseFloat(price);
     const userBalance = parseFloat(balance?.data?.profile.balance);
 
-    const handleScrollTop = () => {
-        window.scrollTo(0, 0);
-    };
+    const handleOpenCase = async () => {
+        const { isSuccess } = await open(url);
+    
+        if (isSuccess) {
+            refetchUserItems({ start_price, end_price, page });
+            refetchUserData();
+
+            setOpen(true);
+            setIsDisabled(false);
+        };
+
+        setIsDisabled(true);
+    }
 
   return (
     <div className='Case'>
         <div className='CaseWrapper'>
-            <div className='CaseImg'>
-                <div className='CaseShadow'></div>
+            <div className={`CaseImg ${color}`}>
+                <div className={`CaseShadow ${color}`}></div>
                 <img src={image} alt=''/>
             </div>
             <div className='BuyCase'>
                 <h2 className='CaseName'>{name}</h2>
-                <div className='CasePrice'>{price} ₽</div>
+                <div className={`CasePrice ${color}`}>{price} ₽</div>
 
                 {/* КОЛИЧЕСТВО ОТКРЫТИЙ КЕЙСА */}
                 {/* <div className='SelectCountCase'>
@@ -44,7 +62,7 @@ export const Case = ({ name, price, image, url }) => {
                     {userBalance >= casePrice ?
                     (
                         <>
-                            <Link to={`/open/${url}`} className='TopUpBalanceBtn' onClick={handleScrollTop}>Открыть кейс</Link>
+                            <button className='TopUpBalanceBtn' onClick={handleOpenCase} disabled={isDisabled}>Открыть кейс</button>
                         </>
                     )
                     :

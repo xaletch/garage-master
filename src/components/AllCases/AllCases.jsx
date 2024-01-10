@@ -3,27 +3,32 @@ import React from 'react'
 import './AllCases.scss';
 import { Link } from 'react-router-dom';
 import { useGetCasesQuery } from '../../redux/cases/cases';
+import { Loading } from '../Loading/Loading';
 
 export const AllCases = () => {
 
-    const data = useGetCasesQuery(null);
+    const { data, isLoading } = useGetCasesQuery(null);
 
-    if (data?.isLoading) {
-        return <div style={{textAlign: 'center', fontSize: '24px'}}>Loading...</div>;
+    if (isLoading) {
+        return <Loading />
     }
 
     return (
         <>
-            {data?.data?.data?.cases.map((item) => (
+            {data?.data?.cases.map((item) => (
                 <div className='CasesAll'key={item.category_name}>
                     <h2>{item.category_name}</h2>
                     <div className="CasesAllMain mainWidht">
                         {item.items.map((subItem, index) => (
                             <Link to={`/selected-case/${subItem.url}`} key={index}>
-                                <div className='CaseCard c5' key={subItem.url}>
-                                    <div className="price"><span>{subItem.price}</span> ₽</div>
-                                    <img src={subItem.image} alt={subItem.url} />
-                                    <p>{subItem.name}</p>
+                                <div className={`CaseCard ${subItem.color}`} key={subItem.url}>
+                                    <div className={`CaseCardWrapper ${subItem.color}`}>
+                                        <div className={`CaseCardInner ${subItem.color}`}>
+                                            <div className="price"><span>{subItem.price}</span> ₽</div>
+                                            <img src={subItem.image} alt={subItem.url} />
+                                            <p>{subItem.name}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </Link>
                         ))}

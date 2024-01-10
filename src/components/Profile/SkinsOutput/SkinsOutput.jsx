@@ -9,10 +9,11 @@ import { Link } from 'react-router-dom';
 import { useFetchTradeUrlMutation, useGetUserQuery } from '../../../redux/cases/cases';
 
 export const SkinsOutput = ({ cls, start_price, end_price }) => {
-    const [tradeUrlErr, setTradeUrlErr] = useState('');
+    const [tradeUrlErr, setTradeUrlErr] = useState(true);
+    const [tradeMessage, setTradeMessage] = useState('');
 
-    const [addTradeUrl] = useFetchTradeUrlMutation()
-    const {data: userData} = useGetUserQuery();
+    const [ addTradeUrl, { error: tradeError, isSuccess: tradeSuccess, refetch: refetchTradeUrl } ] = useFetchTradeUrlMutation();
+    const { data: userData,  refetch: refetchUserData } = useGetUserQuery();
 
     const {
         register: registerTradeUrl,
@@ -28,21 +29,40 @@ export const SkinsOutput = ({ cls, start_price, end_price }) => {
 
     useEffect(() => {
         if (userData && userData.data && userData.data.profile.trade_url) {
-          setTradeUrlValue("trade_url", userData.data.profile.trade_url);
+            setTradeUrlValue("trade_url", userData.data.profile.trade_url);
+            setTradeUrlErr(false);
         }
-      }, [userData]);
+    }, [userData]);
+
+    // console.log(tradeSuccess);
+
+    useEffect(() => {
+        if (tradeSuccess) {
+            refetchUserData();
+            setTradeMessage('Ссылка на трейд успешно обновлена!');
+
+            setTimeout(() => {
+                setTradeMessage('')
+            }, 2000);
+        }
+    }, [tradeSuccess]);
+
+    useEffect(() => {
+        if (tradeError) {
+            setTradeUrlErr(true);
+            setTradeMessage('Ссылка на трейд неверная');
+        }
+    }, [tradeError]);
 
     const onSubmitTradeUrl = async (value) => {
         try {
             await addTradeUrl(value);
-            userData();
-        }
-        catch (err) {
-            setTradeUrlErr('Ссылка на трейд неверная');
-        }
+            setTradeUrlErr(false);
+            refetchTradeUrl();
+
+        } catch (err) {}
     };
 
-    // const styleMargin = { marginBottom: cls.length === 0 && end_price === null && start_price === null ? "160px" : "0" };
     return (
         <div className='SkinsOutput' >
             <div className='SkinsOutputWrapper'>
@@ -66,17 +86,19 @@ export const SkinsOutput = ({ cls, start_price, end_price }) => {
                     </div>
                 </div>
                 <div className='SkinsOutputContent'>
-                    <p className='SkinsOutputContentTitle'>Найти ссылку можно <Link to={'http://steamcommunity.com/my/tradeoffers/privacy'}>на сайте Steam</Link></p>
-                    <form className='inputLink' onSubmit={handleSubmitTradeUrl(onSubmitTradeUrl)}>
-                        <input type='text' {...registerTradeUrl('trade_url', {required: 'Это поле обязательно', minLength: { value: 0, message: "Введите trade ссылку" }, })} placeholder='Введите свою trade ссылку' />
-                        {tradeUrlErr && <label style={{color: 'red'}}>{tradeUrlErr}</label>}
-                        <button className='saveBtn' type='submit'>Сохранить</button>
+                    <p className='SkinsOutputContentTitle'>Найти ссылку можно <Link to={'http://steamcommunity.com/my/tradeoffers/privacy'} target="_blank">на сайте Steam</Link></p>
+                    <form className='TradeUrlForm' onSubmit={handleSubmitTradeUrl(onSubmitTradeUrl)}>
+                        <div className='inputLink'>
+                            <input type='text' {...registerTradeUrl('trade_url', {required: 'Это поле обязательно', minLength: { value: 0, message: "Введите trade ссылку" }, })} placeholder='Введите свою trade ссылку' />
+                            <button className='saveBtn' type='submit'>Сохранить</button>
+                        </div>
+                        {tradeMessage ? <p className='errorMessage'>{tradeMessage}</p> : <p>{setTradeMessage}</p>}
                     </form>
                     <div className='outputAvailable'>
                         <span className='update'>
                             <img src={link_img.update} alt='' />
                         </span>
-                        <p>Вывод скинов доступен!</p>
+                        <p>Вывод скинов {tradeUrlErr ? 'недоступен' : 'доступен'}!</p>
                     </div>
                 </div>
             </div>

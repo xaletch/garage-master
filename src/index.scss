@@ -87,7 +87,7 @@ span.orange {
 }
 
 .c1 {
-  background: linear-gradient(45deg, #3a1359 0%, #180838 100%);
+  // background: linear-gradient(45deg, #3a1359 0%, #180838 100%);
 
   &::before {
       background-color: #9830b3;
@@ -95,7 +95,7 @@ span.orange {
 }
 
 .c2 {
-  background: linear-gradient(45deg, #173366 0%, #180939 100%);
+  // background: linear-gradient(45deg, #173366 0%, #180939 100%);
 
   &::before {
       background-color: #3092bb;
@@ -103,7 +103,7 @@ span.orange {
 }
 
 .c3 {
-  background: linear-gradient(45deg, #40143f 0%, #190838 100%);
+  // background: linear-gradient(45deg, #40143f 0%, #190838 100%);
 
   &::before {
       background-color: #c9405d;
@@ -111,7 +111,7 @@ span.orange {
 }
 
 .c4 {
-  background: linear-gradient(45deg, #193447 0%, #180938 100%);
+  // background: linear-gradient(45deg, #193447 0%, #180938 100%);
 
   &::before {
       background-color: #1dd87e;
@@ -119,7 +119,7 @@ span.orange {
 }
 
 .c5 {
-  background: linear-gradient(45deg, #59292f 0%, #190938 100%);
+  // background: linear-gradient(45deg, #59292f 0%, #190938 100%);
 
   &::before {
       background-color: #de7422;
@@ -127,7 +127,7 @@ span.orange {
 }
 
 .c6 {
-  background: linear-gradient(45deg, #594c29 0%, #382809 100%);
+  // background: linear-gradient(45deg, #594c29 0%, #382809 100%);
 
   &::before {
       background-color: #cbde22;
@@ -135,56 +135,17 @@ span.orange {
 }
 
 .c7 {
-  background: linear-gradient(45deg, #2a2959 0%, #091238 100%);
+  // background: linear-gradient(45deg, #2a2959 0%, #091238 100%);
 
   &::before {
       background-color: #4b22de;
   }
 }
 
-.ProfileBottomCard .c1:hover {
-  border: #9830b3 2px solid !important;
-  padding: 0;
-}
-
-.ProfileBottomCard .c2:hover {
-  border: #3092bb 2px solid !important;
-  padding: 0;
-}
-
-.ProfileBottomCard .c3:hover {
-  border: #c9405d 2px solid !important;
-  padding: 0;
-}
-
-.ProfileBottomCard .c4:hover {
-  border: #1dd87e 2px solid !important;
-  padding: 0;
-}
-
-.ProfileBottomCard .c5:hover {
-  border: #de7422 2px solid !important;
-  padding: 0;
-}
-
-.ProfileBottomCard .c6:hover {
-  border: #cbde22 2px solid !important;
-  padding: 0;
-}
-
-.ProfileBottomCard .c7:hover {
-  border: #4b22de 2px solid !important;
-  padding: 0;
-}
-
-@media(min-width:1300px) {
+@media(max-width:1300px) {
   .AllWinner .main .offers {
     width: 46% !important;
   }
-}
-
-@media(max-width:1300px) {
-
   .App {
     padding-top: 20px;
   }

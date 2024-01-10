@@ -95,6 +95,7 @@
                 list-style: none;
                 cursor: pointer;
                 user-select: none;
+                transition: box-shadow .3s ease-in-out;
 
                 span {
                     display: flex;
@@ -103,6 +104,10 @@
                 
                 &.active {
                     background: #872ba1;
+                }
+
+                &:hover {
+                    box-shadow: 0 0 5px #8b2ca5bc,inset 0 0 5px #8b2ca5bc;
                 }
             }
         }

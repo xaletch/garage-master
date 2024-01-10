@@ -21,15 +21,15 @@ export const OpeningCase = () => {
         return <h3 style={{marginTop: '400px', marginBottom: '400px', textAlign: 'center', fontSize: '24px'}}>Loading...</h3>;
     }
 
-    return (
-        <div className='OpeningCase OpenCase'>
-            <div className='main mainWidht'>
-                <div className='CaseOpen'>
-                    <ReturnHomeButton name={caseInfo?.data.name} />
-                    <CaseOpen name={caseInfo?.data.name} url={caseInfo?.data.url} item={caseInfo?.data.items} casePrice={caseInfo?.data.price} isLoading={isLoading} />
-                    <ContentsCase items={caseInfo?.data.items} />
-                </div>
-            </div>
-        </div>
-    )
+    // return (
+    //     <div className='OpeningCase OpenCase'>
+    //         <div className='main mainWidht'>
+    //             <div className='CaseOpen'>
+    //                 <ReturnHomeButton name={caseInfo?.data.name} />
+    //                 <CaseOpen name={caseInfo?.data.name} url={caseInfo?.data.url} item={caseInfo?.data.items} casePrice={caseInfo?.data.price} isLoading={isLoading} color={caseInfo?.data.color} />
+    //                 <ContentsCase items={caseInfo?.data.items} />
+    //             </div>
+    //         </div>
+    //     </div>
+    // )
 }
