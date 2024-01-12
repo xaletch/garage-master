@@ -31,7 +31,7 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
               </div>
               <p>
                 <span className="title">ВКонтакте</span>
-                <span className="follower"><img src={link_img.user} alt="" />{follower}</span>
+                {/* <span className="follower"><img src={link_img.user} alt="" />{follower}</span> */}
               </p>
             </div>
             <div className="block inst">
@@ -39,8 +39,8 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
                 <img src={link_img.instagram} alt="" />
               </div>
               <p>
-                <span className="title">instagram</span>
-                <span className="follower"><img src={link_img.user} alt="" />{follower}</span>
+                <span className="title">Instagram</span>
+                {/* <span className="follower"><img src={link_img.user} alt="" />{follower}</span> */}
               </p>
 
             </div>
@@ -49,8 +49,8 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
                 <img src={link_img.telegram} alt="" />
               </div>
               <p>
-                <span className="title">telegram</span>
-                <span className="follower"><img src={link_img.user} alt="" />{follower}</span>
+                <span className="title">Telegram</span>
+                {/* <span className="follower"><img src={link_img.user} alt="" />{follower}</span> */}
               </p>
 
             </div>
@@ -70,12 +70,12 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
             }
             {!isAuth 
             ?   
-              <div className="block user" style={{cursor: "pointer"}}>
+              <div className="block user" style={{cursor: "pointer"}} onClick={(e) => setLogInOpen(true)}>
                 <div className="ico">
                   <img src={link_img.user2} alt="" />
                 </div>
                 <p>
-                  <span className="title" onClick={e => setLogInOpen(true)}>Вход/Регистрация</span>
+                  <span className="title">Вход/Регистрация</span>
                   <span className="follower">Личный кабинет</span>
                 </p>
               </div>
@@ -93,9 +93,11 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
                 </div>
               </Link>
             }
-            <div className="language">
+
+            {/* <div className="language">
               Ru
-            </div>
+            </div> */}
+
           </div>
         </nav>
         </div>

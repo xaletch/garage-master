@@ -7,8 +7,11 @@
         justify-content: center;
 
         .CaseImg {
-            padding-top: 80px;
+            // padding-top: 35px;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
 
             &::before {
                 content: "";

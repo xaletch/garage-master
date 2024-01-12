@@ -76,7 +76,7 @@
                 }
                 &.green {
                     border-top-color: #1dd87e;
-                    box-shadow: 2px 2px 4px #1dd87e,;
+                    // box-shadow: 2px 2px 4px #1dd87e,;
                 }
                 &.yellow {
                     border-top-color: #cbde22;
@@ -129,7 +129,7 @@
 
         .CaseOpensContent {
             display: flex;
-            gap: 26px;
+            // gap: 26px;
             margin-left: 4px;
             position: relative;
 
@@ -172,6 +172,7 @@
             .ContentCaseItem {
                 min-width: 170px;
                 height: 224px;
+                margin-right: 24px;
                 border-color: #180838;
                 background: #180838;
                 border-radius: 14px;

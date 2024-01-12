@@ -50,7 +50,7 @@ export const SelectedCase = () => {
   const initializeAndShuffleItems = () => {
       if (caseInfo?.data.items) {
           const filledMultipliedItems = [];
-          for (let i = 0; i < 90; i++) {
+          for (let i = 0; i < 66; i++) {
               filledMultipliedItems.push(caseInfo?.data.items[i % caseInfo?.data.items.length]);
           }
           const shuffledItems = shuffleItems(filledMultipliedItems);
@@ -67,13 +67,13 @@ export const SelectedCase = () => {
       const timer = setTimeout(() => {
         setIsSpinning(false);
         setWinner(true);
-      }, 7100);
+      }, 8100);
       return () => clearTimeout(timer);
     }
   }, [isSpinning]);
 
   const findLastIndexWithName = (arr, name) => {
-    for (let i = arr.length - 3; i >= 0; i--) {
+    for (let i = arr.length - 3; i >= 30; i--) {
       if (arr[i].name === name) {
         return i;
       }
@@ -81,18 +81,19 @@ export const SelectedCase = () => {
     return -1;
   }
 
-  const itemWidth = 191;
+  const itemWidth = 190;
 
   const handleOpenMore = async () => {
-    await open(url);
+    // await open(url);
     initializeAndShuffleItems();
     setTranslateX(0);
     setWinner(false);
-    setSold(false);
-    setCaseOpening(!caseOpening);
+    // setSold(false);
+    setCaseOpening(false);
+    setOpen(false);
       
-    refetchUserItems({ start_price, end_price, page });
-    refetchUserData();
+    // refetchUserItems({ start_price, end_price, page });
+    // refetchUserData();
   }
 
   useEffect(() => {
@@ -101,12 +102,23 @@ export const SelectedCase = () => {
         const openedItemName = dataWin?.data.drops.map((item) => item.name)[0];
         const lastItemIndex = findLastIndexWithName(multipliedItems, openedItemName);
            
-        // console.log(multipliedItems);
+        console.log(multipliedItems);
         console.log('openedItemName: ', openedItemName)
         console.log('lastItemIndex: ', lastItemIndex)
 
+        const screenCenterOffset = (5 * itemWidth) / 2;
+        const cardCenterOffset = itemWidth / 1;
+        console.log('screenCenterOffset', screenCenterOffset);
+        console.log('cardCenterOffset', cardCenterOffset);
+
         if (lastItemIndex !== -1) {
-          const leftPosition = lastItemIndex * itemWidth;
+          const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
+          const maxTranslate = (multipliedItems.length - 5) * itemWidth; // Максимальное смещение
+          setTranslateX(-Math.min(leftPosition, maxTranslate)); // Предотвращение смещения за пределы коллекции
+          setIsSpinning(true);
+          
+          // const leftPosition = lastItemIndex * itemWidth - 140;
+          console.log(lastItemIndex * itemWidth);
           setTranslateX(-leftPosition);
                     
           console.log('leftPosition: ',leftPosition);

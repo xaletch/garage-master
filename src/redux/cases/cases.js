@@ -33,6 +33,13 @@ export const casesApi = createApi({
       }),
       // invalidatesTags: ["UserInfo"],
     }),
+    fetchSteamLoginUrl: builder.mutation({
+      query: (body) => ({
+        url: '/api/v1/account/signin-social',
+        method: 'POST',
+        body: { type: 'steam' },
+      }),
+    }),
     fetchAuth: builder.mutation({
       query: (body) => ({
         url: "api/v1/account/signin",
@@ -114,7 +121,7 @@ export const casesApi = createApi({
 
 export const useGetCasesQuery = casesApi.endpoints.getCases.useQuery;
 export const { 
-  useAddRegistrationMutation, useFetchAuthMutation, useFetchCodeMutation,
+  useAddRegistrationMutation, useFetchAuthMutation, useFetchSteamLoginUrlMutation, useFetchCodeMutation,
   useGetUserQuery, useGetUserItemsQuery, useGetItemSaleQuery, useFetchTradeUrlMutation,
   useLazyGetItemSaleQuery, useGetCaseByUrlQuery, useGetOpenCaseQuery, useLazyGetOpenCaseQuery
 } = casesApi;

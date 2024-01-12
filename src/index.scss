@@ -61,11 +61,13 @@ a {
 
 .orangeBtn {
   border: none;
-  color: white;
+  color: #fff;
   background: linear-gradient(45deg, #b4550a 0%, #de7c2f 100%);
-  padding: 14px 40px 14px 60px;
+  padding: 11px;
+  font-size: 14px;
   border-radius: 17px;
   display: flex;
+  justify-content: center;
   gap: 10px;
   align-items: center;
   font-weight: medium;
@@ -157,10 +159,6 @@ span.orange {
   .WinnerCard:nth-child(3) {
     display: none !important;
   }
-
-  .orangeBtn {
-    margin-top: -16px;
-  }
 }
 
 @media(max-width:1050px) {
@@ -211,10 +209,6 @@ span.orange {
 }
 
 @media(max-width:900px) {
-  .orangeBtn {
-    margin-top: 10px !important;
-  }
-
   .Header nav .massager .ico {
     width: 25px !important;
     height: 25px !important;
@@ -297,13 +291,6 @@ span.orange {
     gap: 20px;
     flex-wrap: wrap;
   }
-
-  .orangeBtn {
-    font-size: 10px;
-    padding: 7px 25px 7px 40px;
-  }
-
-
 
   .AllWinner .main .DailyGiveawayMain .DailyGiveaway {
     height: 100px !important;

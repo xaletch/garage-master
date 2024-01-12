@@ -43,14 +43,17 @@ export const CodeConfirmation = ({ menuCode, setMenuCode, sessionId }) => {
     }
 
     return (
-        <div className={`LogIn ${menuCode ? 'open' : ''}`}>
+        <div className={`LogIn ${menuCode ? 'open' : ''}`} onClick={(e) => e.stopPropagation()}>
             {menuCode &&
                 <div className="main">
                     <form onSubmit={handleSubmitConfirmation(onSubmitConfirmation)}>
                         <p className='code'>Мы отправили СМС с кодом подтверждения на ваш номер телефона. Пожалуйста, введите данный код ниже</p>
-                        <input className='lol' type="text" placeholder='Код из СМС' {...registerConfirmation('code', { required: 'Код из СМС', minLength: { value: 6, message: "Код должен быть 6 символов" }, maxLength: { value: 6, message: "Код должен быть 6 символов" }, })}/>
-                        {errorsConfirmation.code && <label style={{color: 'red'}}>{errorsConfirmation.code.message}</label>}
-                        {incorrectCode && <label style={{color: 'red'}}>{incorrectCode}</label>}
+
+                        <div className='inputWrapper'>
+                            <input className='lol' type="text" placeholder='Код из СМС' {...registerConfirmation('code', { required: 'Код из СМС', minLength: { value: 6, message: "Код должен быть 6 символов" }, maxLength: { value: 6, message: "Код должен быть 6 символов" }, })}/>
+                            {errorsConfirmation.code && <label style={{color: 'red'}}>{errorsConfirmation.code.message}</label>}
+                            {incorrectCode && <label style={{color: 'red'}}>{incorrectCode}</label>}
+                        </div>
                         
                         <button className="orangeBtn" type="submit">Подтвердить</button>
                     </form>
