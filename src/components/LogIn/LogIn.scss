@@ -12,9 +12,14 @@
     display: flex;
     color: #111827;
     font-size: 12px;
-    input.lol{
+    .inputWrapper {
+        .PhoneInput {
+            .PhoneInputCountrySelect {
+            }
+        }
+    }
+    input.lol, .PhoneInputInput {
         width: 100%;
-        padding: 11px 18px;
         border-radius: 12px;
         border: none;
         background: #E5E7EB;
@@ -30,8 +35,22 @@
         &::placeholder {
             color: #AFB6BE;
         }
+    }
+    .inputWrapper {
+        width: 100%;
+        padding: 11px 18px;
+        border-radius: 12px;
+        border: none;
+        background: #E5E7EB;
+        box-shadow: #000 0 0 0 0 transparent;
+        outline: none;
+        transition: box-shadow .2s;
 
-        &:focus {
+        &::placeholder {
+            color: #AFB6BE;
+        }
+
+        &:hover {
             box-shadow: 0 0 0px 3px #ed771b;
         }
     }

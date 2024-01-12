@@ -7,8 +7,10 @@ import { useGetUserQuery, useGetUserItemsQuery } from '../../../redux/cases/case
 
 import { useSelector } from 'react-redux';
 
-export const Case = ({ name, price, image, url, color, setOpen, open }) => {
+export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOpen }) => {
     const countCase = ["1", "25", "50", "100"];
+
+    const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
 
     const [selectCountCase, setSelectCountCase] = useState(0);
     const [isDisabled, setIsDisabled] = useState(false);
@@ -59,20 +61,25 @@ export const Case = ({ name, price, image, url, color, setOpen, open }) => {
                     </div>
                 </div> */}
                 <div className='TopUpBalance'>
-                    {userBalance >= casePrice ?
-                    (
-                        <>
-                            <button className='TopUpBalanceBtn' onClick={handleOpenCase} disabled={isDisabled}>Открыть кейс</button>
-                        </>
-                    )
-                    :
-                    (
-                        <>
-                            <span>Недостаточно средств</span>
-                            <button className='TopUpBalanceBtn'>Пополнение баланса</button>
-                        </>
-                    )
-                    }
+                    {isAuth ? 
+                        (userBalance >= casePrice ? 
+                            (
+                                <button className='TopUpBalanceBtn' onClick={handleOpenCase} disabled={isDisabled}>Открыть кейс</button>
+                            )
+                        :
+                            (
+                                <>
+                                    <span>Недостаточно средств</span>
+                                    <button className='TopUpBalanceBtn'>Пополнение баланса</button>
+                                </>
+                            )
+                        )
+                        : (
+                            <>
+                                <span>Вы не авторизованы</span>
+                                <button className='TopUpBalanceBtn' onClick={() => setLogInOpen(true)}>Авторизоваться</button>
+                            </>
+                    )}
                 </div>
                 <div className='warning'>
                     <h3>Ширп здесь вне закона!</h3>

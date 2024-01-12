@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom';
 import { useGetCaseByUrlQuery, useLazyGetOpenCaseQuery, useGetUserItemsQuery, useGetUserQuery } from '../redux/cases/cases';
 import { CaseOpen } from '../components/OpenCase/CaseOpen/CaseOpen';
 
-export const SelectedCase = () => {
+export const SelectedCase = ({ setLogInOpen }) => {
   const { url } = useParams();
 
   const { data: caseInfo, isLoading } = useGetCaseByUrlQuery(url);
@@ -159,7 +159,7 @@ export const SelectedCase = () => {
                 </div>
             )
           }
-            {!isOpen && <Case open={open} name={caseInfo?.data.name} price={caseInfo?.data?.price} image={caseInfo?.data?.image} url={caseInfo?.data?.url} color={caseInfo?.data?.color} setOpen={setOpen} />}
+            {!isOpen && <Case open={open} name={caseInfo?.data.name} price={caseInfo?.data?.price} image={caseInfo?.data?.image} url={caseInfo?.data?.url} color={caseInfo?.data?.color} setOpen={setOpen} setLogInOpen={setLogInOpen} />}
             <ContentsCase items={caseInfo?.data?.items}/>
             
             {/* КЕЙСЫ, КОНТРАКТЫ, АПРГРЕЙДЫ, ПОЛЬЗОВАТЕЛЕЙ, ОНЛАЙН */}
