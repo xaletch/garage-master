@@ -12,11 +12,14 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useGetCaseByUrlQuery, useLazyGetOpenCaseQuery, useGetUserItemsQuery, useGetUserQuery } from '../redux/cases/cases';
 import { CaseOpen } from '../components/OpenCase/CaseOpen/CaseOpen';
+import { Notification } from '../components/Notification/Notification';
 
 export const SelectedCase = ({ setLogInOpen }) => {
   const { url } = useParams();
 
   const { data: caseInfo, isLoading } = useGetCaseByUrlQuery(url);
+
+  const [showNotification, setShowNotification] = useState(false);
   const [isOpen, setOpen] = useState(false);
 
   const [open, { data: dataWin }] = useLazyGetOpenCaseQuery();
@@ -88,7 +91,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
     initializeAndShuffleItems();
     setTranslateX(0);
     setWinner(false);
-    // setSold(false);
+    setSold(false);
     setCaseOpening(false);
     setOpen(false);
       
@@ -128,6 +131,8 @@ export const SelectedCase = ({ setLogInOpen }) => {
       }
     }, 1000);
   }, [dataWin, caseOpening]);
+
+  const price = dataWin?.data.drops.map((price) => price.price);
   
   if (isLoading) {
     return <h3 style={{marginTop: '400px', marginBottom: '400px', textAlign: 'center', fontSize: '24px'}}>Loading...</h3>;
@@ -152,6 +157,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
                     isSpinning={isSpinning}
                     setSold={setSold}
                     sold={sold}
+                    setShowNotification={setShowNotification}
                     multipliedItems={multipliedItems}
                     handleOpenMore={handleOpenMore}
                     initializeAndShuffleItems={initializeAndShuffleItems}
@@ -164,6 +170,8 @@ export const SelectedCase = ({ setLogInOpen }) => {
             
             {/* КЕЙСЫ, КОНТРАКТЫ, АПРГРЕЙДЫ, ПОЛЬЗОВАТЕЛЕЙ, ОНЛАЙН */}
             {/* <About /> */}
+
+            <Notification price={price} showNotification={showNotification} />
         </div>
     </div>
   )

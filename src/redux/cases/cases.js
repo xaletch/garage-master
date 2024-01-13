@@ -37,7 +37,7 @@ export const casesApi = createApi({
       query: (body) => ({
         url: '/api/v1/account/signin-social',
         method: 'POST',
-        body: { type: 'steam' },
+        body,
       }),
     }),
     fetchAuth: builder.mutation({

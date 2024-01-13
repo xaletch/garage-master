@@ -23,6 +23,7 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
 
     // AUTH
     const {
+        control: controlAuth,
         register: registerAuth,
         handleSubmit: handleSubmitAuth,
         formState: { errors: errorsAuth },
@@ -115,7 +116,7 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
         try {
             const { data } = await fetchSteamLoginUrl({ type: "steam" });
 
-            window.open(data.data.redirect_url, '_blank');
+            window.open(data.data.redirect_url);
         } catch (error) {
             setSteamLoginErr('Неудалось получить ссылку')
         }
@@ -129,46 +130,52 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
                         <h3>Регистрация</h3>
                         <form onSubmit={handleSubmitRegister(onSubmitRegister)}>
                             <div className='inputWrapper'>
-                                <Controller
-                                    name="phone"
-                                    control={controlRegister}
-                                    rules={{
-                                        required: 'Укажите номер телефона',
-                                        minLength: {
-                                            value: 7,
-                                            message: "Минимальная длина телефона 7 символов"
-                                        },
-                                        maxLength: {
-                                            value: 15,
-                                            message: "Максимальная длина телефона 15 символов"
-                                        },
-                                    }}
-                                    render={({ field: { onChange, onBlur, value, ref } }) => (
-                                        <PhoneInput
-                                            international
-                                            defaultCountry="RU"
-                                            placeholder='Номер телефона'
-                                            value={value}
-                                            onChange={onChange}
-                                            onBlur={onBlur}
-                                            ref={ref}
-                                            className="lol"
-                                        />
-                                    )}
-                                />
+                                <div className='inputBlock'>
+                                    <Controller
+                                        name="phone"
+                                        control={controlRegister}
+                                        rules={{
+                                            required: 'Укажите номер телефона',
+                                            minLength: {
+                                                value: 7,
+                                                message: "Минимальная длина телефона 7 символов"
+                                            },
+                                            maxLength: {
+                                                value: 15,
+                                                message: "Максимальная длина телефона 15 символов"
+                                            },
+                                        }}
+                                        render={({ field: { onChange, onBlur, value, ref } }) => (
+                                            <PhoneInput
+                                                international
+                                                defaultCountry="RU"
+                                                placeholder='Номер телефона'
+                                                value={value}
+                                                onChange={onChange}
+                                                onBlur={onBlur}
+                                                ref={ref}
+                                                className="lol"
+                                            />
+                                        )}
+                                    />
+                                </div>
                                 {/* <input className='lol' placeholder='Номер телефона' type="tel" {...registerRegister('phone', { required: 'Укажите номер телефона', minLength: { value: 7, message: "Минимальная длина телефона 7 символов" }, maxLength: { value: 15, message: "Максимальная длина телефона 15 символов" }, })} /> */}
                                 {errorsRegister.phone && <label style={{color: 'red'}}>{errorsRegister.phone.message}</label>}
                                 {isRegistered && <label style={{color: 'red'}}>{isRegistered}</label>}
                             </div>
 
                             <div className='inputWrapper'>
-                                <input className='lol' placeholder='Пароль' type="password" {...registerRegister('password', {required: 'Это поле обязательно', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                                <div className='inputBlock'>
+                                    <input className='lol' placeholder='Пароль' type="password" {...registerRegister('password', {required: 'Это поле обязательно', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                                </div>
                                 {errorsRegister.password && <label style={{color: 'red'}}>{errorsRegister.password.message}</label>}
                                 {isPasswordMatch && <label style={{color: 'red'}}>{isPasswordMatch}</label>}
                             </div>
 
                             <div className='inputWrapper'>
-                                <input className='lol' placeholder='Подтверждение пароля' type="password" {...registerRegister('password_confirmation', {required: 'Пароли должны совпадать', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                                <div className='inputBlock'>
+                                    <input className='lol' placeholder='Подтверждение пароля' type="password" {...registerRegister('password_confirmation', {required: 'Пароли должны совпадать', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                                </div>
                                 {errorsRegister.password_confirmation && <label style={{color: 'red'}}>{errorsRegister.password_confirmation.message}</label>}
                                 {isPasswordMatch && <label style={{color: 'red'}}>{isPasswordMatch}</label>}
                             </div>
@@ -222,39 +229,43 @@ export default function LogIn({ LogInOpen, setLogInOpen }) {
                         <h3>Или используйте пароль</h3>
                         <form onSubmit={handleSubmitAuth(onSubmitAuth)} >
                             <div className='inputWrapper'>
-                            <Controller
-                                    name="phone"
-                                    control={controlRegister}
-                                    rules={{
-                                        required: 'Укажите номер телефона',
-                                        minLength: {
-                                            value: 7,
-                                            message: "Минимальная длина телефона 7 символов"
-                                        },
-                                        maxLength: {
-                                            value: 15,
-                                            message: "Максимальная длина телефона 15 символов"
-                                        },
-                                    }}
-                                    render={({ field: { onChange, onBlur, value, ref } }) => (
-                                        <PhoneInput
-                                        international
-                                            defaultCountry="RU"
-                                            placeholder='Номер телефона'
-                                            value={value}
-                                            onChange={onChange}
-                                            onBlur={onBlur}
-                                            ref={ref}
-                                        />
-                                    )}
-                                />
+                                <div className='inputBlock'>
+                                    <Controller
+                                        name="phone"
+                                        control={controlAuth}
+                                        rules={{
+                                            required: 'Укажите номер телефона',
+                                            minLength: {
+                                                value: 7,
+                                                message: "Минимальная длина телефона 7 символов"
+                                            },
+                                            maxLength: {
+                                                value: 15,
+                                                message: "Максимальная длина телефона 15 символов"
+                                            },
+                                        }}
+                                        render={({ field: { onChange, onBlur, value, ref } }) => (
+                                            <PhoneInput
+                                            international
+                                                defaultCountry="RU"
+                                                placeholder='Номер телефона'
+                                                value={value}
+                                                onChange={onChange}
+                                                onBlur={onBlur}
+                                                ref={ref}
+                                            />
+                                        )}
+                                    />
+                                </div>
                                 {/* <input className='lol' placeholder='Номер телефона' type="tel" {...registerAuth('phone', { required: 'Укажите номер телефона', minLength: { value: 7, message: "Минимальная длина телефона 7 символов" }, maxLength: { value: 15, message: "Максимальная длина телефона 15 символов" }, })}   /> */}
                                 {errorsAuth.phone && <label style={{color: 'red'}}>{errorsAuth.phone.message}</label>}
                                 {incorrect && <label style={{color: 'red'}}>{incorrect}</label>}
                             </div>
 
                             <div className='inputWrapper'>
-                                <input className='lol' placeholder='Пароль' type="password" {...registerAuth('password', {required: 'Это поле обязательно', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                                <div className='inputBlock'>
+                                    <input className='lol' placeholder='Пароль' type="password" {...registerAuth('password', {required: 'Это поле обязательно', minLength: { value: 6, message: "Минимальная длина пароля 6 символов" }, })} />
+                                </div>
                                 {errorsAuth.password && <label style={{color: 'red'}}>{errorsAuth.password.message}</label>}
                                 {incorrect && <label style={{color: 'red'}}>{incorrect}</label>}
                             </div>

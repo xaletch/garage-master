@@ -50,7 +50,9 @@ export const CodeConfirmation = ({ menuCode, setMenuCode, sessionId }) => {
                         <p className='code'>Мы отправили СМС с кодом подтверждения на ваш номер телефона. Пожалуйста, введите данный код ниже</p>
 
                         <div className='inputWrapper'>
-                            <input className='lol' type="text" placeholder='Код из СМС' {...registerConfirmation('code', { required: 'Код из СМС', minLength: { value: 6, message: "Код должен быть 6 символов" }, maxLength: { value: 6, message: "Код должен быть 6 символов" }, })}/>
+                            <div className='inputBlock'>
+                                <input className='lol' type="text" placeholder='Код из СМС' {...registerConfirmation('code', { required: 'Код из СМС', minLength: { value: 6, message: "Код должен быть 6 символов" }, maxLength: { value: 6, message: "Код должен быть 6 символов" }, })}/>
+                            </div>
                             {errorsConfirmation.code && <label style={{color: 'red'}}>{errorsConfirmation.code.message}</label>}
                             {incorrectCode && <label style={{color: 'red'}}>{incorrectCode}</label>}
                         </div>

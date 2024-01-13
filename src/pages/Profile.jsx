@@ -10,6 +10,7 @@ import { ProfileBottom } from '../components/Profile/ProfileBottom/ProfileBottom
 import { useSelector } from 'react-redux';
 import { useGetUserItemsQuery, useGetUserQuery, useLazyGetItemSaleQuery } from '../redux/cases/cases';
 import { Pagination } from '../components/Profile/Pagination/Pagination';
+import { Notification } from '../components/Notification/Notification';
 
 export const Profile = () => {
     
@@ -20,15 +21,23 @@ export const Profile = () => {
     const [openSaleMenu, setOpenSaleMenu] = useState(false);
     const [itemId, setItemId] = useState();
     const [itemPrice, setItemPrice] = useState();
-
+    
     const { data } = useGetUserItemsQuery({ start_price, end_price, page });
     const [sale] = useLazyGetItemSaleQuery();
 
+    const [showNotification, setShowNotification] = useState(false);
+    
     const handleSaleItem = async () => {
         await sale(itemId);
         refetchUserItems({ start_price, end_price, page });
         refetchUserData();
         setOpenSaleMenu(false);
+
+        setShowNotification(true);
+
+        setTimeout(() => {
+            setShowNotification(false);
+        }, 3350);
     };
 
     return (
@@ -67,6 +76,8 @@ export const Profile = () => {
                         </div>
                     </div>
                 )}
+
+                <Notification price={itemPrice} showNotification={showNotification} />
             </div>
         </div>
     )

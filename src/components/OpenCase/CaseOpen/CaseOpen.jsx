@@ -8,7 +8,7 @@ import { CaseOpens } from './CaseOpens';
 import { useLazyGetItemSaleQuery, useGetUserItemsQuery, useGetUserQuery } from '../../../redux/cases/cases';
 
 
-export const CaseOpen = ({ name, item, color, dataWin, setTranslateX, winner, translateX, isSpinning, setSold, sold, initializeAndShuffleItems, handleOpenMore, multipliedItems }) => {
+export const CaseOpen = ({ name, item, color, dataWin, setTranslateX, winner, translateX, isSpinning, setSold, sold, initializeAndShuffleItems, handleOpenMore, multipliedItems, setShowNotification }) => {
     const { start_price, end_price, page } = useSelector((state) => state.filterCase);
 
     const {refetch: refetchUserItems } = useGetUserItemsQuery({ start_price, end_price, page });
@@ -24,9 +24,15 @@ export const CaseOpen = ({ name, item, color, dataWin, setTranslateX, winner, tr
 
         setSold(true);
 
+        setShowNotification(true);
+
         setTimeout(() => {
             refetchUserData();
         }, 100);
+
+        setTimeout(() => {
+            setShowNotification(false);
+        }, 3350);
     };
 
     return (
