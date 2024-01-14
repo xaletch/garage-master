@@ -120,8 +120,6 @@ export const SelectedCase = ({ setLogInOpen }) => {
           setTranslateX(-Math.min(leftPosition, maxTranslate));
 
           setCaseOpen(true);
-
-          console.log(translateX);
         }
       }
     }, 1000);
