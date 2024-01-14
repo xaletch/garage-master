@@ -102,11 +102,10 @@
             &::before, &::after {
                 content: '';
                 position: absolute;
-                width: 90px;
-                height: 90px;
+                width: 80px;
+                height: 80px;
                 border-radius: 100%;
-                // backdrop-filter: blur(30px);
-                // filter: blur(30px);
+                filter: blur(30px);
                 z-index: 1;
             }
             
