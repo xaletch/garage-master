@@ -111,13 +111,14 @@ export const SelectedCase = ({ setLogInOpen }) => {
         const openedItemName = dataWin.data.drops.map((item) => item.name)[0];
         const lastItemIndex = findLastIndexWithName(multipliedItems, openedItemName);
 
-        const screenCenterOffset = (5 * itemWidth) / 2;
-        const cardCenterOffset = itemWidth / 1;
+        // const screenCenterOffset = (5 * itemWidth) / 2;
+        // const cardCenterOffset = itemWidth / 1;
   
         if (lastItemIndex !== -1) {
-          const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
-          const maxTranslate = (multipliedItems.length) * itemWidth;
-          setTranslateX(-Math.min(leftPosition, maxTranslate));
+          // const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
+          // const maxTranslate = (multipliedItems.length) * itemWidth;
+          // setTranslateX(-Math.min(leftPosition, maxTranslate));
+          setTranslateX(-5415)
 
           setCaseOpen(true);
         }
