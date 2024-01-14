@@ -7,7 +7,7 @@ import { useGetUserQuery, useGetUserItemsQuery } from '../../../redux/cases/case
 
 import { useSelector } from 'react-redux';
 
-export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOpen, setIsSpinning }) => {
+export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOpen, setIsSpinning,  setTranslateX }) => {
     const countCase = ["1", "25", "50", "100"];
 
     const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
@@ -26,6 +26,8 @@ export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOp
 
     const handleOpenCase = async () => {
         const { isSuccess } = await open(url);
+        
+        setTranslateX(0);
 
         if (isSuccess) {
             refetchUserItems({ start_price, end_price, page });
@@ -38,7 +40,7 @@ export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOp
         };
 
         setIsDisabled(true);
-    }
+    };
 
   return (
     <div className='Case'>

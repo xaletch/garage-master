@@ -43,8 +43,6 @@ export const SelectedCase = ({ setLogInOpen }) => {
     }
     return shuffledItems;
   };
-
-  console.log(isSpinning)
   
   const initializeAndShuffleItems = () => {
     if (caseInfo?.data && dataWin?.data && dataWin?.data.drops.length > 0) {
@@ -106,14 +104,13 @@ export const SelectedCase = ({ setLogInOpen }) => {
     setSold(false);
     setOpen(false);
   };
-  console.log('TRANSLATE X: ', translateX);
 
   useEffect(() => {
     setTimeout(() => {
       if (dataWin && dataWin?.data) {
         const openedItemName = dataWin.data.drops.map((item) => item.name)[0];
         const lastItemIndex = findLastIndexWithName(multipliedItems, openedItemName);
-        setTranslateX(0);
+
         const screenCenterOffset = (5 * itemWidth) / 2;
         const cardCenterOffset = itemWidth / 1;
   
@@ -160,7 +157,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
                 </div>
             )
           }
-            {!isOpen && <Case setIsSpinning={setIsSpinning} open={open} name={caseInfo?.data.name} price={caseInfo?.data?.price} image={caseInfo?.data?.image} url={caseInfo?.data?.url} color={caseInfo?.data?.color} setOpen={setOpen} setLogInOpen={setLogInOpen} />}
+            {!isOpen && <Case setIsSpinning={setIsSpinning} open={open} name={caseInfo?.data.name} price={caseInfo?.data?.price} image={caseInfo?.data?.image} url={caseInfo?.data?.url} color={caseInfo?.data?.color} setOpen={setOpen} setLogInOpen={setLogInOpen} setTranslateX={setTranslateX} />}
             <ContentsCase items={caseInfo?.data?.items}/>
             
             {/* КЕЙСЫ, КОНТРАКТЫ, АПРГРЕЙДЫ, ПОЛЬЗОВАТЕЛЕЙ, ОНЛАЙН */}
