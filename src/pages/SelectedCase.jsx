@@ -118,7 +118,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
           // const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
           // const maxTranslate = (multipliedItems.length) * itemWidth;
           // setTranslateX(-Math.min(leftPosition, maxTranslate));
-          setTranslateX(-5415)
+          setTranslateX(-5428)
 
           setCaseOpen(true);
         }
