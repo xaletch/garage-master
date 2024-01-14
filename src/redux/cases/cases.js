@@ -90,6 +90,12 @@ export const casesApi = createApi({
       }),
       invalidatesTags: ["UserInfo"],
     }),
+    getAllItemSale: builder.query({
+      query: () => ({
+        url: '/api/v1/user/item/sale-all',
+        method: "GET"
+      })
+    }),
     fetchTradeUrl: builder.mutation({
       query: (body) => ({
         url: `/api/v1/account/profile/set/trade_url`,
@@ -122,6 +128,6 @@ export const casesApi = createApi({
 export const useGetCasesQuery = casesApi.endpoints.getCases.useQuery;
 export const { 
   useAddRegistrationMutation, useFetchAuthMutation, useFetchSteamLoginUrlMutation, useFetchCodeMutation,
-  useGetUserQuery, useGetUserItemsQuery, useGetItemSaleQuery, useFetchTradeUrlMutation,
+  useGetUserQuery, useGetUserItemsQuery, useGetItemSaleQuery, useGetAllItemSaleQuery, useLazyGetAllItemSaleQuery, useFetchTradeUrlMutation,
   useLazyGetItemSaleQuery, useGetCaseByUrlQuery, useGetOpenCaseQuery, useLazyGetOpenCaseQuery
 } = casesApi;

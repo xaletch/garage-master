@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './CaseOpen.scss';
 
@@ -8,7 +8,7 @@ import { CaseOpens } from './CaseOpens';
 import { useLazyGetItemSaleQuery, useGetUserItemsQuery, useGetUserQuery } from '../../../redux/cases/cases';
 
 
-export const CaseOpen = ({ name, item, color, dataWin, setTranslateX, winner, translateX, isSpinning, setSold, sold, initializeAndShuffleItems, handleOpenMore, multipliedItems, setShowNotification }) => {
+export const CaseOpen = ({ name, item, color, dataWin, winner, translateX, isSpinning, setSold, sold, handleOpenMore, multipliedItems, setShowNotification }) => {
     const { start_price, end_price, page } = useSelector((state) => state.filterCase);
 
     const {refetch: refetchUserItems } = useGetUserItemsQuery({ start_price, end_price, page });

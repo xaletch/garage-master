@@ -59,3 +59,55 @@
         width: 0;
     }
 }
+
+@media screen and (max-width: 1200px) {
+    .notification {
+        top: 120px;
+    }
+    .notification.open {
+        right: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .notification {
+        top: 80px;
+        right: -300px;
+        width: 300px;
+    }
+    .notification.open {
+        right: 20px;
+    }
+    .notificationInner {
+        padding: 12px;
+    }
+    .notificationHead {
+        font-size: 14px;
+        line-height: 16px;
+    }
+    .notificationText {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .notificationLine {
+        height: 2px;
+    
+        &::before {
+            height: 2px;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .notification {
+        top: 80px;
+        right: -280px;
+        width: 280px;
+    }
+    .notification.open {
+        right: 10px;
+    }
+    .notificationInner {
+        padding: 10px;
+    }
+}

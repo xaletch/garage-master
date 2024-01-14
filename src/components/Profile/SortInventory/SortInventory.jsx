@@ -5,6 +5,7 @@ import './SortInventory.scss';
 
 import { useDispatch } from 'react-redux';
 import { setMaxPrice, setMinPrice, setPage } from '../../../redux/slices/filterCase';
+import { useGetAllItemSaleQuery, useLazyGetAllItemSaleQuery } from '../../../redux/cases/cases';
 
 const category = ["Кейсы"];
 const priceList = [
@@ -28,6 +29,13 @@ export const SortInventory = ({ page }) => {
         dispatch(setPage(1));
     };
 
+    // const [allSale] = useGetAllItemSaleQuery();
+
+    const [allSale] = useLazyGetAllItemSaleQuery(); 
+
+    const handleAllSaleItem = async ()  => {
+        const {  } = await allSale();
+    }
     
     return (
         <div className='SortInventory'>

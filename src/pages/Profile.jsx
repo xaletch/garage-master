@@ -58,7 +58,7 @@ export const Profile = () => {
                                 <div className='ProfileBottom'>
                                     {data?.data?.items.map((obj, index) => <ProfileBottom key={index} image={obj.image} id={obj.id} name={obj.name} price={obj.price} rarity={obj.rarity} status={obj.status} setOpenSaleMenu={setOpenSaleMenu} setItemId={setItemId} setItemPrice={setItemPrice} />)}
                                 </div>
-                                <Pagination pageCount={data?.data?.page_count} page={page} />
+                                {data?.data?.page_count !== 0 && <Pagination pageCount={data?.data?.page_count} page={page} />}
                             </>
                         ) : (
                             <div className='ProfileNoItems'>У вас нет предметов</div>
