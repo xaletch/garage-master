@@ -21,6 +21,7 @@ export const Profile = () => {
     const [openSaleMenu, setOpenSaleMenu] = useState(false);
     const [itemId, setItemId] = useState();
     const [itemPrice, setItemPrice] = useState();
+    const [saleItems, setSaleItems] = useState('');
     
     const { data } = useGetUserItemsQuery({ start_price, end_price, page });
     const [sale] = useLazyGetItemSaleQuery();
@@ -48,13 +49,13 @@ export const Profile = () => {
                 <SkinsOutput cls={data?.data?.items} start_price={start_price} end_price={end_price} />
                 {start_price !== null && end_price !== null && data?.data?.items.length === 0 ? (
                     <>
-                        <SortInventory />
+                        <SortInventory start_price={start_price} end_price={end_price} page={page} refetchUserItems={refetchUserItems} refetchUserData={refetchUserData} setOpenSaleMenu={setOpenSaleMenu} setShowNotification={setShowNotification} saleItems={saleItems} setSaleItems={setSaleItems} />
                         <div className='ProfileNoItems'>У вас нет предметов с ценой от {start_price}₽ до {end_price}₽</div>
                     </>
                     ) : (
                         data?.data?.items.length > 0 ? (
                             <>
-                                <SortInventory />
+                                <SortInventory start_price={start_price} end_price={end_price} page={page} refetchUserItems={refetchUserItems} refetchUserData={refetchUserData} setOpenSaleMenu={setOpenSaleMenu} setShowNotification={setShowNotification} saleItems={saleItems} setSaleItems={setSaleItems} />
                                 <div className='ProfileBottom'>
                                     {data?.data?.items.map((obj, index) => <ProfileBottom key={index} image={obj.image} id={obj.id} name={obj.name} price={obj.price} rarity={obj.rarity} status={obj.status} setOpenSaleMenu={setOpenSaleMenu} setItemId={setItemId} setItemPrice={setItemPrice} />)}
                                 </div>
@@ -77,7 +78,7 @@ export const Profile = () => {
                     </div>
                 )}
 
-                <Notification price={itemPrice} showNotification={showNotification} />
+                <Notification price={itemPrice} showNotification={showNotification} saleItems={saleItems} />
             </div>
         </div>
     )

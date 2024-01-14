@@ -1,8 +1,7 @@
 .notification {
     position: fixed;
     top: 100px;
-    right: -320px;
-    width: 320px;
+    right: -400px;
     z-index: 999;
     background: #190938;
     border: 2px solid rgba(50, 22, 107, 1);
@@ -72,8 +71,6 @@
 @media screen and (max-width: 480px) {
     .notification {
         top: 80px;
-        right: -300px;
-        width: 300px;
     }
     .notification.open {
         right: 20px;
@@ -101,8 +98,6 @@
 @media screen and (max-width: 480px) {
     .notification {
         top: 80px;
-        right: -280px;
-        width: 280px;
     }
     .notification.open {
         right: 10px;

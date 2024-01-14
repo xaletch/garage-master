@@ -20,6 +20,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
   const [isOpen, setOpen] = useState(false);
   
   const [open, { data: dataWin }] = useLazyGetOpenCaseQuery();
+
   useEffect(() => {
     if (url) {
       window.scrollTo(0, 0);
@@ -30,6 +31,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
   
   const [translateX, setTranslateX] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
+  const [caseOpen, setCaseOpen] = useState(false);
   const [winner, setWinner] = useState(false);
   const [sold, setSold] = useState(false);
   
@@ -74,14 +76,14 @@ export const SelectedCase = ({ setLogInOpen }) => {
   }, [caseInfo?.data, dataWin]);
   
   useEffect(() => {
-    if (isSpinning) {
+    if (caseOpen) {
       const timer = setTimeout(() => {
         setIsSpinning(false);
         setWinner(true);
-      }, 9300);
+      }, 8300);
       return () => clearTimeout(timer);
     }
-  }, [isSpinning]);
+  }, [caseOpen]);
   
   const findLastIndexWithName = (arr, name) => {
     for (let i = arr.length - 3; i >= 0; i--) {
@@ -99,17 +101,19 @@ export const SelectedCase = ({ setLogInOpen }) => {
     
     setTranslateX(0);
 
+    setCaseOpen(false);
     setWinner(false);
     setSold(false);
     setOpen(false);
   };
+  console.log('TRANSLATE X: ', translateX);
 
   useEffect(() => {
     setTimeout(() => {
       if (dataWin && dataWin?.data) {
         const openedItemName = dataWin.data.drops.map((item) => item.name)[0];
         const lastItemIndex = findLastIndexWithName(multipliedItems, openedItemName);
-  
+        setTranslateX(0);
         const screenCenterOffset = (5 * itemWidth) / 2;
         const cardCenterOffset = itemWidth / 1;
   
@@ -117,6 +121,8 @@ export const SelectedCase = ({ setLogInOpen }) => {
           const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
           const maxTranslate = (multipliedItems.length) * itemWidth;
           setTranslateX(-Math.min(leftPosition, maxTranslate));
+
+          setCaseOpen(true);
         }
       }
     }, 1000);
@@ -160,7 +166,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
             {/* КЕЙСЫ, КОНТРАКТЫ, АПРГРЕЙДЫ, ПОЛЬЗОВАТЕЛЕЙ, ОНЛАЙН */}
             {/* <About /> */}
 
-            <Notification price={price} showNotification={showNotification} />
+            <Notification price={price} showNotification={showNotification} saleItems={undefined} />
         </div>
     </div>
   )

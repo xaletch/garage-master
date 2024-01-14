@@ -3,6 +3,7 @@ import React from 'react'
 import './ProfileBottom.scss';
 
 export const ProfileBottom = ({ image, id, name, price, rarity, status, setOpenSaleMenu, setItemId, setItemPrice }) => {
+  
   const handleSaleItem = (id) => {
     if (id) {
       setItemId(id);

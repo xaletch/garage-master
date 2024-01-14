@@ -16,7 +16,7 @@ const priceList = [
     {min: "1000", max: "999999", name: "1000+", id: 5},
 ];
 
-export const SortInventory = ({ page }) => {
+export const SortInventory = ({ start_price, end_price, page, refetchUserItems, refetchUserData, setOpenSaleMenu, setShowNotification, saleItems, setSaleItems }) => {
     const [selectCategory, setSelectCategory] = useState(0);
     const [selectedCategoryPrice, setSelectedCategoryPrice] = useState(null);
 
@@ -29,12 +29,24 @@ export const SortInventory = ({ page }) => {
         dispatch(setPage(1));
     };
 
-    // const [allSale] = useGetAllItemSaleQuery();
-
     const [allSale] = useLazyGetAllItemSaleQuery(); 
 
     const handleAllSaleItem = async ()  => {
-        const {  } = await allSale();
+        const { isSuccess, data: allSaleData } = await allSale(); 
+
+        if (isSuccess) {
+            refetchUserItems({ start_price, end_price, page });
+            refetchUserData();
+            setOpenSaleMenu(false);
+
+            setSaleItems(allSaleData?.message);
+
+            setShowNotification(true);
+                
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 3350);
+        }
     }
     
     return (
@@ -46,7 +58,7 @@ export const SortInventory = ({ page }) => {
                     ))}
                 </ul>
             </div>
-            <button className='SellEverything'>Продать все</button>
+            <button className='SellEverything' onClick={() => handleAllSaleItem()}>Продать все</button>
             <div className='SortInventoryPrice'>
                 <ul className='priceList'>
                     {priceList.map((item, index) => (
