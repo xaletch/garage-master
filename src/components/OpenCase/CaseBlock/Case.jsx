@@ -44,24 +44,23 @@ export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOp
 
         const timer = setTimeout(() => {
             if (dataWin && dataWin?.data) {
-              const openedItemName = dataWin.data.drops.map((item) => item.name)[0];
-              const lastItemIndex = findLastIndexWithName(multipliedItems, openedItemName);
+                const openedItemName = dataWin.data.drops.map((item) => item.name)[0];
+                const lastItemIndex = findLastIndexWithName(multipliedItems, openedItemName);
         
-              const screenCenterOffset = (5 * itemWidth) / 2;
-              const cardCenterOffset = itemWidth / 1;
+                const screenCenterOffset = (5 * itemWidth) / 2;
+                const cardCenterOffset = itemWidth / 1;
         
-              if (lastItemIndex !== -1) {
-                const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
-                const maxTranslate = (multipliedItems.length) * itemWidth;
-                setTranslateX(-Math.min(leftPosition, maxTranslate));
-              }
+                if (lastItemIndex !== -1) {
+                    const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
+                    const maxTranslate = (multipliedItems.length) * itemWidth;
+                    setTranslateX(-Math.min(leftPosition, maxTranslate));
+                }
             }
         
             setCaseOpen(true);
-          }, 1000);
+        }, 1000);
         
-          // Очистите таймаут при размонтировании компонента или других условиях
-          return () => clearTimeout(timer);
+        return () => clearTimeout(timer);
     };
 
   return (
