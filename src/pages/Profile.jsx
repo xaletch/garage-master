@@ -65,7 +65,7 @@ export const Profile = () => {
             setIsSaleItems(false);
             setShowNotification(false);
         }, 3350);
-    }
+    };
 
     return (
         <div className='Profile'>

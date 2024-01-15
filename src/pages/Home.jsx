@@ -8,7 +8,7 @@ export const Home = ({ setHeaderOpen }) => {
     return (
         <>
             {/* РАЗДАЧИ */}
-            {/* <AllWinner setHeaderOpen={setHeaderOpen}/> */}
+            <AllWinner setHeaderOpen={setHeaderOpen}/>
 
             <AllCases />
             {/* <FreeCase />
