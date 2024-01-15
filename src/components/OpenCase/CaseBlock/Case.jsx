@@ -7,7 +7,7 @@ import { useGetUserQuery, useGetUserItemsQuery } from '../../../redux/cases/case
 
 import { useSelector } from 'react-redux';
 
-export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOpen, setIsSpinning,  setTranslateX }) => {
+export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOpen, setIsSpinning,  setTranslateX, setCaseOpen, dataWin, findLastIndexWithName, multipliedItems, itemWidth }) => {
     const countCase = ["1", "25", "50", "100"];
 
     const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
@@ -40,6 +40,28 @@ export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOp
         };
 
         setIsDisabled(true);
+
+
+        const timer = setTimeout(() => {
+            if (dataWin && dataWin?.data) {
+              const openedItemName = dataWin.data.drops.map((item) => item.name)[0];
+              const lastItemIndex = findLastIndexWithName(multipliedItems, openedItemName);
+        
+              const screenCenterOffset = (5 * itemWidth) / 2;
+              const cardCenterOffset = itemWidth / 1;
+        
+              if (lastItemIndex !== -1) {
+                const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
+                const maxTranslate = (multipliedItems.length) * itemWidth;
+                setTranslateX(-Math.min(leftPosition, maxTranslate));
+              }
+            }
+        
+            setCaseOpen(true);
+          }, 1000);
+        
+          // Очистите таймаут при размонтировании компонента или других условиях
+          return () => clearTimeout(timer);
     };
 
   return (

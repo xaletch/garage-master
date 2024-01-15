@@ -106,25 +106,25 @@ export const SelectedCase = ({ setLogInOpen }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (dataWin && dataWin?.data) {
         const openedItemName = dataWin.data.drops.map((item) => item.name)[0];
         const lastItemIndex = findLastIndexWithName(multipliedItems, openedItemName);
-
-        // const screenCenterOffset = (5 * itemWidth) / 2;
-        // const cardCenterOffset = itemWidth / 1;
+  
+        const screenCenterOffset = (5 * itemWidth) / 2;
+        const cardCenterOffset = itemWidth / 1;
   
         if (lastItemIndex !== -1) {
-          // const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
-          // const maxTranslate = (multipliedItems.length) * itemWidth;
-          // setTranslateX(-Math.min(leftPosition, maxTranslate));
-          setTranslateX(-5428)
-
-          setCaseOpen(true);
+          const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
+          const maxTranslate = (multipliedItems.length) * itemWidth;
+          setTranslateX(-Math.min(leftPosition, maxTranslate));
+          // setTranslateX(-5428); // Ваша оригинальная логика, оставьте ее, если она нужна
         }
       }
     }, 1000);
-  }, [dataWin, isSpinning]);
+  
+    return () => clearTimeout(timer);
+  }, [dataWin, multipliedItems, itemWidth]);
 
   const price = dataWin?.data.drops.map((price) => price.price);
   
@@ -158,7 +158,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
                 </div>
             )
           }
-            {!isOpen && <Case setIsSpinning={setIsSpinning} open={open} name={caseInfo?.data.name} price={caseInfo?.data?.price} image={caseInfo?.data?.image} url={caseInfo?.data?.url} color={caseInfo?.data?.color} setOpen={setOpen} setLogInOpen={setLogInOpen} setTranslateX={setTranslateX} />}
+            {!isOpen && <Case setIsSpinning={setIsSpinning} open={open} name={caseInfo?.data.name} price={caseInfo?.data?.price} image={caseInfo?.data?.image} url={caseInfo?.data?.url} color={caseInfo?.data?.color} setOpen={setOpen} setLogInOpen={setLogInOpen} setTranslateX={setTranslateX} setCaseOpen={setCaseOpen} dataWin={dataWin} findLastIndexWithName={findLastIndexWithName} multipliedItems={multipliedItems} itemWidth={itemWidth} />}
             <ContentsCase items={caseInfo?.data?.items}/>
             
             {/* КЕЙСЫ, КОНТРАКТЫ, АПРГРЕЙДЫ, ПОЛЬЗОВАТЕЛЕЙ, ОНЛАЙН */}
