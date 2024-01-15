@@ -5,7 +5,7 @@ import './SortInventory.scss';
 
 import { useDispatch } from 'react-redux';
 import { setMaxPrice, setMinPrice, setPage } from '../../../redux/slices/filterCase';
-import { useGetAllItemSaleQuery, useLazyGetAllItemSaleQuery } from '../../../redux/cases/cases';
+import { useLazyGetAllItemSaleQuery } from '../../../redux/cases/cases';
 
 const category = ["Кейсы"];
 const priceList = [
@@ -16,7 +16,7 @@ const priceList = [
     {min: "1000", max: "999999", name: "1000+", id: 5},
 ];
 
-export const SortInventory = ({ start_price, end_price, page, refetchUserItems, refetchUserData, setOpenSaleMenu, setShowNotification, saleItems, setSaleItems }) => {
+export const SortInventory = ({ setOpenSaleAllItemMenu, setAllSaleItems }) => {
     const [selectCategory, setSelectCategory] = useState(0);
     const [selectedCategoryPrice, setSelectedCategoryPrice] = useState(null);
 
@@ -29,24 +29,9 @@ export const SortInventory = ({ start_price, end_price, page, refetchUserItems, 
         dispatch(setPage(1));
     };
 
-    const [allSale] = useLazyGetAllItemSaleQuery(); 
-
     const handleAllSaleItem = async ()  => {
-        const { isSuccess, data: allSaleData } = await allSale(); 
-
-        if (isSuccess) {
-            refetchUserItems({ start_price, end_price, page });
-            refetchUserData();
-            setOpenSaleMenu(false);
-
-            setSaleItems(allSaleData?.message);
-
-            setShowNotification(true);
-                
-            setTimeout(() => {
-                setShowNotification(false);
-            }, 3350);
-        }
+        setOpenSaleAllItemMenu(true);
+        setAllSaleItems(true);
     }
     
     return (

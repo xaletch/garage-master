@@ -8,7 +8,7 @@ import { SortInventory } from '../components/Profile/SortInventory/SortInventory
 import { ProfileBottom } from '../components/Profile/ProfileBottom/ProfileBottom';
 
 import { useSelector } from 'react-redux';
-import { useGetUserItemsQuery, useGetUserQuery, useLazyGetItemSaleQuery } from '../redux/cases/cases';
+import { useGetUserItemsQuery, useGetUserQuery, useLazyGetAllItemSaleQuery, useLazyGetItemSaleQuery } from '../redux/cases/cases';
 import { Pagination } from '../components/Profile/Pagination/Pagination';
 import { Notification } from '../components/Notification/Notification';
 
@@ -19,12 +19,17 @@ export const Profile = () => {
     const { refetch: refetchUserData } = useGetUserQuery(null);
 
     const [openSaleMenu, setOpenSaleMenu] = useState(false);
+    const [openSaleAllItemMenu, setOpenSaleAllItemMenu] = useState(false);
+
     const [itemId, setItemId] = useState();
     const [itemPrice, setItemPrice] = useState();
     const [saleItems, setSaleItems] = useState('');
+    const [isSaleItems, setIsSaleItems] = useState(false);
+    const [allSaleItems, setAllSaleItems] = useState(false);
     
     const { data } = useGetUserItemsQuery({ start_price, end_price, page });
     const [sale] = useLazyGetItemSaleQuery();
+    const [allSale] = useLazyGetAllItemSaleQuery();
 
     const [showNotification, setShowNotification] = useState(false);
     
@@ -41,6 +46,27 @@ export const Profile = () => {
         }, 3350);
     };
 
+    const handleAllSaleItem = async () => {
+        const { isSuccess, data: allSaleData } = await allSale(); 
+
+        if (isSuccess) {
+            refetchUserItems({ start_price, end_price, page });
+            refetchUserData();
+
+            setIsSaleItems(true);
+            setShowNotification(true);
+            
+            setSaleItems(allSaleData?.message);
+        }
+
+        setOpenSaleAllItemMenu(false);
+
+        setTimeout(() => {
+            setIsSaleItems(false);
+            setShowNotification(false);
+        }, 3350);
+    }
+
     return (
         <div className='Profile'>
             <div className='main mainWidht'>
@@ -49,13 +75,13 @@ export const Profile = () => {
                 <SkinsOutput cls={data?.data?.items} start_price={start_price} end_price={end_price} />
                 {start_price !== null && end_price !== null && data?.data?.items.length === 0 ? (
                     <>
-                        <SortInventory start_price={start_price} end_price={end_price} page={page} refetchUserItems={refetchUserItems} refetchUserData={refetchUserData} setOpenSaleMenu={setOpenSaleMenu} setShowNotification={setShowNotification} saleItems={saleItems} setSaleItems={setSaleItems} />
+                        <SortInventory setOpenSaleAllItemMenu={setOpenSaleAllItemMenu} setAllSaleItems={setAllSaleItems} />
                         <div className='ProfileNoItems'>У вас нет предметов с ценой от {start_price}₽ до {end_price}₽</div>
                     </>
                     ) : (
                         data?.data?.items.length > 0 ? (
                             <>
-                                <SortInventory start_price={start_price} end_price={end_price} page={page} refetchUserItems={refetchUserItems} refetchUserData={refetchUserData} setOpenSaleMenu={setOpenSaleMenu} setShowNotification={setShowNotification} saleItems={saleItems} setSaleItems={setSaleItems} />
+                                <SortInventory setOpenSaleAllItemMenu={setOpenSaleAllItemMenu} setAllSaleItems={setAllSaleItems} />
                                 <div className='ProfileBottom'>
                                     {data?.data?.items.map((obj, index) => <ProfileBottom key={index} image={obj.image} id={obj.id} name={obj.name} price={obj.price} rarity={obj.rarity} status={obj.status} setOpenSaleMenu={setOpenSaleMenu} setItemId={setItemId} setItemPrice={setItemPrice} />)}
                                 </div>
@@ -69,7 +95,7 @@ export const Profile = () => {
                     <div className='saleMenu' onClick={() => setOpenSaleMenu(false)}>
                         <div className='saleMenuBlock' onClick={(e) => e.stopPropagation()}>
                             <h3>Подтверждение продажи скинов</h3>
-                            <p>Вы действительно хотите продать этот предмет за <span>{itemPrice} ₽</span>?</p>
+                                <p>Вы действительно хотите продать этот предмет за <span>{itemPrice} ₽</span>?</p>
                             <div className='saleMenuButtons'>
                                 <button className='ok' onClick={() => handleSaleItem(itemId)}>Ок</button>
                                 <button className='cancel' onClick={() => setOpenSaleMenu(false)}>Отмена</button>
@@ -77,8 +103,20 @@ export const Profile = () => {
                         </div>
                     </div>
                 )}
+                {openSaleAllItemMenu && (
+                    <div className='saleMenu' onClick={() => setOpenSaleAllItemMenu(false)}>
+                        <div className='saleMenuBlock' onClick={(e) => e.stopPropagation()}>
+                            <h3>Подтверждение продажи скинов</h3>
+                                <p>Вы действительно хотите продать все предметы?</p>
+                            <div className='saleMenuButtons'>
+                                <button className='ok' onClick={() => handleAllSaleItem()}>Ок</button>
+                                <button className='cancel' onClick={() => setOpenSaleAllItemMenu(false)}>Отмена</button>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
-                <Notification price={itemPrice} showNotification={showNotification} saleItems={saleItems} />
+                <Notification price={itemPrice} showNotification={showNotification} saleItems={saleItems} isSaleItems={isSaleItems} />
             </div>
         </div>
     )

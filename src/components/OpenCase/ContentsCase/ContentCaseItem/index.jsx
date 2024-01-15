@@ -8,7 +8,8 @@ export const ContentCaseItem = ({ image, name, rarity }) => {
       rarity === 'Тайное' ? 'red' :
       rarity === 'Ширпотреб' ? 'green' :
       rarity === 'Армейское качество' ? 'blue' :
-      rarity === 'экстраординарного типа' ? 'yellow': 
+      rarity === 'экстраординарного типа' ? 'yellow':
+      rarity === 'Контрабанда' ? 'yellow' :
       rarity === 'Засекреченное' ? 'pink' : ''}`}
     >
       <div className={`ContentCaseItemInner ${
@@ -17,7 +18,8 @@ export const ContentCaseItem = ({ image, name, rarity }) => {
           rarity === 'Тайное' ? 'red' :
           rarity === 'Ширпотреб' ? 'green' :
           rarity === 'Армейское качество' ? 'blue' :
-          rarity === 'экстраординарного типа' ? 'yellow': 
+          rarity === 'экстраординарного типа' ? 'yellow':
+          rarity === 'Контрабанда' ? 'yellow' :
           rarity === 'Засекреченное' ? 'pink' : ''}`}
       >
         <div className="ContentCaseItemRing"  style={{ border: `2px solid ${
@@ -26,7 +28,8 @@ export const ContentCaseItem = ({ image, name, rarity }) => {
           rarity === 'Тайное' ? '#db4343' :
           rarity === 'Ширпотреб' ? '#1dd87e' :
           rarity === 'Армейское качество' ? '#3092bb' :
-          rarity === 'экстраординарного типа' ? '#cbde22': 
+          rarity === 'экстраординарного типа' ? '#cbde22':
+          rarity === 'Контрабанда' ? '#cbde22' :
           rarity === 'Засекреченное' ? '#c9405d' : ''}`}}
         >
             <img src={image} alt={name} />
@@ -39,7 +42,8 @@ export const ContentCaseItem = ({ image, name, rarity }) => {
               rarity === 'Тайное' ? '#7f3535' :
               rarity === 'Ширпотреб' ? '#307d58' :
               rarity === 'Армейское качество' ? '#33687e' :
-              rarity === 'экстраординарного типа' ? '#7c842d': 
+              rarity === 'экстраординарного типа' ? '#7c842d':
+              rarity === 'Контрабанда' ? '#7c842d' :
               rarity === 'Засекреченное' ? '#7f357b' : ''}`}}
             >{rarity}</span>
         </div>

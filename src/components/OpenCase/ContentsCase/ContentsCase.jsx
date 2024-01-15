@@ -15,6 +15,7 @@ export const ContentsCase = ({ items }) => {
             item.rarity === 'Ширпотреб' ? 'green' :
             item.rarity === 'Армейское качество' ? 'blue' :
             item.rarity === 'экстраординарного типа' ? 'yellow': 
+            item.rarity === 'Контрабанда' ? 'yellow' :
             item.rarity === 'Засекреченное' ? 'pink' : ''}`} key={index}
           >
             <div className={`ProfileCardInner ${
@@ -24,6 +25,7 @@ export const ContentsCase = ({ items }) => {
               item.rarity === 'Ширпотреб' ? 'green' :
               item.rarity === 'Армейское качество' ? 'blue' :
               item.rarity === 'экстраординарного типа' ? 'yellow': 
+              item.rarity === 'Контрабанда' ? 'yellow' :
               item.rarity === 'Засекреченное' ? 'pink' : ''}`}
             >
               <div className="ProfileBottomBlockRing" style={{ border: `2px solid ${
@@ -32,7 +34,8 @@ export const ContentsCase = ({ items }) => {
                 item.rarity === 'Тайное' ? '#db4343' :
                 item.rarity === 'Ширпотреб' ? '#1dd87e' :
                 item.rarity === 'Армейское качество' ? '#3092bb' :
-                item.rarity === 'экстраординарного типа' ? '#cbde22': 
+                item.rarity === 'экстраординарного типа' ? '#cbde22':
+                item.rarity === 'Контрабанда' ? '#cbde22' : 
                 item.rarity === 'Засекреченное' ? '#c9405d' : ''}`}}
               >
                 <img src={item.image} alt="" />
@@ -45,7 +48,8 @@ export const ContentsCase = ({ items }) => {
                   item.rarity === 'Тайное' ? '#7f3535' :
                   item.rarity === 'Ширпотреб' ? '#307d58' :
                   item.rarity === 'Армейское качество' ? '#33687e' :
-                  item.rarity === 'экстраординарного типа' ? '#7c842d': 
+                  item.rarity === 'экстраординарного типа' ? '#7c842d':
+                  item.rarity === 'Контрабанда' ? '#7c842d' :
                   item.rarity === 'Засекреченное' ? '#7f357b' : ''}`}}
                 >{item.rarity}</span>
               </div>

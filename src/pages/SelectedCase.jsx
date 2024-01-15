@@ -34,6 +34,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
   const [caseOpen, setCaseOpen] = useState(false);
   const [winner, setWinner] = useState(false);
   const [sold, setSold] = useState(false);
+  const [price, setPrice] = useState();
   
   const shuffleItems = (itemsToShuffle) => {
     let shuffledItems = itemsToShuffle.slice();
@@ -125,7 +126,9 @@ export const SelectedCase = ({ setLogInOpen }) => {
     return () => clearTimeout(timer);
   }, [dataWin, multipliedItems, itemWidth]);
 
-  const price = dataWin?.data.drops.map((price) => price.price);
+  useEffect(() => {
+    setPrice(dataWin?.data.drops.map((price) => price.price));
+  }, [showNotification])
   
   if (isLoading) {
     return <h3 style={{marginTop: '400px', marginBottom: '400px', textAlign: 'center', fontSize: '24px'}}>Loading...</h3>;
