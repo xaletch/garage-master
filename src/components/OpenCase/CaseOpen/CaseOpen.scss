@@ -342,6 +342,31 @@
             .CaseShadow {
                 transform: rotate(4deg);
                 opacity: 0.7;
+                
+                &.purple::before {
+                    border: 1px solid #9432af;
+                    box-shadow: 0 0 10px #9a33b5, inset 0 0 10px #9a33b5;
+                }
+                &.pink::before {
+                    border: 1px solid #c9405d;
+                    box-shadow: 0 0 10px #c9405d, inset 0 0 10px #c9405d;
+                }
+                &.darkblue::before {
+                    border: 1px solid #4b22de;
+                    box-shadow: 0 0 10px #4b22de, inset 0 0 10px #4b22de;
+                }
+                &.green::before {
+                    border: 1px solid #1dd87e;
+                    box-shadow: 0 0 10px #1dd87e, inset 0 0 10px #1dd87e;
+                }
+                &.yellow::before {
+                    border: 1px solid #cbde22;
+                    box-shadow: 0 0 10px #cbde22, inset 0 0 10px #cbde22;
+                }
+                &.blue::before {
+                    border: 1px solid #3092bb;
+                    box-shadow: 0 0 10px #3092bb, inset 0 0 10px #3092bb;
+                }
             }
         }
     }
