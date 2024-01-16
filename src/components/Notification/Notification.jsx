@@ -2,15 +2,20 @@ import React from 'react';
 
 import './Notification.scss';
 
-export const Notification = ({ price, showNotification, saleItems, isSaleItems }) => {
+export const Notification = ({ price, showNotification, saleItems, isSaleItems, itemWithdrawal }) => {
     return (
         <div className={`notification ${showNotification ? 'open' : ''}`}>
             <div className='notificationInner'>
                 <div className='notificationHead'>Готово</div>
-                {isSaleItems ? 
-                    <p className='notificationText'>{saleItems}</p>
+                {itemWithdrawal !== '' ? 
+                    <p>{itemWithdrawal}</p>
                 :
-                    <p className='notificationText'>Предмет успешно продан за {price} ₽</p>}
+                    (isSaleItems ? 
+                        <p className='notificationText'>{saleItems}</p>
+                    :
+                        <p className='notificationText'>Предмет успешно продан за {price} ₽</p>
+                    )
+                }
                 <div className='notificationLine'></div>
             </div>
         </div>

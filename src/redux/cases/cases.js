@@ -92,16 +92,22 @@ export const casesApi = createApi({
     }),
     getAllItemSale: builder.query({
       query: () => ({
-        url: '/api/v1/user/item/sale-all',
+        url: 'api/v1/user/item/sale-all',
         method: "GET"
       })
     }),
     fetchTradeUrl: builder.mutation({
       query: (body) => ({
-        url: `/api/v1/account/profile/set/trade_url`,
+        url: `api/v1/account/profile/set/trade_url`,
         method: "POST",
         body
       }),
+    }),
+    getWithdrawalItem: builder.query({
+      query: (id) => ({
+        url: `api/v1/user/item/withdrawal/${id}`,
+        method: "GET",
+      })
     }),
 
     // CASE
@@ -128,6 +134,6 @@ export const casesApi = createApi({
 export const useGetCasesQuery = casesApi.endpoints.getCases.useQuery;
 export const { 
   useAddRegistrationMutation, useFetchAuthMutation, useFetchSteamLoginUrlMutation, useFetchCodeMutation,
-  useGetUserQuery, useGetUserItemsQuery, useGetItemSaleQuery, useGetAllItemSaleQuery, useLazyGetAllItemSaleQuery, useFetchTradeUrlMutation,
+  useGetUserQuery, useGetUserItemsQuery, useGetItemSaleQuery, useGetAllItemSaleQuery, useLazyGetAllItemSaleQuery, useFetchTradeUrlMutation, useGetWithdrawalItemQuery, useLazyGetWithdrawalItemQuery,
   useLazyGetItemSaleQuery, useGetCaseByUrlQuery, useGetOpenCaseQuery, useLazyGetOpenCaseQuery
 } = casesApi;

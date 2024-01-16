@@ -8,7 +8,7 @@ import { SortInventory } from '../components/Profile/SortInventory/SortInventory
 import { ProfileBottom } from '../components/Profile/ProfileBottom/ProfileBottom';
 
 import { useSelector } from 'react-redux';
-import { useGetUserItemsQuery, useGetUserQuery, useLazyGetAllItemSaleQuery, useLazyGetItemSaleQuery } from '../redux/cases/cases';
+import { useGetUserItemsQuery, useGetUserQuery, useGetWithdrawalItemQuery, useLazyGetAllItemSaleQuery, useLazyGetItemSaleQuery, useLazyGetWithdrawalItemQuery } from '../redux/cases/cases';
 import { Pagination } from '../components/Profile/Pagination/Pagination';
 import { Notification } from '../components/Notification/Notification';
 
@@ -20,19 +20,44 @@ export const Profile = () => {
 
     const [openSaleMenu, setOpenSaleMenu] = useState(false);
     const [openSaleAllItemMenu, setOpenSaleAllItemMenu] = useState(false);
+    const [openWithdrawalItemMenu, setOpenWithdrawalItemMenu] = useState(false);
 
     const [itemId, setItemId] = useState();
+    const [withdrawalId, setWithdrawalId] = useState();
+    
     const [itemPrice, setItemPrice] = useState();
     const [saleItems, setSaleItems] = useState('');
+    const [itemWithdrawal, setItemWithdrawal] = useState('');
+
     const [isSaleItems, setIsSaleItems] = useState(false);
     const [allSaleItems, setAllSaleItems] = useState(false);
-    
+
     const { data } = useGetUserItemsQuery({ start_price, end_price, page });
     const [sale] = useLazyGetItemSaleQuery();
     const [allSale] = useLazyGetAllItemSaleQuery();
 
+    const [withdrawal] = useLazyGetWithdrawalItemQuery();
+
     const [showNotification, setShowNotification] = useState(false);
     
+    const handleWithdrawalItem = async () => {
+        const {data: withdrawalMessage } = await withdrawal(withdrawalId);
+
+        setOpenWithdrawalItemMenu(false);
+
+        refetchUserItems({ start_price, end_price, page });
+        refetchUserData();
+
+        setShowNotification(true);
+
+        setItemWithdrawal(withdrawalMessage?.message);
+
+        setTimeout(() => {
+            setShowNotification(false);
+            setItemWithdrawal('');
+        }, 3350);
+    }
+
     const handleSaleItem = async () => {
         await sale(itemId);
         refetchUserItems({ start_price, end_price, page });
@@ -83,7 +108,7 @@ export const Profile = () => {
                             <>
                                 <SortInventory setOpenSaleAllItemMenu={setOpenSaleAllItemMenu} setAllSaleItems={setAllSaleItems} />
                                 <div className='ProfileBottom'>
-                                    {data?.data?.items.map((obj, index) => <ProfileBottom key={index} image={obj.image} id={obj.id} name={obj.name} price={obj.price} rarity={obj.rarity} status={obj.status} setOpenSaleMenu={setOpenSaleMenu} setItemId={setItemId} setItemPrice={setItemPrice} />)}
+                                    {data?.data?.items.map((obj, index) => <ProfileBottom key={index} image={obj.image} id={obj.id} name={obj.name} price={obj.price} rarity={obj.rarity} status={obj.status} setOpenSaleMenu={setOpenSaleMenu} setItemId={setItemId} setItemPrice={setItemPrice} setWithdrawalId={setWithdrawalId} setOpenWithdrawalItemMenu={setOpenWithdrawalItemMenu} />)}
                                 </div>
                                 {data?.data?.page_count !== 0 && <Pagination pageCount={data?.data?.page_count} page={page} />}
                             </>
@@ -116,7 +141,20 @@ export const Profile = () => {
                     </div>
                 )}
 
-                <Notification price={itemPrice} showNotification={showNotification} saleItems={saleItems} isSaleItems={isSaleItems} />
+                {openWithdrawalItemMenu && (
+                    <div className='saleMenu' onClick={() => setOpenWithdrawalItemMenu(false)}>
+                        <div className='saleMenuBlock' onClick={(e) => e.stopPropagation()}>
+                            <h3>Подтверждение вывода скинов</h3>
+                                <p>Вы действительно хотите вывести данный предмет</p>
+                            <div className='saleMenuButtons'>
+                                <button className='ok' onClick={() => handleWithdrawalItem()}>Ок</button>
+                                <button className='cancel' onClick={() => setOpenWithdrawalItemMenu(false)}>Отмена</button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                <Notification price={itemPrice} showNotification={showNotification} saleItems={saleItems} isSaleItems={isSaleItems} itemWithdrawal={itemWithdrawal} />
             </div>
         </div>
     )
