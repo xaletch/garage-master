@@ -9,7 +9,7 @@ import { ContentsCase } from '../components/OpenCase/ContentsCase/ContentsCase';
 import { useParams } from 'react-router-dom';
 import { useGetCaseByUrlQuery, useLazyGetOpenCaseQuery } from '../redux/cases/cases';
 import { CaseOpen } from '../components/OpenCase/CaseOpen/CaseOpen';
-import { Notification } from '../components/Notification/Notification';
+import { NotificationCase } from '../components/Notification/NotificationCase';
 
 export const SelectedCase = ({ setLogInOpen }) => {
   const { url } = useParams();
@@ -35,6 +35,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
   const [winner, setWinner] = useState(false);
   const [sold, setSold] = useState(false);
   const [price, setPrice] = useState();
+  const [isWin, setWin] = useState(false);
   
   const shuffleItems = (itemsToShuffle) => {
     let shuffledItems = itemsToShuffle.slice();
@@ -65,7 +66,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
         [shuffledItems[additionalItemIndex], shuffledItems[30]] = [shuffledItems[30], shuffledItems[additionalItemIndex]];
       }
   
-      shuffledItems = shuffledItems.slice(0, 33);
+      shuffledItems = shuffledItems.slice(0, 34);
       setMultipliedItems(shuffledItems);
     }
   };
@@ -78,14 +79,18 @@ export const SelectedCase = ({ setLogInOpen }) => {
     if (caseOpen) {
       const timer = setTimeout(() => {
         setIsSpinning(false);
+        setWin(true);
+      }, 8500);
+
+      const timerWinner = setTimeout(() => {
         setWinner(true);
-      }, 8300);
-      return () => clearTimeout(timer);
+      }, 9680);
+      return () => clearTimeout(timer, timerWinner);
     }
   }, [caseOpen]);
   
   const findLastIndexWithName = (arr, name) => {
-    for (let i = arr.length - 3; i >= 0; i--) {
+    for (let i = arr.length - 4; i >= 0; i--) {
       if (arr[i] && arr[i].name === name) {
         return i;
       }
@@ -102,6 +107,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
 
     setCaseOpen(false);
     setWinner(false);
+    setWin(false);
     setSold(false);
     setOpen(false);
   };
@@ -112,19 +118,38 @@ export const SelectedCase = ({ setLogInOpen }) => {
         const openedItemName = dataWin.data.drops.map((item) => item.name)[0];
         const lastItemIndex = findLastIndexWithName(multipliedItems, openedItemName);
   
+        const getRandomNumber = (min, max) => Math.random() * (max - min) + min;
+        const random = getRandomNumber(0.66, 1.47);
+
         const screenCenterOffset = (5 * itemWidth) / 2;
-        const cardCenterOffset = itemWidth / 1;
+        const cardCenterOffset = itemWidth / random;
   
         if (lastItemIndex !== -1) {
           const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
           const maxTranslate = (multipliedItems.length) * itemWidth;
           setTranslateX(-Math.min(leftPosition, maxTranslate));
         }
+
       }
+
     }, 1000);
-  
+
     return () => clearTimeout(timer);
   }, [dataWin, multipliedItems, itemWidth]);
+
+  useEffect(() => {
+    if (dataWin?.data) {
+      const openedItemName = dataWin.data.drops.map((item) => item.name)[0];
+      const lastItemIndex = findLastIndexWithName(multipliedItems, openedItemName);
+  
+      const screenCenterOffset = (5 * itemWidth) / 2;
+      const cardCenterOffsetWin = itemWidth / 0.95;
+  
+      const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffsetWin);
+      const maxTranslate = (multipliedItems.length) * itemWidth;
+      setTranslateX(-Math.min(leftPosition, maxTranslate));
+    }
+  }, [isWin]);
 
   useEffect(() => {
     setPrice(dataWin?.data.drops.map((price) => price.price));
@@ -152,6 +177,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
                     isSpinning={isSpinning}
                     setSold={setSold}
                     sold={sold}
+                    isWin={isWin}
                     setShowNotification={setShowNotification}
                     multipliedItems={multipliedItems}
                     handleOpenMore={handleOpenMore}
@@ -166,7 +192,7 @@ export const SelectedCase = ({ setLogInOpen }) => {
             {/* КЕЙСЫ, КОНТРАКТЫ, АПРГРЕЙДЫ, ПОЛЬЗОВАТЕЛЕЙ, ОНЛАЙН */}
             {/* <About /> */}
 
-            <Notification price={price} showNotification={showNotification} saleItems={undefined} />
+            <NotificationCase price={price} showNotification={showNotification} />
         </div>
     </div>
   )

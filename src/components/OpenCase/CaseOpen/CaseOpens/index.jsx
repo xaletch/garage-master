@@ -4,13 +4,13 @@ import '../../ContentsCase/ContentsCase.scss';
 
 import { ContentCaseItem } from '../../ContentsCase/ContentCaseItem';
 
-export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color }) => {
+export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color, isWin }) => {
 
     return (
         <div className={`CaseOpens ${color}`}>
             <div className='CaseOpensRoulette'>
                 <div className='CaseOpensContent' style={{
-                    transition: translateX !== 0 ? 'transform 8s cubic-bezier(0.220, 0.350, 0.310, 0.985) 0s' : 'transform 0s',
+                    transition: !isWin ? 'transform 8s cubic-bezier(0.220, 0.350, 0.310, 0.985) 0s' : isWin ? 'transform 1.2s ease' : 'transform 0s ease',
                     transform:`translate(${translateX}px)`
                 }}>
                     {multipliedItems.map((obj, index) => <ContentCaseItem {...obj} key={index} />)}
