@@ -6,7 +6,9 @@ export const Notification = ({ price, showNotification, saleItems, isSaleItems, 
     return (
         <div className={`notification ${showNotification ? 'open' : ''}`}>
             <div className='notificationInner'>
-                <div className='notificationHead'>Готово</div>
+                <div className='notificationHead'>
+                    {itemWithdrawal === 'Ссылка на трейд не установлена' ? 'Ошибка' : 'Готово'}
+                </div>
                 {itemWithdrawal !== '' ? 
                     <p>{itemWithdrawal}</p>
                 :

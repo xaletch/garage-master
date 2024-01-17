@@ -9,6 +9,10 @@ export const ProfileInfo = () => {
 
     const { data, isLoading } = useGetUserQuery(null);
 
+    const handleClick = () => {
+        navigator.clipboard.writeText(data?.data?.profile?.id);
+    };
+
     return (
         <div className='ProfileInfo'>
             <div className='ProfileInfoAvatar'>
@@ -19,7 +23,7 @@ export const ProfileInfo = () => {
                 <div className='userId'>
                     ID
                     <span>#{data?.data?.profile?.id}</span>
-                    <div className='userIdCopy'>
+                    <div className='userIdCopy' onClick={handleClick}>
                         <img src={link_img.copy_userId} alt='' />
                     </div>
                 </div>

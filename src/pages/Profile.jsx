@@ -41,7 +41,7 @@ export const Profile = () => {
     const [showNotification, setShowNotification] = useState(false);
     
     const handleWithdrawalItem = async () => {
-        const {data: withdrawalMessage } = await withdrawal(withdrawalId);
+        const {data: withdrawalMessage, error: withdrawalMessageError } = await withdrawal(withdrawalId);
 
         setOpenWithdrawalItemMenu(false);
 
@@ -50,7 +50,7 @@ export const Profile = () => {
 
         setShowNotification(true);
 
-        setItemWithdrawal(withdrawalMessage?.message);
+        setItemWithdrawal(withdrawalMessage?.message || withdrawalMessageError?.data?.error);
 
         setTimeout(() => {
             setShowNotification(false);
