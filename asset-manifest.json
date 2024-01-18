@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/garage-master/static/css/main.4365d4ef.css",
+    "main.css": "/garage-master/static/css/main.c8f1fdaa.css",
     "main.js": "/garage-master/static/js/main.b05fc850.js",
     "static/media/background.png": "/garage-master/static/media/background.80cefd18d09463326d70.png",
     "static/media/free_case.png": "/garage-master/static/media/free_case.097c1f03bc586c988e09.png",
@@ -14,19 +14,17 @@
     "static/media/case.png": "/garage-master/static/media/case.58a3fc154691558405f7.png",
     "static/media/smoke.png": "/garage-master/static/media/smoke.373038ac6d3754d242b7.png",
     "static/media/Layer 777.png": "/garage-master/static/media/Layer 777.fff34d352151b79e95d5.png",
-    "static/media/winner_right_bg_4.png": "/garage-master/static/media/winner_right_bg_4.fcfe69ae9003cab8a2e6.png",
-    "static/media/winner_right_bg_1.png": "/garage-master/static/media/winner_right_bg_1.a6698088077d3c9282cd.png",
     "static/media/telegram.svg": "/garage-master/static/media/telegram.c14cd5d87bde5c8252437e0780f9dd83.svg",
     "static/media/steam.svg": "/garage-master/static/media/steam.32e2505598c6332ae05da6228e1984b8.svg",
     "static/media/instagram.svg": "/garage-master/static/media/instagram.def7c839b71ae5b94ef1c6decc21e712.svg",
     "index.html": "/garage-master/index.html",
     "static/media/copy-userId.svg": "/garage-master/static/media/copy-userId.ebdb0d20c9e55fdb1ba1530d96938bb8.svg",
     "static/media/update.svg": "/garage-master/static/media/update.8051e15712b34a7c192208bd83b6fccc.svg",
-    "main.4365d4ef.css.map": "/garage-master/static/css/main.4365d4ef.css.map",
+    "main.c8f1fdaa.css.map": "/garage-master/static/css/main.c8f1fdaa.css.map",
     "main.b05fc850.js.map": "/garage-master/static/js/main.b05fc850.js.map"
   },
   "entrypoints": [
-    "static/css/main.4365d4ef.css",
+    "static/css/main.c8f1fdaa.css",
     "static/js/main.b05fc850.js"
   ]
 }
