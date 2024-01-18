@@ -163,10 +163,10 @@ span.orange {
   }
 
   .AllWinner .main {
-    margin: 100px auto !important;
+    margin-top: 100px;
   }
 
-  .WinnerCard:nth-child(2) {
+  .WinnerCard:nth-child(3) {
     display: none !important;
   }
 
@@ -188,17 +188,6 @@ span.orange {
 
   .FreeСase .FreeCaseMain .FreeCaseCard {
     padding: 35px;
-  }
-
-  .AllWinner .main .DailyGiveawayMain .DailyGiveaway .DailyGiveawayLeft .time .blockTime .timeTitle {
-    font-size: 10px !important;
-  }
-
-  .AllWinner .main .DailyGiveawayMain .DailyGiveaway .DailyGiveawayLeft .time .blockTime span {
-    font-size: 10px !important;
-    height: 22px !important;
-    width: 25px !important;
-    border-radius: 3px !important;
   }
 
 
@@ -283,24 +272,8 @@ span.orange {
     flex-wrap: wrap;
   }
 
-  .AllWinner .main .DailyGiveawayMain .DailyGiveaway {
-    height: 100px !important;
-
-
-
-    .DailyGiveawayCenter {
-      font-size: 8px;
-
-      .price {
-        padding: 6px !important;
-        font-size: 8px !important;
-        border-radius: 14px !important;
-      }
-    }
-  }
-
   .AllWinner .main .offers .offersBottom {
-    margin-top: 20px !important;
+    margin-top: 20px;
   }
 
   .offersTop {
@@ -339,7 +312,7 @@ span.orange {
     margin-top: 260px !important;
   }
 
-  .WinnerCard:nth-child(2) {
+  .WinnerCard:nth-child(3) {
     display: flex !important;
   }
 

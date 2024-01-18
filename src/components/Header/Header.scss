@@ -152,6 +152,12 @@
     }
 }
 
+@media screen and (max-width: 1000px) {
+    .Header nav .massager {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 630px) {
     .Header nav .navRight .block p {
         font-size: 12px;
@@ -163,6 +169,13 @@
         
         nav {
             padding: 5px 0;
+
+            .navRight {
+                .ico {
+                    width: 34px;
+                    height: 34px;
+                }
+            }
         }
 
         .logoImg {
@@ -192,128 +205,3 @@
         }
     }
 }
-
-// @media(max-width:1300px) {
-//     .Header {
-//         box-shadow: 0 0 15px black;
-//         border-radius: 20px;
-//         width: calc(100% - 30px);
-//         left: 50%;
-//         right: 0;
-//         top: 10px;
-//         padding: 10px 30px;
-//         transform: translateX(-50%);
-
-//         .massager {
-//             .block {
-//                 p {
-//                     display: none !important;
-//                 }
-//             }
-//         }
-
-//         .follower {
-//             display: none;
-//         }
-
-//         .ico {
-//             border: none !important;
-//         }
-//     }
-// }
-
-// @media (max-width: 900px) {
-//     .Header nav .massager {
-//         display: none;
-//     }
-// }
-
-// @media (max-width: 650px) {
-//     .HeaderMedia .HeaderMediaTop {
-//         padding-top: 60px;
-//     }
-//     .HeaderMedia .HeaderMediaBottom {
-//         padding: 80px auto;
-//     }
-
-//     .HeaderMediaBottom{
-//         flex-wrap: wrap;
-//         gap: 20px;
-//     }
-//     .Header .navRight a .block p {
-//         display: none;
-//     }
-// }
-
-// @media screen and (max-width: 550px) {
-//     .Header nav .navRight, .Header nav .massager {
-//         justify-content: space-between;
-//     }
-//     .Header nav .navRight .block p, .Header nav .massager .block p {
-//         font-size: 14px;
-//     }
-//     .Header nav .navRight .block, .Header nav .massager .block {
-//         gap: 6px;
-//     }
-// }
-// @media (max-width: 480px) {
-//     .Header nav {
-//         align-items: center;
-//             a .logoImg {
-//                 width: 100px;
-//             }
-//     }
-// }
-// @media (max-width: 450px) {
-//     .HeaderMedia .HeaderMediaTop {
-//         padding-top: 60px;
-//     }
-//     .HeaderMedia .HeaderMediaBottom {
-//         display: grid;
-//         grid-template-columns: repeat(2, 1fr);
-//         grid-template-rows: repeat(2, 1fr);
-//     }
-
-//     .HeaderMediaBottom{
-//         flex-wrap: wrap;
-//         gap: 20px;
-//         .block{
-//             h3 {
-//                 padding-left: 30px;
-//             }
-//             a{
-//                 text-align: center;
-//             }
-//         }
-//     }
-//     .HeaderMedia .HeaderMediaTop .massage {
-//         gap: 10px;
-//     }
-//     .HeaderMedia .HeaderMediaTop .massage .block {
-//         width: 25px;
-//         height: 25px;
-//         .ico {
-//             img {
-//                 width: 15px;
-//                 height: 15px;
-//             }
-//         }
-//     }
-// }
-// @media screen and (max-width: 400px) {
-//     .Header {
-//         .mainWidht {
-//             width: 100%;
-//             margin: 0;
-//         }
-//         nav {
-//             padding: 10px 0;
-//             a .logoImg {
-//                 width: 80px;
-//             }
-//         }
-//         .language {
-//             display: none;
-//         }
-//     }
-// }

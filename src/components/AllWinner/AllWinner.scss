@@ -273,15 +273,54 @@
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .AllWinner .main {
+        gap: 22px;
+    }
+    .AllWinner .main .offers .winnerCardMain .winnerCardMainTop .showAll {
+        display: none;
+    }
+    .AllWinner .main .offers .offersTop {
+        margin-top: -60px;
+    }
+    .AllWinner .main .offers .winnerCardMain {
+        flex-wrap: nowrap;
+    }
+    .AllWinner .main .offers .winnerCardMain .winnerCardMainTop {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .AllWinner .main .offers .offersBottom {
+        margin-top: 22px;
+    }
+    .AllWinner .main .offers .winnerCardMain {
+        justify-content: start;
+    }
+    .WinnerCard:nth-child(3) {
+        display: none !important;
+    }
+}
+
 @media screen and (max-width: 900px) {
-    .AllWinner {
-        .main {
-            .DailyGiveawayMain {
-                .DailyGiveaway {
-                    background-size: initial;
-                }
-            }
-        }
+    .AllWinner .main {
+        flex-direction: column;
+        margin-top: 160px;
+    }
+    .WinnerCard:nth-child(3) {
+        display: flex !important;
+    }
+    .AllWinner .main .offers .offersTop {
+        margin-top: -20px;
+        left: 14px;
+    }
+    .AllWinner .main .offers .offersBottom {
+        margin-top: 380px;
+        left: 14px;
+    }
+    .AllWinner .main .DailyGiveawayMain {
+        width: 100% !important;
     }
 }
 
@@ -385,6 +424,9 @@
                 }
             }
         }
+    }
+    .AllWinner .main .DailyGiveawayMain .DailyGiveaway .DailyGiveawayRight {
+        display: none;
     }
 }
 
