@@ -45,13 +45,14 @@
 @media(max-width:550px) {
     .ButtonScrollToTop {
         bottom: 220px;
+        right: 20px;
         img {
             width: 18px;
         }
     }
 }
 
-@media(max-width:550px) {
+@media(max-width: 480px) {
     .ButtonScrollToTop {
         width: 30px;
         height: 30px;

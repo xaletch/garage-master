@@ -217,80 +217,123 @@
     }
 }
 
-@media (max-width: 1300px) {
+@media screen and (max-width: 1280px) {
     .CasesAll {
         .CasesAllMain {
-            grid-template-columns: repeat(4, 1fr);
+            .CaseCard {
+                height: auto;
+            }
         }
     }
 }
 
-@media (max-width: 1050px) {
+@media only screen and (min-width: 335px) and (max-width: 980px) {
+    .CasesAll {
+        margin-top: 32px;
+        .CasesAllMain {
+            margin-top: 22px;
+            grid-template-columns: repeat(auto-fill,minmax(155px, 1fr));
+            gap: 14px;
+        
+            .CaseCard {
+                height: auto;
+                .CaseCardInner {
+                    padding: 16px 12px;
+
+                    .price {
+                        padding: 8px 25px;
+                        font-size: 14px;
+                        line-height: 14px;
+                    }
+                    p {
+                        font-size: 14px;
+                        line-height: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .CasesAll {
+        h2 {
+            font-size: 18px;
+        }
+        .CasesAllMain {
+            .CaseCard {
+                .CaseCardInner {
+                    .price {
+                        padding: 6px 18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .CasesAll {
+        margin-top: 22px;
+        .CasesAllMain {
+            margin-top: 22px;
+            grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+            .CaseCard {
+                .CaseCardInner {
+                    .price {
+                        padding: 4px 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .CasesAll {
+        margin-top: 22px;
+        .CasesAllMain {
+            .CaseCard {
+                .CaseCardInner {
+                    padding: 10px 0 12px 0;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(135px,1fr));
+                
+                    .price {
+                        grid-row: 2;
+                        width: 75%;
+                        margin: 0 auto;
+                        margin-top: 6px;
+                        text-align: center;
+                    }
+                    p {
+                        text-align: center;
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 335px) {
     .CasesAll {
         .CasesAllMain {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            grid-template-columns: repeat(auto-fill,minmax(120px,1fr));
+            gap: 14px;
+            .CaseCard {
+                height: auto;
+                .price {
+                    padding: 6px 4px;
+                    width: 110px;
+                    margin: 0 auto;
+                    margin-top: 6px;
+                    text-align: center;
+                    font-size: 12px;
+                    line-height: 12px;
+                }
+            }
         }
-    }
-}
-
-@media (max-width: 900px) {
-    .CasesAll {
-        .CasesAllMain {
-            // gap: 28px;
-        }
-    }
-}
-
-@media (max-width: 650px) {
-    .CasesAll {
-        .CasesAllMain {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-}
-
-@media (max-width: 550px) {
-    .CasesByRarity nav a{
-        width: auto;
-        padding: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .CasesAll {
-        .CasesAllMain {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-    }
-}
-
-@media (max-width: 450px) {
-    .CasesAll .CasesAllMain .CaseCard {
-        padding: 18px;
-    }
-    .CaseCard{
-        .title {
-            font-size: 11px;
-        }
-    }
-    .CasesAll .CasesAllMain .CaseCard .price {
-        font-size: 10px;
-        padding: 5px 20px;
-    }
-
-    .CasesByRarity .CasesByRarityCardMain .CasesByRarityCard {
-        .title {
-            font-size: 11px;
-        }
-        .price {
-            font-size: 10px;
-            padding: 5px 20px;
-        }
-    }
-
-    .AllWinner .main .offers .offersTop, .AllWinner .main .offers .offersBottom {
-        left: auto;
     }
 }

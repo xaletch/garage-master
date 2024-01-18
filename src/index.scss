@@ -88,61 +88,61 @@ span.orange {
   background-position: -2px -2px;
 }
 
-.c1 {
-  // background: linear-gradient(45deg, #3a1359 0%, #180838 100%);
+// .c1 {
+//   // background: linear-gradient(45deg, #3a1359 0%, #180838 100%);
 
-  &::before {
-      background-color: #9830b3;
-  }
-}
+//   &::before {
+//       background-color: #9830b3;
+//   }
+// }
 
-.c2 {
-  // background: linear-gradient(45deg, #173366 0%, #180939 100%);
+// // .c2 {
+//   // background: linear-gradient(45deg, #173366 0%, #180939 100%);
 
-  &::before {
-      background-color: #3092bb;
-  }
-}
+//   // &::before {
+//       // background-color: #3092bb;
+//   // }
+// // }
 
-.c3 {
-  // background: linear-gradient(45deg, #40143f 0%, #190838 100%);
+// .c3 {
+//   // background: linear-gradient(45deg, #40143f 0%, #190838 100%);
 
-  &::before {
-      background-color: #c9405d;
-  }
-}
+//   &::before {
+//       background-color: #c9405d;
+//   }
+// }
 
-.c4 {
-  // background: linear-gradient(45deg, #193447 0%, #180938 100%);
+// .c4 {
+//   // background: linear-gradient(45deg, #193447 0%, #180938 100%);
 
-  &::before {
-      background-color: #1dd87e;
-  }
-}
+//   &::before {
+//       background-color: #1dd87e;
+//   }
+// }
 
-.c5 {
-  // background: linear-gradient(45deg, #59292f 0%, #190938 100%);
+// .c5 {
+//   // background: linear-gradient(45deg, #59292f 0%, #190938 100%);
 
-  &::before {
-      background-color: #de7422;
-  }
-}
+//   &::before {
+//       background-color: #de7422;
+//   }
+// }
 
-.c6 {
-  // background: linear-gradient(45deg, #594c29 0%, #382809 100%);
+// .c6 {
+//   // background: linear-gradient(45deg, #594c29 0%, #382809 100%);
 
-  &::before {
-      background-color: #cbde22;
-  }
-}
+//   &::before {
+//       background-color: #cbde22;
+//   }
+// }
 
-.c7 {
-  // background: linear-gradient(45deg, #2a2959 0%, #091238 100%);
+// .c7 {
+//   // background: linear-gradient(45deg, #2a2959 0%, #091238 100%);
 
-  &::before {
-      background-color: #4b22de;
-  }
-}
+//   &::before {
+//       background-color: #4b22de;
+//   }
+// }
 
 @media(max-width:1300px) {
   .AllWinner .main .offers {
@@ -154,10 +154,6 @@ span.orange {
 
   .FreeCaseMain {
     gap: 54px !important;
-  }
-
-  .WinnerCard:nth-child(3) {
-    display: none !important;
   }
 }
 
@@ -220,11 +216,6 @@ span.orange {
 
   body {
     font-size: 10px;
-  }
-
-  .WinnerCard:nth-child(3),
-  .WinnerCard:nth-child(2) {
-    display: none !important;
   }
 
   .HeaderBottom .HeaderBottomCard {
@@ -345,7 +336,7 @@ span.orange {
   }
 
   .AllWinner .main .offers .offersBottom {
-    margin-top: 300px !important;
+    margin-top: 260px !important;
   }
 
   .WinnerCard:nth-child(2) {
@@ -366,10 +357,6 @@ span.orange {
   }
   h2 {
     font-size: 20px;
-  }
-
-  .mainWidht {
-    width: calc(100% - 30px);
   }
 
   .CasesByRarity nav a,
@@ -408,19 +395,9 @@ span.orange {
     margin: auto;
   }
 
-  .AllWinner .main .DailyGiveawayMain .DailyGiveaway .DailyGiveawayRight {
-    display: none;
-  }
-
   .FreeСase .FreeCaseMain,
   .CasesByRarity .CasesByRarityCardMain,
   .AllWinner .main .offers .winnerCardMain {
     justify-content: center !important;
-  }
-  .AllWinner .main .offers .winnerCardMain .WinnerCard{
-    padding: 15px !important;
-  }
-  .AllWinner .main .offers .winnerCardMain .WinnerCard .img{
-    width: 120px!important;
   }
 }

@@ -1,5 +1,8 @@
+.AllWinner .main .offers .offersTop, .AllWinner .main .offers .offersBottom {
+    margin-top: -10px;
+}
 .AllWinner{
-    margin-top: 300px;
+    margin-top: 120px;
     position: relative;
     .main{
         color: white;
@@ -35,9 +38,6 @@
                     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.438);
                     border-radius: 17px;
                     background-color: rgb(24, 8, 56);
-                    background-position: right bottom;
-                    background-repeat: no-repeat;
-                    background-image: url(../../img/winnersBlockkrown.png);
                     display: flex;
                     width: fit-content;
                     flex-direction: column;
@@ -45,30 +45,7 @@
                     padding: 20px;
                     color: white;
                     gap: 20px;
-                    .img.c1{
-                        .border{
-                            border: solid 1px #8b2ca5;
-                            box-shadow: 0px 0px 5px #8b2ca5 ,inset 0px 0px 5px #8b2ca5;
-                        }
-                        
-                        background-image: url(../../img/winner_card_bg_1.png);
-                    }
-                    .img.c2{
-                        .border{
-                            border: solid 1px #3092bb;
-                            box-shadow: 0px 0px 5px #3092bb ,inset 0px 0px 5px #3092bb;
-                        }
-                        background-image: url(../../img/winner_card_bg_2.png);
-                    }
-                    // .img.c3{
-                    //     background-image: url(../../img/winner_card_bg_3.png);
-                    // }
-                    // .img.c4{
-                    //     background-image: url(../../img/winner_card_bg_4.png);
-                    // }
-                    // .img.c5{
-                    //     background-image: url(../../img/winner_card_bg_5.png);
-                    // }
+
                     .img{
                         width: 130px;
                         height: 130px;
@@ -77,9 +54,19 @@
                         border-radius: 12px;
                         background-position: center;
                         background-size: calc(100% + 10px);
+
+                        &.c1 {
+                            background-image: linear-gradient(to top, #244e7b, #170b35);
+                        }
+                        &.c2 {
+                            background-image: linear-gradient(to top, #531b71, #1c093c);
+                        }
+
                         .border{
                             border-radius: 50%;
                             margin: auto;
+                            position: relative;
+                            z-index: 3;
                         }
                     }
                     span{
@@ -113,7 +100,7 @@
                     }
                     .every{
                         color: #e07520;
-                        font-weight: 700;
+                        font-weight: 600;
                         opacity: 1;
                     }
                 }
@@ -142,20 +129,68 @@
                 background-position: center;
             }
             .DailyGiveaway.c1{
-                background-image: url(../../img/winner_right_bg_1.png);
+                background: #180838;
+                position: relative;
+                overflow: hidden;
+
+                &::before, &::after {
+                    content: '';
+                    position: absolute;
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 100%;
+                    filter: blur(25px);
+                    z-index: 1;
+                    opacity: 0.5;
+                    background: #9830b3;
+                }
+
+                &::before {
+                    top: -60px;
+                    right: 70px;
+                }
+                &::after {
+                    bottom: -50px;
+                    right: -70px;
+                }
+
                 .price{
                     border: solid 2px #9830b3;
-                    box-shadow: 0 0 10px #9830b3;
+                    box-shadow: 0 0 8px #9830b3, inset 0 0 8px #9830b3;
                 }
                 .title{
                     color:#9830b3;
                 }
             }
             .DailyGiveaway.c4{
-                background-image: url(../../img/winner_right_bg_4.png);
+                background: #180838;
+                position: relative;
+                overflow: hidden;
+
+                &::before, &::after {
+                    content: '';
+                    position: absolute;
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 100%;
+                    filter: blur(25px);
+                    z-index: 1;
+                    opacity: 0.5;
+                    background: #1dd87e;
+                }
+
+                &::before {
+                    top: -60px;
+                    right: 70px;
+                }
+                &::after {
+                    bottom: -50px;
+                    right: -70px;
+                }
+
                 .price{
-                    border: solid 2px #1dd87e;
-                    box-shadow: 0 0 10px #1dd87e;
+                    border: solid 1px #1dd87e;
+                    box-shadow: 0 0 8px #1dd87e, inset 0 0 8px #1dd87e;
                 }
                 .title{
                     color:#1dd87e;
@@ -166,7 +201,6 @@
                 box-shadow: 0 0 10px #00000036;
                 padding: 20px 50px;
                 border-radius: 20px;
-                // background-color: #180838;
                 background-size: cover;
                 background-position: calc(50% - 50px);
                 gap: 20px;
@@ -232,6 +266,137 @@
                         scale: 1.4;
                         position: absolute;
                         top: 0;left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .AllWinner {
+        .main {
+            .DailyGiveawayMain {
+                .DailyGiveaway {
+                    background-size: initial;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .AllWinner {
+        .main {
+            gap: 24px;
+            .offers {
+                .offersTop, .offersBottom {
+                    left: 13px;
+                    .orangeBtn {
+                        padding: 10px;
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+                }
+                .offersTop {
+                    margin-top: -14px;
+                }
+            }
+            .DailyGiveawayMain {
+                gap: 16px;
+                .DailyGiveaway {
+                    padding: 18px 32px;
+                    background-size: initial;
+                    .DailyGiveawayLeft {
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+                    .DailyGiveawayRight {
+                        width: 80px;
+                    }
+                    .DailyGiveawayCenter .title {
+                        font-size: 10px;
+                        line-height: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .AllWinner {
+        margin-top: 160px;
+        
+        .main {
+            .offers {
+                .winnerCardMain {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(135px,1fr));
+
+                    .winnerCardMainTop {
+                        display: none;
+                    }
+                    .WinnerCard {
+                        width: 100%;
+                        gap: 12px;
+                        padding: 14px;
+
+                        .img {
+                            width: 100px;
+                            height: 100px;
+                        }
+
+                        .user .userName {
+                            font-size: 12px;
+                            line-height: 14px;
+                        }
+                        .item {
+                            font-size: 12px;
+                            line-height: 14px;
+                        }
+                    }
+                }
+            }
+            .DailyGiveawayMain {
+                .DailyGiveaway {
+                    padding: 16px 28px;
+                    .DailyGiveawayRight {
+                        width: 80px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .AllWinner {
+        .main {
+            .offers {
+                .winnerCardMain {
+                    .WinnerCard {
+                        padding: 12px;
+                        .img {
+                            width: 120px;
+                            height: 120px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .AllWinner {        
+        .main {
+            .DailyGiveawayMain {
+                .DailyGiveaway {
+                    padding: 10px 16px;
+                    gap: 12px;
+                    .DailyGiveawayRight {
+                        width: 80px;
                     }
                 }
             }
