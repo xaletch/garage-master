@@ -55,7 +55,7 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
 
             </div>
           </div>
-          <Link to={'/garage-master'} onClick={() => window.scrollTo(0, 0)}><img className='logoImg' src={link_img.logo} alt="" /></Link>
+          <Link to={'/'} onClick={() => window.scrollTo(0, 0)}><img className='logoImg' src={link_img.logo} alt="" /></Link>
           <div className="navRight">
             {userData?.balance &&
               <div className="block wallet">

@@ -302,7 +302,6 @@
 @media screen and (max-width: 560px) {
     .ProfileBottom {
         .ProfileBottomCard {
-            padding: 22px 16px;
             height: 170px;
             .ProfileBottomBlockRing {
                 margin-top: 4px;
@@ -348,10 +347,10 @@
     .ProfileBottom {
         .ProfileBottomCard {
             .ProfileBottomBlockRing {
-                width: 60px;
-                height: 60px;
+                width: 70px;
+                height: 70px;
                 img {
-                    width: 70px;
+                    width: 85px;
                     height: auto;
                 }
             }

@@ -8,7 +8,7 @@ export const ReturnHomeButton = ({ name }) => {
     return (
         <div className='ReturnHomeButton'>
             <div className='ReturnHomeItem'>
-                <Link to='/garage-master'>Главная</Link>
+                <Link to='/'>Главная</Link>
             </div>
             /
             <div className='ReturnHomeItem'>

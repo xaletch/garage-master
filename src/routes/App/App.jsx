@@ -31,7 +31,7 @@ function App() {
       {/* Все выигрыши */}
       {/* <HeaderBottom /> */}
       <Routes>
-        <Route path='garage-master' element={<Home setHeaderOpen={setHeaderOpen} />}></Route>
+        <Route path='/' element={<Home setHeaderOpen={setHeaderOpen} />}></Route>
         <Route path='profile' element={<Profile />}></Route>
         <Route path='selected-case/:url' element={<SelectedCase setLogInOpen={setLogInOpen} />}></Route>
         
