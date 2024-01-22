@@ -12,12 +12,25 @@
     }
 }
 
+@media(max-width:900px) {
+    .ContentsCase {
+        margin-top: 80px;
+        h2 {
+            font-size: 30px;
+            line-height: 32px;
+        }
+    }
+}
+
 @media(max-width:450px) {
     .ContentsCase {
         margin-top: 40px;
         h2 {
             font-size: 18px;
             line-height: 20px;
+        }
+        .ContentWrapper {
+            margin-top: 20px;
         }
     }
 }

@@ -14,3 +14,21 @@
         }
     }
 }
+
+@media screen and (max-width: 620px) {
+    .ReturnHomeButton {
+        .ReturnHomeItem {
+            font-size: 14px;
+            line-height: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ReturnHomeButton {
+        .ReturnHomeItem {
+            font-size: 12px;
+            line-height: 14px;
+        }
+    }
+}

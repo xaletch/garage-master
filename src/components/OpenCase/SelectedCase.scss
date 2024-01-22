@@ -46,6 +46,7 @@
 
 @media(max-width:900px) {
     .SelectedCase {
+        margin-top: 100px;
         .CaseShadow {
             width: 600px;
             height: 380px;
@@ -54,10 +55,8 @@
 }
 
 @media(max-width:650px) {
-    // .OpenCase {
-    //     margin-top: 260px;
-    // }
     .SelectedCase {
+        margin-top: 80px;
         .CaseShadow {
             width: 500px;
             height: 280px;
@@ -70,6 +69,7 @@
         margin-top: 250px;
     }
     .SelectedCase {
+        margin-top: 60px;
         .CaseShadow {
             width: 370px;
             height: 220px;

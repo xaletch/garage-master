@@ -444,14 +444,8 @@
 @media(max-width: 1080px) {
     .CaseOpen {
         .CaseOpens {
-            width: 100%;
-        }
-    }
-}
-
-@media(max-width:900px) {
-    .CaseOpen {
-        .CaseOpens {
+            margin-top: 30px;
+            width: 830px;
             .CaseOpensContent {
                 left: -80px;
             }
@@ -459,14 +453,41 @@
     }
 }
 
-@media(max-width:650px) {
+@media(max-width:900px) {
     .CaseOpen {
         .CaseName {
-            font-size: 26px;
-            line-height: 28px;
+            font-size: 30px;
+            line-height: 32px;
         }
         .CaseOpens {
+            margin-top: 20px;
+            .CaseOpensContent {
+                left: -80px;
+            }
+        }
+        .CaseOpenBtn {
+            margin-top: 160px;
+            .btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .CaseOpen {
+        .CaseOpens {
+            width: 1000px;
+            height: auto;
             margin-top: 30px;
+            padding: 16px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            .CaseOpensRoulette {
+                left: 80px;
+            }
             .CaseOpensContent {
                 .ContentCaseItem {
                     height: auto;
@@ -494,11 +515,39 @@
                     top: 130px;
                 }
                 h3 {
-                    bottom: -130px;
+                    top: 310px;
                 }
                 .CaseShadow {
                     width: 400px;
                     height: 200px;
+                }
+            }
+        }
+        .CaseOpenBtn {
+            margin-top: 110px;
+        }
+    }
+}
+
+@media(max-width:650px) {
+    .CaseOpen {
+        .CaseName {
+            font-size: 26px;
+            line-height: 28px;
+        }
+        .CaseOpens {
+            margin-top: 30px;
+            .CaseOpensContent {
+                .ContentCaseItem {
+                    height: auto;
+                    .ContentCaseItemRing {
+                        width: 80px;
+                        max-height: 80px;
+                        img {
+                            width: 100px;
+                            height: auto;
+                        }
+                    }
                 }
             }
         }
@@ -508,7 +557,7 @@
             }
         }
         .CaseOpenBtn {
-            margin-top: 80px;
+            margin-top: 110px;
             .btn {
                 padding: 12px 30px;
                 font-size: 14px;
@@ -518,6 +567,7 @@
 }
 @media (max-width: 550px) {
     .CaseOpen {
+        margin-top: 20px;
         .CaseName {
             font-size: 18px;
             line-height: 20px;
@@ -530,6 +580,9 @@
             position: relative;
             left: 50%;
             transform: translateX(-50%);
+            .CaseOpensRoulette {
+                left: 80px;
+            }
             .CaseOpensContent {
                 .ContentCaseItem {
                     .ContentCaseItemDescription {
@@ -547,16 +600,22 @@
             }
             .winnings {
                 img {
-                    width: 155px;
+                    width: 280px;
                 }
                 &::before {
-                    width: 175px;
-                    height: 175px;
-                    top: 38px;
+                    width: 230px;
+                    height: 230px;
+                    top: 100px;
                 }
                 .CaseShadow {
-                    width: 320px;
+                    left: -200px;
+                    width: 420px;
                     height: 200px;
+                }
+                h3 {
+                    top: 240px;
+                    font-size: 16px;
+                    line-height: 18px;
                 }
             }
         }
@@ -564,7 +623,7 @@
             margin-top: 60px;
             .btn {
                 width: 180px;
-                padding: 12px 30px;
+                padding: 12px 20px;
                 font-size: 12px;
                 line-height: 12px;
             }
@@ -581,54 +640,28 @@
         .CaseOpens {
             margin-top: 20px;
             padding: 12px;
-            // .CaseOpensContent {
-            //     .ContentCaseItem {
-            //         min-width: 95px;
-            //         height: auto;
-            //         padding: 12px 10px;
-            //         .ContentCaseItemRing {
-            //             width: 55px;
-            //             height: 55px;
-            //             img {
-            //                 width: 55px;
-            //                 height: 55px;
-            //             }
-            //         }
-            //         .ContentCaseItemDescription {
-            //             .name {
-            //                 margin-bottom: 4px;
-            //                 font-size: 10px;
-            //                 line-height: 12px;
-            //             }
-            //             .categoryName {
-            //                 font-size: 8px;
-            //                 line-height: 10px;
-            //             }
-            //         }
-            //     }
-            // }
-            // .winnings {
-            //     img {
-            //         width: 140px;
-            //     }
-            //     &::before {
-            //         width: 155px;
-            //         height: 155px;
-            //         top: 28px;
-            //     }
-            //     .CaseShadow {
-            //         width: 270px;
-            //         height: 200px;
-            //     }
-            // }
+            .winnings {
+                h3 {
+                    font-size: 14px;
+                    line-height: 16px;
+                }
+            }
         }
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .CaseOpen {
         .CaseOpenBtn {
-            margin-top: 40px;
-            .btn {
-                width: 140px;
-                padding: 12px 15px;
-                font-size: 12px;
-                line-height: 12px;
+            margin-top: 65px;
+            .button {
+                width: 220px;
+                flex-direction: column;
+                gap: 12px;
+
+                button {
+                    width: 100%;
+                }
             }
         }
     }
