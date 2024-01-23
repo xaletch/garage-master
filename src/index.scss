@@ -35,14 +35,20 @@ h2 {
 
 body {
   font-family: "Gilroy";
-  background: #180838 url(./img/background.png);
+  background: #200038;
   color: white;
-  background-position: top center;
+  background-image: url('./img/Фон.png');
+  background-repeat: no-repeat;
+  background-position: center 140px;
+  background-attachment: fixed;
   font-size: 13px;
   display: block;
 }
 .App {
   overflow: hidden;
+}
+.main {
+  
 }
 h2 {
   font-size: 30px;
@@ -51,6 +57,13 @@ h2 {
 a {
   color: white;
   text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
 }
 
 .mainWidht {
@@ -153,9 +166,6 @@ span.orange {
   .AllWinner .main .offers {
     width: 46% !important;
   }
-  .App {
-    padding-top: 20px;
-  }
 
   .FreeCaseMain {
     gap: 54px !important;
@@ -173,10 +183,6 @@ span.orange {
 
   .WinnerCard:nth-child(3) {
     display: none !important;
-  }
-
-  .App {
-    padding-top: 20px;
   }
 
   .AllWinner .main .offers {
@@ -311,10 +317,6 @@ span.orange {
 
   .AllWinner .main .DailyGiveawayMain {
     width: 100% !important;
-  }
-
-  .AllWinner .main .offers .offersBottom {
-    margin-top: 260px !important;
   }
 
   .WinnerCard:nth-child(3) {

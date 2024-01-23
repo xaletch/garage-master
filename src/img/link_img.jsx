@@ -29,6 +29,10 @@ import case_open_arrow_top from './case_open_arrow_top.png';
 import case_open_arrow_bottom from './case_open_arrow_bottom.png';
 import winnings from './winnings.png';
 import scroll_top from './scroll_top.png';
+import replenishSvg from './replenishSvg.svg';
+import steamSvg from './steamSvg.svg'
+import live from './live.svg';
+import top from './top.svg';
 
 const link_img={
     logo:logo,
@@ -62,6 +66,10 @@ const link_img={
     case_open_arrow_bottom: case_open_arrow_bottom,
     winnings: winnings,
     scroll_top: scroll_top,
+    replenishSvg: replenishSvg,
+    steamSvg: steamSvg,
+    live: live,
+    top: top,
 }
 
 

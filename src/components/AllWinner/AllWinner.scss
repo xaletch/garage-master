@@ -306,7 +306,6 @@
 @media screen and (max-width: 900px) {
     .AllWinner .main {
         flex-direction: column;
-        margin-top: 160px;
     }
     .WinnerCard:nth-child(3) {
         display: flex !important;
@@ -316,7 +315,7 @@
         left: 14px;
     }
     .AllWinner .main .offers .offersBottom {
-        margin-top: 380px;
+        margin-top: 360px;
         left: 14px;
     }
     .AllWinner .main .DailyGiveawayMain {
@@ -365,8 +364,7 @@
 
 @media (max-width: 560px) {
     .AllWinner {
-        margin-top: 160px;
-        
+        margin-top: 80px;
         .main {
             .offers {
                 .winnerCardMain {
