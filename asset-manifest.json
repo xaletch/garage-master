@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/garage-master/static/css/main.5066c3f2.css",
-    "main.js": "/garage-master/static/js/main.7700089e.js",
+    "main.css": "/garage-master/static/css/main.5b45b3b2.css",
+    "main.js": "/garage-master/static/js/main.da580d1a.js",
     "static/media/Фон.png": "/garage-master/static/media/Фон.362dd0f6fdb8f0c1a1c0.png",
     "static/media/free_case.png": "/garage-master/static/media/free_case.097c1f03bc586c988e09.png",
     "static/media/radial.png": "/garage-master/static/media/radial.b68b8ae64540b09ad396.png",
@@ -12,6 +12,7 @@
     "static/media/gilroy-semibold.ttf": "/garage-master/static/media/gilroy-semibold.6780292641f883b3dad3.ttf",
     "static/media/gilroy-bold.ttf": "/garage-master/static/media/gilroy-bold.b900325e44ec0c673e88.ttf",
     "static/media/case.png": "/garage-master/static/media/case.58a3fc154691558405f7.png",
+    "static/media/Платежные средства.svg": "/garage-master/static/media/Платежные средства.68c690e036cee3c8abefdcb612df6cf6.svg",
     "static/media/smoke.png": "/garage-master/static/media/smoke.373038ac6d3754d242b7.png",
     "static/media/Layer 777.png": "/garage-master/static/media/Layer 777.fff34d352151b79e95d5.png",
     "static/media/replenishSvg.svg": "/garage-master/static/media/replenishSvg.0084af7c83f9a954bc20782be3849bd7.svg",
@@ -24,11 +25,11 @@
     "static/media/copy-userId.svg": "/garage-master/static/media/copy-userId.ebdb0d20c9e55fdb1ba1530d96938bb8.svg",
     "static/media/live.svg": "/garage-master/static/media/live.ef568f494c851830cfa38ae7e9dcaf5b.svg",
     "static/media/update.svg": "/garage-master/static/media/update.8051e15712b34a7c192208bd83b6fccc.svg",
-    "main.5066c3f2.css.map": "/garage-master/static/css/main.5066c3f2.css.map",
-    "main.7700089e.js.map": "/garage-master/static/js/main.7700089e.js.map"
+    "main.5b45b3b2.css.map": "/garage-master/static/css/main.5b45b3b2.css.map",
+    "main.da580d1a.js.map": "/garage-master/static/js/main.da580d1a.js.map"
   },
   "entrypoints": [
-    "static/css/main.5066c3f2.css",
-    "static/js/main.7700089e.js"
+    "static/css/main.5b45b3b2.css",
+    "static/js/main.da580d1a.js"
   ]
 }
