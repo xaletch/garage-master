@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import link_img from '../../img/link_img'
 
-import { useFetchSteamLoginUrlMutation, useGetUserQuery } from '../../redux/cases/cases';
+import { useFetchSteamLoginUrlMutation } from '../../redux/cases/cases';
 import { Link } from 'react-router-dom';
 
-export const HeaderTop = () => {
-  const [userData, setUserData] = useState(null);
-  const { refetch: refetchUserData, data, isFetching } = useGetUserQuery(null);
-
-  useEffect(() => {
-    if (data && !isFetching) {
-      setUserData(data?.data?.profile);
-      console.log('update')
-    }
-  }, [isFetching, refetchUserData]);
+export const HeaderTop = ({ data, isFetching, refetchUserData, error, userData }) => {
 
   // REGISTER STEAM
   const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
   useEffect(() => {
       setTimeout(() => {
-          refetchUserData();
+          refetchUserData(); 
       }, 500);
   }, [isAuth]);
+
+  if (error?.data?.error) {
+    document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
 
   const [fetchSteamLoginUrl] = useFetchSteamLoginUrlMutation();
   const [steamLoginErr, setSteamLoginErr] = useState();
@@ -29,7 +24,7 @@ export const HeaderTop = () => {
   const handleSteamLogin = async () => {
       try {
           const { data } = await fetchSteamLoginUrl({ type: "steam" });
-          window.open(data.data.redirect_url);
+          window.location.href = data.data.redirect_url;
       } catch (error) {
           setSteamLoginErr('Неудалось получить ссылку')
       }
@@ -89,7 +84,7 @@ export const HeaderTop = () => {
         </div>
 
         <div className='wrapper'>
-          {userData?.balance === "0.00" ? (
+          {!userData?.balance ? (
             <button className='replenishBtn'>
               <span>
                 <img src={link_img.replenishSvg} alt='' />

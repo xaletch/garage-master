@@ -33,6 +33,7 @@ import replenishSvg from './replenishSvg.svg';
 import steamSvg from './steamSvg.svg'
 import live from './live.svg';
 import top from './top.svg';
+import meansOfPayment from './Платежные средства.svg'
 
 const link_img={
     logo:logo,
@@ -70,6 +71,7 @@ const link_img={
     steamSvg: steamSvg,
     live: live,
     top: top,
+    meansOfPayment: meansOfPayment
 }
 
 

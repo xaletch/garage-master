@@ -10,7 +10,7 @@ import { HeaderWinnings } from './HeaderWinnings';
 export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
   const [follower, setFollower] = useState(16900);
   const [userData, setUserData] = useState(null);
-  const { data, isFetching, refetch: refetchUserData } = useGetUserQuery(null);
+  const { data, isFetching, refetch: refetchUserData, error } = useGetUserQuery(null);
 
   useEffect(() => {
     if (data && !isFetching) {
@@ -19,11 +19,9 @@ export default function Header({setHeaderOpen, setLogInOpen,HeaderOpen }) {
     }
   }, [isFetching, refetchUserData]);
 
-  const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
-
   return (
     <div className='Header'>
-      <HeaderTop />
+      <HeaderTop data={data} refetchUserData={refetchUserData} isFetching={isFetching} error={error} userData={userData} />
       <HeaderWinnings />
     </div>
   )

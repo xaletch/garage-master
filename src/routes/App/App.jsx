@@ -18,12 +18,6 @@ function App() {
   const [LogInOpen, setLogInOpen] = useState(false);
   const [HeaderOpen, setHeaderOpen] = useState(false);
 
-  const accessTokenCookie = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
-  useEffect(() => {
-    if (accessTokenCookie) {
-    }
-  }, [accessTokenCookie]);
-
   return (
     <div className="App">
       <Header setHeaderOpen={setHeaderOpen} HeaderOpen={HeaderOpen} setLogInOpen={setLogInOpen} />

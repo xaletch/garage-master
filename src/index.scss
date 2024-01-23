@@ -59,6 +59,11 @@ a {
   text-decoration: none;
 }
 
+ul, li {
+  padding: 0;
+  list-style-type: none;
+}
+
 button {
   padding: 0;
   border: none;
@@ -266,22 +271,6 @@ span.orange {
 
   }
 
-  .Footer .block {
-    width: calc(50% - 20px) !important;
-
-    .imgs {
-      img {
-        display: block;
-        height: 25px;
-        object-fit: cover;
-      }
-    }
-  }
-
-  .Footer .mainWidht {
-    gap: 20px;
-    flex-wrap: wrap;
-  }
 
   .AllWinner .main .offers .offersBottom {
     margin-top: 20px;
@@ -354,16 +343,8 @@ span.orange {
     padding: 0 !important;
   }
 
-  .Footer .block {
-    width: calc(100% - 20px) !important;
-  }
-
   .Header nav .massager {
     display: none !important;
-  }
-
-  .Footer .block .imgs {
-    width: 100% !important;
   }
 }
 

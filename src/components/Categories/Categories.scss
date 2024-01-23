@@ -1,0 +1,74 @@
+.categories {
+    max-width: 1350px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #310062;
+}
+.categories .categoriesList {
+    height: 54px;
+    display: flex;
+    align-items: center;
+}
+
+.categories .categoriesList .item {
+    width: 150px;
+    height: 100%;
+    border-radius: 5px;
+    color: #FFF;
+    text-shadow: 1px 1px 2px #000;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .3s ease;
+    user-select: none;
+}
+.categories .categoriesList .item:hover {
+    background: #651d9c;
+}
+.categories .categoriesList .item.active {
+    background: #4E127D;
+}
+
+@media screen and (max-width: 1390px) {
+    .categories {
+        width: 1112px;
+    }
+    .categories .categoriesList .item {
+        width: auto;
+        padding: 20px 15px;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    .categories {
+        width: 100%;
+        overflow: scroll;
+    }
+    .categories .categoriesList {
+        width: 1112px;
+    }
+    .categories::-webkit-scrollbar {
+        height: 2px;
+    }
+    .categories::-webkit-scrollbar-thumb {
+        background: #A7510D;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .categories .categoriesList {
+        height: 40px;
+    }
+    .categories .categoriesList {
+        width: 1010px;
+    }
+    .categories .categoriesList .item {
+        padding: 8px 16px;
+        font-size: 12px;
+        line-height: 12px;
+    }
+}
