@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 import { Routes, Route } from 'react-router-dom';
 
 import Footer from '../../components/Footer/Footer';
@@ -7,29 +5,28 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import HeaderBottom from '../../components/HeaderBottom/HeaderBottom';
 
-import LogIn from '../../components/LogIn/LogIn';
 import './App.scss';
 
 import { Profile } from '../../pages/Profile';
 import { Home } from '../../pages/Home';
 import { SelectedCase } from '../../pages/SelectedCase';
+import { useState } from 'react';
 
 function App() {
-  const [LogInOpen, setLogInOpen] = useState(false);
-  const [HeaderOpen, setHeaderOpen] = useState(false);
+
+  const [login, setLogin] = useState(false);
 
   return (
     <div className="App">
-      <Header setHeaderOpen={setHeaderOpen} HeaderOpen={HeaderOpen} setLogInOpen={setLogInOpen} />
+      <Header setLogin={setLogin} login={login} />
       {/* Все выигрыши */}
       {/* <HeaderBottom /> */}
       <Routes>
-        <Route path='/' element={<Home setHeaderOpen={setHeaderOpen} />}></Route>
+        <Route path='/' element={<Home />}></Route>
         <Route path='profile' element={<Profile />}></Route>
-        <Route path='selected-case/:url' element={<SelectedCase setLogInOpen={setLogInOpen} />}></Route>
+        <Route path='selected-case/:url' element={<SelectedCase setLogin={setLogin} login={login} />}></Route>
       </Routes>
       <Footer />
-      <LogIn LogInOpen={LogInOpen} setLogInOpen={setLogInOpen} />
     </div>
   );
 }

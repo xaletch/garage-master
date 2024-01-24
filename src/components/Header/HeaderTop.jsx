@@ -4,7 +4,7 @@ import link_img from '../../img/link_img'
 import { useFetchSteamLoginUrlMutation } from '../../redux/cases/cases';
 import { Link } from 'react-router-dom';
 
-export const HeaderTop = ({ data, isFetching, refetchUserData, error, userData }) => {
+export const HeaderTop = ({ data, isFetching, refetchUserData, error, userData, setLogin, login }) => {
 
   // REGISTER STEAM
   const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
@@ -25,10 +25,19 @@ export const HeaderTop = ({ data, isFetching, refetchUserData, error, userData }
       try {
           const { data } = await fetchSteamLoginUrl({ type: "steam" });
           window.location.href = data.data.redirect_url;
+
+          setLogin(false);
       } catch (error) {
           setSteamLoginErr('Неудалось получить ссылку')
       }
   };
+
+  useEffect(() => {
+    if (login === true) {
+      handleSteamLogin();
+      console.log('login to steam');
+    }
+  }, [login]);
 
   return (
     <div className='HeaderTop'>
@@ -84,7 +93,7 @@ export const HeaderTop = ({ data, isFetching, refetchUserData, error, userData }
         </div>
 
         <div className='wrapper'>
-          {!userData?.balance ? (
+          {userData?.balance === "0.00" ? (
             <button className='replenishBtn'>
               <span>
                 <img src={link_img.replenishSvg} alt='' />

@@ -11,7 +11,7 @@ import { useGetCaseByUrlQuery, useLazyGetOpenCaseQuery } from '../redux/cases/ca
 import { CaseOpen } from '../components/OpenCase/CaseOpen/CaseOpen';
 import { NotificationCase } from '../components/Notification/NotificationCase';
 
-export const SelectedCase = ({ setLogInOpen }) => {
+export const SelectedCase = ({ setLogin, login }) => {
   const { url } = useParams();
 
   const { data: caseInfo, isLoading } = useGetCaseByUrlQuery(url);
@@ -186,7 +186,23 @@ export const SelectedCase = ({ setLogInOpen }) => {
                 </div>
             )
           }
-            {!isOpen && <Case setIsSpinning={setIsSpinning} open={open} name={caseInfo?.data.name} price={caseInfo?.data?.price} image={caseInfo?.data?.image} url={caseInfo?.data?.url} color={caseInfo?.data?.color} setOpen={setOpen} setLogInOpen={setLogInOpen} setTranslateX={setTranslateX} setCaseOpen={setCaseOpen} dataWin={dataWin} findLastIndexWithName={findLastIndexWithName} multipliedItems={multipliedItems} itemWidth={itemWidth} />}
+            {!isOpen && <Case 
+              setIsSpinning={setIsSpinning}
+              open={open}
+              name={caseInfo?.data.name}
+              price={caseInfo?.data?.price}
+              image={caseInfo?.data?.image}
+              url={caseInfo?.data?.url}
+              color={caseInfo?.data?.color}
+              setOpen={setOpen}
+              setTranslateX={setTranslateX}
+              setCaseOpen={setCaseOpen}
+              dataWin={dataWin}
+              findLastIndexWithName={findLastIndexWithName}
+              multipliedItems={multipliedItems}
+              itemWidth={itemWidth}
+              setLogin={setLogin}
+            />}
             <ContentsCase items={caseInfo?.data?.items}/>
             
             {/* КЕЙСЫ, КОНТРАКТЫ, АПРГРЕЙДЫ, ПОЛЬЗОВАТЕЛЕЙ, ОНЛАЙН */}

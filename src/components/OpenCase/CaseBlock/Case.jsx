@@ -7,7 +7,7 @@ import { useGetUserQuery, useGetUserItemsQuery } from '../../../redux/cases/case
 
 import { useSelector } from 'react-redux';
 
-export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOpen, setIsSpinning,  setTranslateX, setCaseOpen, dataWin, findLastIndexWithName, multipliedItems, itemWidth }) => {
+export const Case = ({ name, price, image, url, color, setOpen, open, setIsSpinning,  setTranslateX, setCaseOpen, dataWin, findLastIndexWithName, multipliedItems, itemWidth, setLogin }) => {
     const countCase = ["1", "25", "50", "100"];
 
     const isAuth = document.cookie?.split('; ').find(row => row?.startsWith('access_token='));
@@ -102,7 +102,7 @@ export const Case = ({ name, price, image, url, color, setOpen, open, setLogInOp
                         : (
                             <>
                                 <span>Вы не авторизованы</span>
-                                <button className='TopUpBalanceBtn' onClick={() => setLogInOpen(true)}>Авторизоваться</button>
+                                <button className='TopUpBalanceBtn' onClick={() => setLogin(true)}>Авторизоваться</button>
                             </>
                     )}
                 </div>

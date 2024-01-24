@@ -5,13 +5,13 @@ import AllWinner from '../components/AllWinner/AllWinner';
 import { AllCases } from '../components/AllCases/AllCases.jsx';
 import { Categories } from '../components/Categories/Categories.jsx';
 
-export const Home = ({ setHeaderOpen }) => {
+export const Home = () => {
     return (
         <>
             <Categories />
 
             {/* РАЗДАЧИ */}
-            <AllWinner setHeaderOpen={setHeaderOpen}/>
+            <AllWinner />
 
             <AllCases />
             {/* <FreeCase />
