@@ -21,6 +21,7 @@ function App() {
       <Header setLogin={setLogin} login={login} />
       {/* Все выигрыши */}
       {/* <HeaderBottom /> */}
+
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='profile' element={<Profile />}></Route>

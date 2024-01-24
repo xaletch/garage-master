@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import { useGetCaseByUrlQuery, useLazyGetOpenCaseQuery } from '../redux/cases/cases';
 import { CaseOpen } from '../components/OpenCase/CaseOpen/CaseOpen';
 import { NotificationCase } from '../components/Notification/NotificationCase';
+import { Loading } from '../components/Loading/Loading';
 
 export const SelectedCase = ({ setLogin, login }) => {
   const { url } = useParams();
@@ -156,7 +157,7 @@ export const SelectedCase = ({ setLogin, login }) => {
   }, [showNotification])
   
   if (isLoading) {
-    return <h3 style={{marginTop: '400px', marginBottom: '400px', textAlign: 'center', fontSize: '24px'}}>Loading...</h3>;
+    return <Loading />
   }
 
   return (

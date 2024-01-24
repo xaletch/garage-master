@@ -111,61 +111,32 @@ span.orange {
   align-items: center;
 }
 
-// .c1 {
-//   // background: linear-gradient(45deg, #3a1359 0%, #180838 100%);
+@keyframes colorChange {
+  0% {
+    fill: #742b9b;
+  }
+  25% {
+    fill: #A7510D;
+  }
+  50% {
+    fill: #26638f;
+  }
+  75% {
+    fill: #de7422;
+  }
+  100% {
+    fill: #742b9b;
+  }
+}
 
-//   &::before {
-//       background-color: #9830b3;
-//   }
-// }
+.Loading .LoadingContent svg path {
+  animation: colorChange 5s infinite;
+}
 
-// // .c2 {
-//   // background: linear-gradient(45deg, #173366 0%, #180939 100%);
-
-//   // &::before {
-//       // background-color: #3092bb;
-//   // }
-// // }
-
-// .c3 {
-//   // background: linear-gradient(45deg, #40143f 0%, #190838 100%);
-
-//   &::before {
-//       background-color: #c9405d;
-//   }
-// }
-
-// .c4 {
-//   // background: linear-gradient(45deg, #193447 0%, #180938 100%);
-
-//   &::before {
-//       background-color: #1dd87e;
-//   }
-// }
-
-// .c5 {
-//   // background: linear-gradient(45deg, #59292f 0%, #190938 100%);
-
-//   &::before {
-//       background-color: #de7422;
-//   }
-// }
-
-// .c6 {
-//   // background: linear-gradient(45deg, #594c29 0%, #382809 100%);
-
-//   &::before {
-//       background-color: #cbde22;
-//   }
-// }
-
-// .c7 {
-//   // background: linear-gradient(45deg, #2a2959 0%, #091238 100%);
-
-//   &::before {
-//       background-color: #4b22de;
-//   }
-// }
+.Loading .LoadingContent svg {
+  width: 300px;
+  transform: rotate(10deg);
+}
 
 @media(max-width:1300px) {
   .AllWinner .main .offers {
@@ -315,6 +286,10 @@ span.orange {
   .offers {
     width: 100% !important;
   }
+
+  .Loading .LoadingContent svg {
+    width: 250px;
+  }
 }
 
 @media(max-width:550px) {
@@ -346,6 +321,10 @@ span.orange {
   .Header nav .massager {
     display: none !important;
   }
+
+  .Loading .LoadingContent svg {
+    width: 200px;
+  }
 }
 
 @media(max-width:450px) {
@@ -360,5 +339,9 @@ span.orange {
   .CasesByRarity .CasesByRarityCardMain,
   .AllWinner .main .offers .winnerCardMain {
     justify-content: center !important;
+  }
+
+  .Loading .LoadingContent svg {
+    width: 150px;
   }
 }
