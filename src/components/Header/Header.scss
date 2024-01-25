@@ -175,9 +175,14 @@
     justify-content: center;
     user-select: none;
     cursor: pointer;
+    border: 2px solid #797A7B;
+    background: linear-gradient(114deg, #171A25 0%, #797A7B 44.79%, #797A7B 58.85%, #171A25 100%);
 }
 .DropItem img {
     width: 95px;
+}
+.DropItemLoading {
+    transform: rotate(10deg);
 }
 .DropItem.pink {
     border: 2px solid #FF00BC;

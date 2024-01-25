@@ -8,7 +8,7 @@ import { SortInventory } from '../components/Profile/SortInventory/SortInventory
 import { ProfileBottom } from '../components/Profile/ProfileBottom/ProfileBottom';
 
 import { useSelector } from 'react-redux';
-import { useGetUserItemsQuery, useGetUserQuery, useGetWithdrawalItemQuery, useLazyGetAllItemSaleQuery, useLazyGetItemSaleQuery, useLazyGetWithdrawalItemQuery } from '../redux/cases/cases';
+import { useGetUserItemsQuery, useGetUserQuery, useLazyGetAllItemSaleQuery, useLazyGetItemSaleQuery, useLazyGetWithdrawalItemQuery } from '../redux/cases/cases';
 import { Pagination } from '../components/Profile/Pagination/Pagination';
 import { Notification } from '../components/Notification/Notification';
 

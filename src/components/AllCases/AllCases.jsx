@@ -2,7 +2,7 @@ import React from 'react'
 
 import './AllCases.scss';
 import { Link } from 'react-router-dom';
-import { useGetCasesQuery } from '../../redux/cases/cases';
+import { useGetCasesQuery } from '../../redux/cases/cases.js';
 import { Loading } from '../Loading/Loading';
 
 export const AllCases = () => {

@@ -5,7 +5,6 @@ import './SortInventory.scss';
 
 import { useDispatch } from 'react-redux';
 import { setMaxPrice, setMinPrice, setPage } from '../../../redux/slices/filterCase';
-import { useLazyGetAllItemSaleQuery } from '../../../redux/cases/cases';
 
 const category = ["Кейсы"];
 const priceList = [

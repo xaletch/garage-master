@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetUserItemsQuery } from '../../../redux/cases/cases';
+import { useGetUserItemsQuery } from '../../../redux/cases/cases.js';
 
 import { useDispatch } from 'react-redux';
 import { setPage } from '../../../redux/slices/filterCase';

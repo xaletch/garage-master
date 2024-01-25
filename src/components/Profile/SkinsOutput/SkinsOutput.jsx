@@ -6,7 +6,7 @@ import link_img from '../../../img/link_img';
 import { useForm } from 'react-hook-form';
 
 import { Link } from 'react-router-dom';
-import { useFetchTradeUrlMutation, useGetUserQuery } from '../../../redux/cases/cases';
+import { useFetchTradeUrlMutation, useGetUserQuery } from '../../../redux/cases/cases.js';
 
 export const SkinsOutput = ({ cls, start_price, end_price }) => {
     const [tradeUrlErr, setTradeUrlErr] = useState(true);

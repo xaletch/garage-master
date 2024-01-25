@@ -93,7 +93,7 @@ export const HeaderTop = ({ data, isFetching, refetchUserData, error, userData, 
         </div>
 
         <div className='wrapper'>
-          {userData?.balance === "0.00" ? (
+          {!isAuth || userData?.balance === "0.00" ? (
             <button className='replenishBtn'>
               <span>
                 <img src={link_img.replenishSvg} alt='' />

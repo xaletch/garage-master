@@ -1,8 +1,70 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import link_img from '../../img/link_img'
+
+import Echo from 'laravel-echo';
+import Pusher from 'pusher-js';
+
 import { Item } from './Winnings/Item'
+import { useGetInfoQuery } from '../../redux/cases/cases';
+import { WinInfoLoading } from '../Loading/WinInfoLoading/WinInfoLoading';
+
+const dropInfo = [
+  {"name": "Live", icon: link_img.live, id: "last_drop"},
+  {"name": "Top", icon: link_img.top, id: "top_drop"}
+]
 
 export const HeaderWinnings = () => {
+  const [online, setOnline] = useState(0);
+  const [selectedDrops, setSelectedDrops] = useState("last_drop");
+  
+  const [liveDrop, setLiveDrop] = useState([]);
+  const [topDrop, setTopDrop] = useState([]);
+
+  const { data: InfoData, isSuccess: isInfoDataSuccess, isLoading } = useGetInfoQuery();
+
+  useEffect(() => {
+    setLiveDrop(InfoData?.data?.last_drop);
+    setTopDrop(InfoData?.data?.top_drop);
+  }, [isInfoDataSuccess])
+
+  function websocket() {
+    if(window.Echo !== undefined){
+      return;
+    }
+    window.Pusher = Pusher;
+
+    window.Echo = new Echo({
+      broadcaster: 'pusher',
+      key: "18xwd7j98lwfnoenqho973ee9k81wkbv",
+      wsHost: "ws.aeep.ru",
+      wsPort: 80,
+      cluster: 'mt1',
+      wssPort: 443,
+      forceTLS: false,
+      enabledTransports: ['ws', 'wss'],
+    });
+  
+    window.Echo.channel('main')
+      .listen('.live.drop', (drops) => {
+        setLiveDrop(prev => [drops, ...prev.slice(0, 23)]);
+      })
+      .listen('.live.top', (topDrop) => {
+        setTopDrop(topDrop);
+      })
+      .listen('.live.online', (e) => {
+        setOnline(e.online);
+      });
+  }
+
+
+  useEffect(() => {
+    websocket();
+  }, []);
+
+  const handleCategoryInfo = (id) => {
+    setSelectedDrops(id);
+  }
+
   return (
     <div className='HeaderWinnings'>
       <div className='HeaderWinningsWrapper'>
@@ -18,49 +80,27 @@ export const HeaderWinnings = () => {
               </svg>
               Online
             </div>
-            <p className='onlineNumber'>137</p>
+            <p className='onlineNumber'>{online}</p>
           </div>
         
           <div className='rouletteSelection'>
-            <div className='item active'>
-              <span>
-                <img src={link_img.live} alt='' />
-              </span>
-              Live
-            </div>
-            <div className='item'>
-              <span>
-                <img src={link_img.top} alt='' />
-              </span>
-              Top
-            </div>
+            {dropInfo.map((item, index) => (
+              <div className={`item ${selectedDrops === item.id ? 'active' : ''}`} key={index} onClick={() => handleCategoryInfo(item.id)}>
+                <span>
+                  <img src={item.icon} alt='' />
+                </span>
+                {item.name}
+              </div>
+            ))}
           </div>
         </div>
         <div className='HeaderDropsItems'>
-          <Item rarity={'Засекреченное'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_awp/cu_awp_psychopath/65a578390f790.png'} />
-          <Item rarity={'Запрещённое'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_glock/aa_glock_18_urban_moon_fever/65a577faed594.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_revolver/gs_revolver_tread/65a57a04172b9.png'} />
-          <Item rarity={'экстраординарного типа'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/motorcycle_gloves/motorcycle_choco_boom/65a57b1dc9fe3.png'} />
-          <Item rarity={'Ширпотреб'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_bizon/hy_bamboo_jungle_ink/65a578f590852.png'} />
-          <Item rarity={'Тайное'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_fiveseven/cu_fiveseven_hyperbeast/65a577e8c474b.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
-          <Item rarity={'Промышленное качество'} itemImg={'https://backend.aeep.ru/storage/images/items/skins/weapon_nova/so_red/65a5796fa2a77.png'} />
+          {isLoading ? Array.from({ length: 24 }, (_, index) => <WinInfoLoading key={index} />) : (
+            selectedDrops === "last_drop" ? 
+              liveDrop?.map((item, index) => <Item key={index} rarity={item.item_rarity} image={item.item_image} />)
+            :
+              topDrop?.map((item, index) => <Item key={index} rarity={item.item_rarity} image={item.item_image} />)
+          )}
         </div>
       </div>
     </div>

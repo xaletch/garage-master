@@ -7,7 +7,7 @@ import { Case } from '../components/OpenCase/CaseBlock/Case';
 import { ContentsCase } from '../components/OpenCase/ContentsCase/ContentsCase';
 
 import { useParams } from 'react-router-dom';
-import { useGetCaseByUrlQuery, useLazyGetOpenCaseQuery } from '../redux/cases/cases';
+import { useGetCaseByUrlQuery, useLazyGetOpenCaseQuery } from '../redux/cases/cases.js';
 import { CaseOpen } from '../components/OpenCase/CaseOpen/CaseOpen';
 import { NotificationCase } from '../components/Notification/NotificationCase';
 import { Loading } from '../components/Loading/Loading';

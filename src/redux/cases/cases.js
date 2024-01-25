@@ -25,14 +25,6 @@ export const casesApi = createApi({
   }),
   // tagTypes: ["UserInfo"],
   endpoints: (builder) => ({
-    addRegistration: builder.mutation({
-      query: (body) => ({
-        url: "api/v1/account/signup",
-        method: "POST",
-        body
-      }),
-      // invalidatesTags: ["UserInfo"],
-    }),
     fetchSteamLoginUrl: builder.mutation({
       query: (body) => ({
         url: '/api/v1/account/signin-social',
@@ -40,20 +32,13 @@ export const casesApi = createApi({
         body,
       }),
     }),
-    fetchAuth: builder.mutation({
-      query: (body) => ({
-        url: "api/v1/account/signin",
-        method: "POST",
-        body
+
+    // info
+    getInfo: builder.query({
+      query: () => ({
+        url: `api/v1/info/get`,
+        method: "GET",
       }),
-      invalidatesTags: ["UserInfo"],
-    }),
-    fetchCode: builder.mutation({
-      query: (body) => ({
-        url: "api/v1/account/signup-confirm",
-        method: "POST",
-        body
-      })
     }),
 
     // PROFILE
@@ -133,7 +118,8 @@ export const casesApi = createApi({
 
 export const useGetCasesQuery = casesApi.endpoints.getCases.useQuery;
 export const { 
-  useAddRegistrationMutation, useFetchAuthMutation, useFetchSteamLoginUrlMutation, useFetchCodeMutation,
+  useFetchSteamLoginUrlMutation,
+  useGetInfoQuery,
   useGetUserQuery, useGetUserItemsQuery, useGetItemSaleQuery, useGetAllItemSaleQuery, useLazyGetAllItemSaleQuery, useFetchTradeUrlMutation, useGetWithdrawalItemQuery, useLazyGetWithdrawalItemQuery,
   useLazyGetItemSaleQuery, useGetCaseByUrlQuery, useGetOpenCaseQuery, useLazyGetOpenCaseQuery
 } = casesApi;

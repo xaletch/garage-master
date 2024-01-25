@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Item = ({ rarity, itemImg }) => {
+export const Item = ({ rarity, image }) => {
   return (
     <div className={`DropItem ${
         rarity === 'Запрещённое' ? 'purple' :
@@ -13,7 +13,7 @@ export const Item = ({ rarity, itemImg }) => {
         rarity === 'Засекреченное' ? 'pink' : ''
     }`}>
         <div className='inner'>
-            <img src={itemImg} alt='winning' />
+            <img src={image} alt='winning' />
         </div>
     </div>
   )
