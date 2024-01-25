@@ -1,11 +1,13 @@
 {
   "files": {
-    "main.css": "/garage-master/static/css/main.0745ff5f.css",
-    "main.js": "/garage-master/static/js/main.aef980d8.js",
+    "main.css": "/garage-master/static/css/main.8d31e948.css",
+    "main.js": "/garage-master/static/js/main.ca8851b2.js",
+    "static/js/845.b7f75e16.chunk.js": "/garage-master/static/js/845.b7f75e16.chunk.js",
     "static/media/Фон.png": "/garage-master/static/media/Фон.362dd0f6fdb8f0c1a1c0.png",
     "static/media/free_case.png": "/garage-master/static/media/free_case.097c1f03bc586c988e09.png",
     "static/media/radial.png": "/garage-master/static/media/radial.b68b8ae64540b09ad396.png",
     "static/media/bgBlock.png": "/garage-master/static/media/bgBlock.34f2e9b23df5728fd918.png",
+    "static/media/opening case.mp3": "/garage-master/static/media/opening case.3729ef1592d821932345.mp3",
     "static/media/winnings.png": "/garage-master/static/media/winnings.37c42113532e6da2bbb3.png",
     "static/media/gilroy-medium.ttf": "/garage-master/static/media/gilroy-medium.f9f832b0ed3f1ab138c9.ttf",
     "static/media/gilroy-regular.ttf": "/garage-master/static/media/gilroy-regular.b91b0127c56a8e5f9e83.ttf",
@@ -26,11 +28,12 @@
     "static/media/copy-userId.svg": "/garage-master/static/media/copy-userId.ebdb0d20c9e55fdb1ba1530d96938bb8.svg",
     "static/media/live.svg": "/garage-master/static/media/live.ef568f494c851830cfa38ae7e9dcaf5b.svg",
     "static/media/update.svg": "/garage-master/static/media/update.8051e15712b34a7c192208bd83b6fccc.svg",
-    "main.0745ff5f.css.map": "/garage-master/static/css/main.0745ff5f.css.map",
-    "main.aef980d8.js.map": "/garage-master/static/js/main.aef980d8.js.map"
+    "main.8d31e948.css.map": "/garage-master/static/css/main.8d31e948.css.map",
+    "main.ca8851b2.js.map": "/garage-master/static/js/main.ca8851b2.js.map",
+    "845.b7f75e16.chunk.js.map": "/garage-master/static/js/845.b7f75e16.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0745ff5f.css",
-    "static/js/main.aef980d8.js"
+    "static/css/main.8d31e948.css",
+    "static/js/main.ca8851b2.js"
   ]
 }
