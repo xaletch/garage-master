@@ -198,17 +198,91 @@
 }
 .DropItem.yellow {
     border: 2px solid #c6d125;
-    background: linear-gradient(114deg, rgba(34, 2, 26, 0.80) 0%, #c6d125 44.79%, #c6d125 58.85%, rgba(51, 4, 39, 0.80) 100%);;
+    background: linear-gradient(114deg, rgba(34, 2, 26, 0.80) 0%, #c6d125 44.79%, #c6d125 58.85%, rgba(51, 4, 39, 0.80) 100%);
 }
 .DropItem.green {
     border: 2px solid #2cbb76;
-    background: linear-gradient(114deg, rgba(34, 2, 26, 0.80) 0%, #2cbb76 44.79%, #2cbb76 58.85%, rgba(51, 4, 39, 0.80) 100%);;
+    background: linear-gradient(114deg, rgba(34, 2, 26, 0.80) 0%, #2cbb76 44.79%, #2cbb76 58.85%, rgba(51, 4, 39, 0.80) 100%);
 }
 .DropItem.red {
     border: 2px solid #b12e2e;
-    background: linear-gradient(114deg, rgba(34, 2, 26, 0.80) 0%, #b12e2e 44.79%, #b12e2e 58.85%, rgba(51, 4, 39, 0.80) 100%);; 
+    background: linear-gradient(114deg, rgba(34, 2, 26, 0.80) 0%, #b12e2e 44.79%, #b12e2e 58.85%, rgba(51, 4, 39, 0.80) 100%);
 }
-
+.Drop {
+    position: relative;
+}
+.DropInfo {
+    width: 160px;
+    border: 2px solid #A7510D;
+    border-radius: 8px;
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
+    z-index: 99;
+    display: none;
+}
+.DropInfo::before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -8px;
+    left: 42.5%;
+    border-radius: 2px;
+    border: 2px solid #A7510D;
+    background: #200038;
+    transform: rotateZ(45deg) skew(2deg, 2deg);
+    z-index: -1;
+  }
+.Drop:hover .DropInfo {
+    display: block;
+}
+.DropInfo .Inner {
+    display: flex;
+    border-radius: 8px;
+    background: #200038;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.DropInfo .InfoCase img {
+    width: 80px;
+}
+.DropInfo .InfoCase {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.DropInfo .InfoCase p {
+    text-align: center;
+    color: #dbdbdb;
+    font-size: 12px;
+    line-height: 14px;
+}
+.DropInfo .InfoUser {
+    width: 100%;
+    padding: 8px;
+    background: #4E127D;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.DropInfo .InfoUser img {
+    width: 24px;
+    height: 24px;
+    border-radius: 100px;
+    background: #ccc;
+}
+.DropInfo .InfoUser p {
+    font-size: 12px;
+    line-height: 14px;
+}
 
 @media screen and (max-width: 1600px) {
     .HeaderCenterLine {
@@ -308,6 +382,41 @@
     }
     .DropItem img {
         width: 77px;
+    }
+
+    // 
+    .DropInfo {
+        width: 120px;
+        left: 50%;
+        top: 78px;
+    }
+    .DropInfo::before {
+        width: 12px;
+        height: 12px;
+        top: -8px;
+      }
+    .DropInfo .InfoCase img {
+        width: 70px;
+    }
+    .DropInfo .InfoCase {
+        padding: 6px;
+        gap: 6px;
+    }
+    .DropInfo .InfoCase p {
+        font-size: 10px;
+        line-height: 12px;
+    }
+    .DropInfo .InfoUser {
+        padding: 6px;
+        gap: 6px;
+    }
+    .DropInfo .InfoUser img {
+        width: 20px;
+        height: 20px;
+    }
+    .DropInfo .InfoUser p {
+        font-size: 10px;
+        line-height: 12px;
     }
 }
 

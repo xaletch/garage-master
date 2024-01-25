@@ -129,6 +129,9 @@ export const SelectedCase = ({ setLogin, login }) => {
           const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
           const maxTranslate = (multipliedItems.length) * itemWidth;
           setTranslateX(-Math.min(leftPosition, maxTranslate));
+
+          const audio = new Audio('../sounds/opening case.mp3');
+          audio.play();
         }
 
       }

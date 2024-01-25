@@ -46,7 +46,7 @@ export const HeaderWinnings = () => {
   
     window.Echo.channel('main')
       .listen('.live.drop', (drops) => {
-        setLiveDrop(prev => [drops, ...prev.slice(0, 23)]);
+        setTimeout(() => setLiveDrop(prev => [drops, ...prev.slice(0, 24)]), 10000);
       })
       .listen('.live.top', (topDrop) => {
         setTopDrop(topDrop);
@@ -97,9 +97,25 @@ export const HeaderWinnings = () => {
         <div className='HeaderDropsItems'>
           {isLoading ? Array.from({ length: 24 }, (_, index) => <WinInfoLoading key={index} />) : (
             selectedDrops === "last_drop" ? 
-              liveDrop?.map((item, index) => <Item key={index} rarity={item.item_rarity} image={item.item_image} />)
+              liveDrop?.map((item, index) => <Item
+                key={index}
+                rarity={item.item_rarity}
+                image={item.item_image}
+                caseImg={item.case_image}
+                itemName={item.item_name}
+                userImg={item.user_image}
+                userName={item.user_name}
+              />)
             :
-              topDrop?.map((item, index) => <Item key={index} rarity={item.item_rarity} image={item.item_image} />)
+              topDrop?.map((item, index) => <Item
+                key={index}
+                rarity={item.item_rarity}
+                image={item.item_image}
+                caseImg={item.case_image}
+                itemName={item.item_name}
+                userImg={item.user_image}
+                userName={item.user_name}
+              />)
           )}
         </div>
       </div>
