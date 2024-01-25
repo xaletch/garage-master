@@ -46,7 +46,7 @@ export const HeaderWinnings = () => {
   
     window.Echo.channel('main')
       .listen('.live.drop', (drops) => {
-        setTimeout(() => setLiveDrop(prev => [drops, ...prev.slice(0, 24)]), 10000);
+        setTimeout(() => setLiveDrop(prev => [drops, ...prev.slice(0, 24)]), 10150);
       })
       .listen('.live.top', (topDrop) => {
         setTopDrop(topDrop);

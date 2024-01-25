@@ -23,7 +23,7 @@ export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color, is
             {winner && (
                 drop.map((item, index) => (
                     <div className={`winnings ${color}`} key={index}>
-                        <div className={`CaseShadow ${color}`}></div>
+                        <div className={`CaseShadow CaseShadow-2 ${color}`}></div>
                         <img src={item.image} alt={item.name} />
                         <h3>{item.name}</h3>
                     </div>

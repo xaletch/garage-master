@@ -77,6 +77,4 @@ const link_img={
 }
 
 
-
-
 export default link_img

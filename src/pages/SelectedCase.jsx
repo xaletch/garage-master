@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import '../components/OpenCase/SelectedCase.scss';
 
+import useSound from 'use-sound';
+
 import { ReturnHomeButton } from '../components/ReturnHomeButton/ReturnHomeButton';
 import { Case } from '../components/OpenCase/CaseBlock/Case';
 import { ContentsCase } from '../components/OpenCase/ContentsCase/ContentsCase';
@@ -12,7 +14,9 @@ import { CaseOpen } from '../components/OpenCase/CaseOpen/CaseOpen';
 import { NotificationCase } from '../components/Notification/NotificationCase';
 import { Loading } from '../components/Loading/Loading';
 
-export const SelectedCase = ({ setLogin, login }) => {
+import openCaseSound from '../sounds/sounds.jsx';
+
+export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
   const { url } = useParams();
 
   const { data: caseInfo, isLoading } = useGetCaseByUrlQuery(url);
@@ -113,6 +117,16 @@ export const SelectedCase = ({ setLogin, login }) => {
     setOpen(false);
   };
 
+  // ЗВУК ОТКРЫТИЯ КЕЙСА
+  const [playAudioOpen, { stop }] = useSound(openCaseSound.openingCaseSound, { volume: 0.5 });
+
+  useEffect(() => {
+    localStorage.setItem('muted', isMuted);
+    if (isMuted) {
+      stop();
+    }
+  }, [isMuted]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (dataWin && dataWin?.data) {
@@ -129,17 +143,21 @@ export const SelectedCase = ({ setLogin, login }) => {
           const leftPosition = (lastItemIndex * itemWidth) - (screenCenterOffset - cardCenterOffset);
           const maxTranslate = (multipliedItems.length) * itemWidth;
           setTranslateX(-Math.min(leftPosition, maxTranslate));
-
-          const audio = new Audio('../sounds/opening case.mp3');
-          audio.play();
         }
 
       }
-
     }, 1000);
 
     return () => clearTimeout(timer);
   }, [dataWin, multipliedItems, itemWidth]);
+
+  useEffect(() => {
+    if (dataWin?.data && !isMuted) {
+      setTimeout(() => {
+        playAudioOpen();
+      }, 1000)
+    }
+  }, [dataWin]);
 
   useEffect(() => {
     if (dataWin?.data) {
