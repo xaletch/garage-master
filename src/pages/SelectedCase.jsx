@@ -152,8 +152,9 @@ export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
   }, [dataWin, multipliedItems, itemWidth]);
 
   useEffect(() => {
-    if (dataWin?.data && !isMuted) {
+    if (dataWin?.data && isMuted !== true) {
       setTimeout(() => {
+
         playAudioOpen();
       }, 1000)
     }
@@ -184,7 +185,7 @@ export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
   return (
     <div className='SelectedCase'>
         <div className='main mainWidht'>
-          <ReturnHomeButton name={caseInfo?.data?.name} />
+          <ReturnHomeButton name={caseInfo?.data?.name} stop={stop} />
           {isOpen &&
             (
                 <div className='CaseOpen'>
