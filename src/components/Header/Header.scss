@@ -61,12 +61,15 @@
 
     color: #FFF;
     text-align: center;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
-    line-height: 11px;
+    line-height: 12px;
     text-transform: uppercase;
     box-sizing: border-box;
     cursor: pointer;
+}
+.HeaderTop .wrapper .loadingBtn {
+    filter: blur(1.5px);
 }
 .HeaderTop .wrapper .balance {
     font-size: 14px;
@@ -76,11 +79,20 @@
 .HeaderTop .wrapper .buttonsRight span {
     display: flex;
 }
+.HeaderTop .wrapper .buttonsRight .AvatarLoading {
+    width: 44px;
+    height: 44px;
+    border-radius: 50px;
+    border: 2px solid #4E127D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: blur(1px);
+}
 .HeaderTop .wrapper .buttonsRight .ProfileImg img {
     width: 44px;
     height: 44px;
     border-radius: 50px;
-    background: #cccccc;
 }
 .HeaderTop .wrapper .buttonsRight .sound {
     cursor: pointer;
@@ -330,6 +342,14 @@
         width: 32px;
         height: 32px;
     }
+    .HeaderTop .wrapper .buttonsRight .AvatarLoading {
+        width: 32px;
+        height: 32px;
+    }
+    .HeaderTop .wrapper .buttonsRight .AvatarLoading svg {
+        width: 18px;
+        height: 18px;
+    }
     .HeaderTop .wrapper .languages .arrow svg {
         width: 8px;
     }
@@ -437,6 +457,14 @@
     .HeaderLeftLine {
         left: -250px;
     }
+    .HeaderTop .wrapper .replenishBtn, .loginBtn {
+        font-size: 10px;
+        line-height: 11px;
+    }
+    .HeaderTop .wrapper .balance {
+        font-size: 12px;
+        line-height: 14px;
+    }
 }
 
 @media screen and (max-width: 440px) {
@@ -446,11 +474,17 @@
 }
 
 @media screen and (max-width: 389px) {
+    .HeaderTop .inner .wrapper {
+        gap: 8px;
+    }
     .HeaderLeftLine {
         left: -350px;
     }
     .HeaderRightLine {
         right: 0px;
+    }
+    .HeaderTop .wrapper .buttonsRight .languages {
+        display: none;
     }
 }
 

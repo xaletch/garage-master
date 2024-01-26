@@ -46,7 +46,7 @@ export const HeaderWinnings = () => {
   
     window.Echo.channel('main')
       .listen('.live.drop', (drops) => {
-        setTimeout(() => setLiveDrop(prev => [drops, ...prev.slice(0, 24)]), 10150);
+        setTimeout(() => setLiveDrop(prev => [drops, ...prev.slice(0, 29)]), 10150);
       })
       .listen('.live.top', (topDrop) => {
         setTopDrop(topDrop);
@@ -95,7 +95,7 @@ export const HeaderWinnings = () => {
           </div>
         </div>
         <div className='HeaderDropsItems'>
-          {isLoading ? Array.from({ length: 24 }, (_, index) => <WinInfoLoading key={index} />) : (
+          {isLoading ? Array.from({ length: 29 }, (_, index) => <WinInfoLoading key={index} />) : (
             selectedDrops === "last_drop" ? 
               liveDrop?.map((item, index) => <Item
                 key={index}

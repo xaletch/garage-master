@@ -8,7 +8,7 @@ import { HeaderWinnings } from './HeaderWinnings';
 export default function Header({ setLogin, login, isMuted, setMuted }) {
   const [follower, setFollower] = useState(16900);
   const [userData, setUserData] = useState(null);
-  const { data, isFetching, refetch: refetchUserData, error } = useGetUserQuery(null);
+  const { data, isFetching, refetch: refetchUserData, error, isLoading } = useGetUserQuery(null);
 
   useEffect(() => {
     if (data && !isFetching) {
@@ -19,7 +19,16 @@ export default function Header({ setLogin, login, isMuted, setMuted }) {
 
   return (
     <div className='Header'>
-      <HeaderTop refetchUserData={refetchUserData} error={error} userData={userData} setLogin={setLogin} login={login} isMuted={isMuted} setMuted={setMuted} />
+      <HeaderTop
+        refetchUserData={refetchUserData}
+        error={error}
+        userData={userData}
+        setLogin={setLogin}
+        login={login}
+        isMuted={isMuted}
+        setMuted={setMuted}
+        isLoading={isLoading}
+      />
       <HeaderWinnings />
     </div>
   )
