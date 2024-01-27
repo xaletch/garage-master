@@ -49,7 +49,7 @@ export const HeaderWinnings = () => {
         setTimeout(() => setLiveDrop(prev => [drops, ...prev.slice(0, 29)]), 10150);
       })
       .listen('.live.top', (topDrop) => {
-        setTopDrop(topDrop);
+        setLiveDrop(topDrop);
       })
       .listen('.live.online', (e) => {
         setOnline(e.online);
@@ -95,7 +95,7 @@ export const HeaderWinnings = () => {
           </div>
         </div>
         <div className='HeaderDropsItems'>
-          {isLoading ? Array.from({ length: 29 }, (_, index) => <WinInfoLoading key={index} />) : (
+          {isLoading ? Array.from({ length: 30 }, (_, index) => <WinInfoLoading key={index} />) : (
             selectedDrops === "last_drop" ? 
               liveDrop?.map((item, index) => <Item
                 key={index}

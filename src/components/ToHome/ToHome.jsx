@@ -9,7 +9,7 @@ export const ToHome = () => {
         <>
             <Link to='/' className='ToHome'>
                 <img src={link_img.arrowRight} alt=''/>
-                <span>вернуться на главную страницу</span>
+                <span>Вернуться на главную страницу</span>
             </Link>
         </>
     )

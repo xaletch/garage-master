@@ -4,6 +4,7 @@ import link_img from '../../../img/link_img';
 import './ProfileInfo.scss' ;
 
 import { useGetUserQuery } from '../../../redux/cases/cases';
+import { Link } from 'react-router-dom';
 
 export const ProfileInfo = () => {
 
@@ -50,7 +51,7 @@ export const ProfileInfo = () => {
                     </p>
                 </div>
                 <div className="ProfileInfoLine" aria-hidden="true"></div>
-                <div className='item countCase'>
+                <Link to={data?.data?.profile?.steam_url} className='item countCase'>
                     <div className='icon'>
                         <img src={link_img.steam} alt=''/>
                     </div>
@@ -58,7 +59,7 @@ export const ProfileInfo = () => {
                         <span className='itemName'>Профиль в</span>
                         <span className='itemBottom itemProfile'>Steam</span>
                     </p>
-                </div>
+                </Link>
             </div>
         </div>
     )

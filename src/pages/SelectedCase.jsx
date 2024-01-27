@@ -14,7 +14,7 @@ import { CaseOpen } from '../components/OpenCase/CaseOpen/CaseOpen';
 import { NotificationCase } from '../components/Notification/NotificationCase';
 import { Loading } from '../components/Loading/Loading';
 
-import openCaseSound from '../sounds/sounds.jsx';
+import step from '../sounds/sounds.jsx';
 
 export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
   const { url } = useParams();
@@ -118,7 +118,7 @@ export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
   };
 
   // ЗВУК ОТКРЫТИЯ КЕЙСА
-  const [playAudioOpen, { stop }] = useSound(openCaseSound.openingCaseSound, { volume: 0.5 });
+  const [playAudioOpen, { stop }] = useSound(step.step, { volume: 0.5 });
 
   useEffect(() => {
     localStorage.setItem('muted', isMuted);
@@ -145,9 +145,9 @@ export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
           setTranslateX(-Math.min(leftPosition, maxTranslate));
         }
 
-        if (isMuted !== true) {
-          playAudioOpen();
-        }
+          if (isMuted !== true) {
+            playAudioOpen();
+          }
 
       }
     }, 1000);

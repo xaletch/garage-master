@@ -109,6 +109,10 @@
                 &:hover {
                     box-shadow: 0 0 5px #8b2ca5bc,inset 0 0 5px #8b2ca5bc;
                 }
+
+                &.disabled {
+                    opacity: 0.6;
+                }
             }
         }
     }
