@@ -145,20 +145,15 @@ export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
           setTranslateX(-Math.min(leftPosition, maxTranslate));
         }
 
+        if (isMuted !== true) {
+          playAudioOpen();
+        }
+
       }
     }, 1000);
 
     return () => clearTimeout(timer);
   }, [dataWin, multipliedItems, itemWidth]);
-
-  useEffect(() => {
-    if (dataWin?.data && isMuted !== true) {
-      setTimeout(() => {
-
-        playAudioOpen();
-      }, 1000)
-    }
-  }, [dataWin]);
 
   useEffect(() => {
     if (dataWin?.data) {
