@@ -49,7 +49,7 @@ export const HeaderWinnings = () => {
         setTimeout(() => setLiveDrop(prev => [drops, ...prev.slice(0, 29)]), 10150);
       })
       .listen('.live.top', (topDrop) => {
-        setLiveDrop(topDrop);
+        setTopDrop(topDrop);
       })
       .listen('.live.online', (e) => {
         setOnline(e.online);

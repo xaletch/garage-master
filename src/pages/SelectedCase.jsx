@@ -144,11 +144,6 @@ export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
           const maxTranslate = (multipliedItems.length) * itemWidth;
           setTranslateX(-Math.min(leftPosition, maxTranslate));
         }
-
-          if (isMuted !== true) {
-            playAudioOpen();
-          }
-
       }
     }, 1000);
 

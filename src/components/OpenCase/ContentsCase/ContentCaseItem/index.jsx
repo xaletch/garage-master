@@ -2,7 +2,7 @@ import React from 'react'
 
 export const ContentCaseItem = ({ image, name, rarity }) => {
   return (
-    <div className={`ContentCaseItem ${
+    <div className={`ContentCaseItem CaseCard ${
       rarity === 'Запрещённое' ? 'purple' :
       rarity === 'Промышленное качество' ? 'blue' :
       rarity === 'Тайное' ? 'red' :

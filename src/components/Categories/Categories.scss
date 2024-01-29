@@ -1,5 +1,5 @@
 .categories {
-    max-width: 1350px;
+    max-width: 900px;
     margin: 0 auto;
     border-radius: 5px;
     background: #310062;
@@ -35,7 +35,7 @@
 
 @media screen and (max-width: 1390px) {
     .categories {
-        width: 1112px;
+        width: 705px;
     }
     .categories .categoriesList .item {
         width: auto;
@@ -44,13 +44,6 @@
 }
 
 @media screen and (max-width: 1120px) {
-    .categories {
-        width: 100%;
-        overflow: scroll;
-    }
-    .categories .categoriesList {
-        width: 1112px;
-    }
     .categories::-webkit-scrollbar {
         height: 2px;
     }
@@ -59,12 +52,21 @@
     }
 }
 
+@media screen and (max-width: 740px) {
+    .categories {
+        overflow: scroll;
+    }
+    .categories .categoriesList {
+        width: 708px;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .categories .categoriesList {
         height: 40px;
     }
     .categories .categoriesList {
-        width: 1010px;
+        width: 883px;
     }
     .categories .categoriesList .item {
         padding: 8px 16px;

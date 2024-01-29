@@ -3,15 +3,12 @@ import React, { useState } from 'react'
 import './Categories.scss'
 
 const category = [
-  {name: "Новинки и скидки", id: 1},
-  {name: "По цветам", id: 2},
-  {name: "По типу оружия", id: 3},
-  {name: "По качеству", id: 4},
-  {name: "По коллекциям", id: 5},
-  {name: "Take-Drop", id: 6},
-  {name: "Агенты и прочее", id: 7},
-  {name: "Фарм кейсы", id: 8},
-  {name: "Бонусные кейсы", id: 9}
+  {name: "Все кейсы", id: 1},
+  {name: "Фирменые", id: 2},
+  {name: "Черная пятница", id: 3},
+  {name: "С игры", id: 4},
+  {name: "Новинки и скидки", id: 5},
+  {name: "Агенты и прочее", id: 6},
 ];
 
 export const Categories = () => {
