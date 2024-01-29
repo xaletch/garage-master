@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/garage-master/static/css/main.654db6ef.css",
-    "main.js": "/garage-master/static/js/main.f05f3236.js",
+    "main.css": "/garage-master/static/css/main.170cc316.css",
+    "main.js": "/garage-master/static/js/main.28010534.js",
     "static/js/845.b7f75e16.chunk.js": "/garage-master/static/js/845.b7f75e16.chunk.js",
     "static/media/Фон.png": "/garage-master/static/media/Фон.362dd0f6fdb8f0c1a1c0.png",
     "static/media/free_case.png": "/garage-master/static/media/free_case.097c1f03bc586c988e09.png",
@@ -29,12 +29,12 @@
     "static/media/copy-userId.svg": "/garage-master/static/media/copy-userId.ebdb0d20c9e55fdb1ba1530d96938bb8.svg",
     "static/media/live.svg": "/garage-master/static/media/live.ef568f494c851830cfa38ae7e9dcaf5b.svg",
     "static/media/update.svg": "/garage-master/static/media/update.8051e15712b34a7c192208bd83b6fccc.svg",
-    "main.654db6ef.css.map": "/garage-master/static/css/main.654db6ef.css.map",
-    "main.f05f3236.js.map": "/garage-master/static/js/main.f05f3236.js.map",
+    "main.170cc316.css.map": "/garage-master/static/css/main.170cc316.css.map",
+    "main.28010534.js.map": "/garage-master/static/js/main.28010534.js.map",
     "845.b7f75e16.chunk.js.map": "/garage-master/static/js/845.b7f75e16.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.654db6ef.css",
-    "static/js/main.f05f3236.js"
+    "static/css/main.170cc316.css",
+    "static/js/main.28010534.js"
   ]
 }
