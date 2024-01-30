@@ -12,43 +12,29 @@ export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color, is
     const [playAudioOpens, { stop }] = useSound(step.step, { volume: 0.5 });
 
     useEffect(() => {
-        let isAudioPlaying = false;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            playAudioOpens();
+            entry.target.dataset.played = 'true';
+          }
+        });
+      }, { threshold: 0 });
     
-        const playAudioOpen = () => {
-            if (!isAudioPlaying) {
-                isAudioPlaying = true;
-                playAudioOpens();
-                setTimeout(() => {
-                    isAudioPlaying = false;
-                }, 16);
-            }
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting && entry.target.dataset.played !== 'true') {
-              playAudioOpens();
-              entry.target.dataset.played = 'true';
-              console.log('entry.target: ', entry.target);
-            }
-          });
-        }, { threshold: 0 });
-      
-        if (stripRef.current) {
-          const cards = stripRef.current.querySelectorAll('.ContentCaseItem');
-      
+      if (stripRef.current) {
+        const cards = stripRef.current.querySelectorAll('.ContentCaseItem');
+    
+        cards.forEach(card => {
+          observer.observe(card);
+        });
+    
+        return () => {
           cards.forEach(card => {
-            observer.observe(card);
+            observer.unobserve(card);
           });
-      
-          return () => {
-            cards.forEach(card => {
-              observer.unobserve(card);
-            });
-          };
-        }
-      }, [stripRef, playAudioOpens]);
-
+        };
+      }
+    }, [stripRef, playAudioOpens]);
     // useEffect(() => {
     //     let isAudioPlaying = false;
     
