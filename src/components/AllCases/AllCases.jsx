@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './AllCases.scss';
 import { Link } from 'react-router-dom';
 import { useGetCasesQuery } from '../../redux/cases/cases.js';
 import { Loading } from '../Loading/Loading';
 
-export const AllCases = () => {
+import { useDispatch, useSelector } from 'react-redux'
+import { setCaseItems } from '../../redux/slices/categoriesSlice.js';
 
-    const { data, isLoading } = useGetCasesQuery(null);
+export const AllCases = () => {
+    const { data, isLoading, isSuccess } = useGetCasesQuery(null);
+
+    const dispatch = useDispatch();
+    const { caseItems } = useSelector(state => state.categorySlice);
+
+    useEffect(() => {
+        if (isSuccess) {
+            dispatch(setCaseItems(data?.data.cases));
+        }
+    }, [isSuccess]);
 
     if (isLoading) {
         return <Loading />
@@ -15,7 +26,7 @@ export const AllCases = () => {
 
     return (
         <>
-            {data?.data?.cases.map((item) => (
+            {caseItems?.map((item) => (
                 <div className='CasesAll'key={item.category_name}>
                     <h2>{item.category_name}</h2>
                     <div className="CasesAllMain mainWidht">

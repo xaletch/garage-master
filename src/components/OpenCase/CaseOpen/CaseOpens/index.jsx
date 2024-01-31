@@ -35,42 +35,6 @@ export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color, is
         };
       }
     }, [stripRef, playAudioOpens]);
-    // useEffect(() => {
-    //     let isAudioPlaying = false;
-    
-    //     const playAudioOpen = () => {
-    //         if (!isAudioPlaying) {
-    //             isAudioPlaying = true;
-    //             playAudioOpens();
-    //             setTimeout(() => {
-    //                 isAudioPlaying = false;
-    //             }, 16);
-    //         }
-    //     };
-    
-    //     const observer = new IntersectionObserver((entries) => {
-    //         entries.forEach(entry => {
-    //             if (entry.isIntersecting && !isAudioPlaying) {
-    //                 playAudioOpen();
-    //                 console.log('entry.target: ', entry.target);
-    //             }
-    //         });
-    //     }, { threshold: 0 });
-    
-    //     if (stripRef.current) {
-    //         const cards = stripRef.current.querySelectorAll('.ContentCaseItem');
-    
-    //         cards.forEach(card => {
-    //             observer.observe(card);
-    //         });
-    
-    //         return () => {
-    //             cards.forEach(card => {
-    //                 observer.unobserve(card);
-    //             });
-    //         };
-    //     }
-    // }, [stripRef, playAudioOpens]);
 
     return (
         <div className={`CaseOpens ${color}`} ref={stripRef}>

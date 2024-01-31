@@ -1,30 +1,48 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './Categories.scss'
+import { useGetCasesQuery } from '../../redux/cases/cases';
+import { useDispatch, useSelector } from 'react-redux';
 
-const category = [
-  {name: "Все кейсы", id: 1},
-  {name: "Фирменые", id: 2},
-  {name: "Черная пятница", id: 3},
-  {name: "С игры", id: 4},
-  {name: "Новинки и скидки", id: 5},
-  {name: "Агенты и прочее", id: 6},
-];
+import { setCaseItems, setSelectedCategory } from '../../redux/slices/categoriesSlice';
 
 export const Categories = () => {
-  const [selectCategory, setSelectCategory] = useState(1);
+  const { data: categoryCases, isSuccess } = useGetCasesQuery();
+  const [category, setCategory] = useState([]);
 
-  const handleSelectCategory = (id) => {
-    setSelectCategory(id)
-  }
+  const dispatch = useDispatch();
+  const selectedCategory = useSelector(state => state.categorySlice.selectedCategory);
+
+  useEffect(() => {
+    if (isSuccess) {
+      const categories = categoryCases?.data.cases;
+      if (categories) {
+        const categoriesWithAll = [{ category_name: "Все кейсы"}, ...categories];
+        setCategory(categoriesWithAll);
+        
+        if (selectedCategory === "Все кейсы") {
+          dispatch(setCaseItems(categories));
+        } else {
+          const filteredCases = categories.filter(category => category.category_name === selectedCategory);
+          dispatch(setCaseItems(filteredCases));
+        }
+      }
+    }
+  }, [isSuccess, selectedCategory]);
+
+  const handleSelectCategory = (name) => {
+    dispatch(setSelectedCategory(name));
+  };
 
   return (
     <div className='categories'>
-      <ul className='categoriesList'>
-        {category.map((item, index) => (
-          <li className={`item ${selectCategory === item.id ? 'active' : ''}`} key={index} onClick={() => handleSelectCategory(item.id)}>{item.name}</li>
-        ))}
-      </ul>
+      {/* <div className='wrapper'> */}
+        <ul className='categoriesList'>
+          {category.slice(0, 9).map((item, index) => (
+            <li className={`item ${selectedCategory === item.category_name ? 'active' : ''}`} key={index} onClick={() => handleSelectCategory(item.category_name)}>{item.category_name}</li>
+          ))}
+        </ul>
+      {/* </div> */}
     </div>
   )
 }
