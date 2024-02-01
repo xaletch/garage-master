@@ -21,11 +21,13 @@ function App() {
     <div className="App">
       <Header setLogin={setLogin} login={login} isMuted={isMuted} setMuted={setMuted} />
 
-      <Routes>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='profile' element={<Profile />}></Route>
-        <Route path='selected-case/:url' element={<SelectedCase setLogin={setLogin} login={login} isMuted={isMuted} setMuted={setMuted} />}></Route>
-      </Routes>
+      <div className='main-wrapper'>
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='profile' element={<Profile />}></Route>
+          <Route path='selected-case/:url' element={<SelectedCase setLogin={setLogin} login={login} isMuted={isMuted} setMuted={setMuted} />}></Route>
+        </Routes>
+      </div>
       <Footer />
     </div>
   );

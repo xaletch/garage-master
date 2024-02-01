@@ -32,8 +32,11 @@
 h2 {
   font-weight: bold;
 }
-
+html {
+  height: 100%;
+}
 body {
+  height: 100%;
   font-family: "Gilroy";
   background: #200038;
   color: white;
@@ -42,13 +45,17 @@ body {
   background-position: center 140px;
   background-attachment: fixed;
   font-size: 13px;
+  position: relative;
   display: block;
 }
 .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   overflow: hidden;
 }
-.main {
-  
+.main-wrapper {
+  flex: 1;
 }
 h2 {
   font-size: 30px;
