@@ -12,23 +12,20 @@ export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color, is
   const [playAudioOpens, { stop }] = useSound(step.step, { volume: 0.5 });
 
   // 
-  // const onIntersection = () => {};
-
-  // useEffect(() => {}, multipliedItems);
-
+  const onIntersection = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target.dataset.played !== 'true') {
+        playAudioOpens();
+        entry.target.dataset.played = 'true';
+      }
+    });
+  };
+  
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.dataset.played) {
-          playAudioOpens();
-          entry.target.dataset.played = 'true';
-        }
-      });
-    }, { threshold: 0 });
+    const observer = new IntersectionObserver(onIntersection, { threshold: 0 });
   
     if (stripRef.current) {
       const cards = stripRef.current.querySelectorAll('.ContentCaseItem');
-  
       cards.forEach(card => {
         observer.observe(card);
       });
@@ -40,6 +37,31 @@ export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color, is
       };
     }
   }, [stripRef, playAudioOpens]);
+
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver((entries) => {
+  //     entries.forEach(entry => {
+  //       if (entry.isIntersecting && !entry.target.dataset.played) {
+  //         playAudioOpens();
+  //         entry.target.dataset.played = 'true';
+  //       }
+  //     });
+  //   }, { threshold: 0 });
+  
+  //   if (stripRef.current) {
+  //     const cards = stripRef.current.querySelectorAll('.ContentCaseItem');
+  
+  //     cards.forEach(card => {
+  //       observer.observe(card);
+  //     });
+  
+  //     return () => {
+  //       cards.forEach(card => {
+  //         observer.unobserve(card);
+  //       });
+  //     };
+  //   }
+  // }, [stripRef, playAudioOpens]);
 
   return (
     <div className={`CaseOpens ${color}`} ref={stripRef}>
