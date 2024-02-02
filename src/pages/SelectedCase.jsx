@@ -16,7 +16,7 @@ import { Loading } from '../components/Loading/Loading';
 
 import step from '../sounds/sounds.jsx';
 
-export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
+export const SelectedCase = ({ setLogin, login, isMuted }) => {
   const { url } = useParams();
 
   const { data: caseInfo, isLoading } = useGetCaseByUrlQuery(url);
@@ -117,16 +117,6 @@ export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
     setOpen(false);
   };
 
-  // ЗВУК ОТКРЫТИЯ КЕЙСА
-  const [playAudioOpen, { stop }] = useSound(step.step, { volume: 0.5 });
-
-  useEffect(() => {
-    localStorage.setItem('muted', isMuted);
-    if (isMuted) {
-      stop();
-    }
-  }, [isMuted]);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       if (dataWin && dataWin?.data) {
@@ -175,7 +165,7 @@ export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
   return (
     <div className='SelectedCase'>
         <div className='main mainWidht'>
-          <ReturnHomeButton name={caseInfo?.data?.name} stop={stop} />
+          <ReturnHomeButton name={caseInfo?.data?.name} />
           {isOpen &&
             (
                 <div className='CaseOpen'>
@@ -195,6 +185,7 @@ export const SelectedCase = ({ setLogin, login, isMuted, setMuted }) => {
                     multipliedItems={multipliedItems}
                     handleOpenMore={handleOpenMore}
                     initializeAndShuffleItems={initializeAndShuffleItems}
+                    isMuted={isMuted}
                   />
                 </div>
             )

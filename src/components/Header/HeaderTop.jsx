@@ -13,6 +13,10 @@ export const HeaderTop = ({ refetchUserData, error, userData, setLogin, login, i
           refetchUserData(); 
       }, 500);
   }, [isAuth]);
+  
+  useEffect(() => {
+    localStorage.setItem('muted', isMuted);
+  }, [isMuted]);
 
   if (error?.data?.error) {
     document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';

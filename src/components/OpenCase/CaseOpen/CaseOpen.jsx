@@ -8,7 +8,7 @@ import { CaseOpens } from './CaseOpens';
 import { useLazyGetItemSaleQuery, useGetUserItemsQuery, useGetUserQuery } from '../../../redux/cases/cases';
 
 
-export const CaseOpen = ({ name, item, color, dataWin, winner, translateX, isSpinning, setSold, sold, isWin, handleOpenMore, multipliedItems, setShowNotification, playAudioOpen }) => {
+export const CaseOpen = ({ name, item, color, dataWin, winner, translateX, isSpinning, setSold, sold, isWin, handleOpenMore, multipliedItems, setShowNotification, playAudioOpen, isMuted }) => {
     const { start_price, end_price, page } = useSelector((state) => state.filterCase);
 
     const {refetch: refetchUserItems } = useGetUserItemsQuery({ start_price, end_price, page });
@@ -38,7 +38,7 @@ export const CaseOpen = ({ name, item, color, dataWin, winner, translateX, isSpi
     return (
         <>
             <h2 className='CaseName'>{name}</h2>
-            <CaseOpens playAudioOpen={playAudioOpen} drop={dataWin} item={item} multipliedItems={multipliedItems} translateX={translateX} winner={winner} color={color} isWin={isWin} />
+            <CaseOpens playAudioOpen={playAudioOpen} drop={dataWin} item={item} multipliedItems={multipliedItems} translateX={translateX} winner={winner} color={color} isWin={isWin} isMuted={isMuted} />
             <div className='CaseOpenBtn'>
                 {winner && dataWin && dataWin.map((item, index) => (
                     <div key={index} className='button'>

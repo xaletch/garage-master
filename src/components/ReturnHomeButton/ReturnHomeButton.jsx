@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 
 import './ReturnHomeButton.scss';
 
-export const ReturnHomeButton = ({ name, stop }) => {
+export const ReturnHomeButton = ({ name }) => {
     
-    const handleClick = () => {
-        stop();
-    };
     return (
         <div className='ReturnHomeButton'>
-            <div className='ReturnHomeItem' onClick={handleClick}>
+            <div className='ReturnHomeItem'>
                 <Link to='/'>Главная</Link>
             </div>
             /

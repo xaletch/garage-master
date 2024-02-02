@@ -7,22 +7,28 @@ import step from '../../../../sounds/sounds';
 
 import { ContentCaseItem } from '../../ContentsCase/ContentCaseItem';
 
-export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color, isWin }) => {
+export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color, isWin, isMuted }) => {
   const stripRef = useRef(null);
   const [playAudioOpens, { stop }] = useSound(step.step, { volume: 0.5 });
 
   // 
-  const onIntersection = (entries, observer) => {
+  const onIntersection = (entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && entry.target.dataset.played !== 'true') {
-        playAudioOpens();
-        entry.target.dataset.played = 'true';
+      if (entry.isIntersecting && entry.target) {
+        requestAnimationFrame(() => {
+          if (isMuted) {
+            stop();
+          } else {
+            playAudioOpens();
+            entry.target.dataset.played = 'true';
+          }
+        });
       }
     });
   };
   
   useEffect(() => {
-    const observer = new IntersectionObserver(onIntersection, { threshold: 0 });
+    const observer = new IntersectionObserver(onIntersection, { threshold: 1 });
   
     if (stripRef.current) {
       const cards = stripRef.current.querySelectorAll('.ContentCaseItem');
@@ -37,31 +43,6 @@ export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color, is
       };
     }
   }, [stripRef, playAudioOpens]);
-
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver((entries) => {
-  //     entries.forEach(entry => {
-  //       if (entry.isIntersecting && !entry.target.dataset.played) {
-  //         playAudioOpens();
-  //         entry.target.dataset.played = 'true';
-  //       }
-  //     });
-  //   }, { threshold: 0 });
-  
-  //   if (stripRef.current) {
-  //     const cards = stripRef.current.querySelectorAll('.ContentCaseItem');
-  
-  //     cards.forEach(card => {
-  //       observer.observe(card);
-  //     });
-  
-  //     return () => {
-  //       cards.forEach(card => {
-  //         observer.unobserve(card);
-  //       });
-  //     };
-  //   }
-  // }, [stripRef, playAudioOpens]);
 
   return (
     <div className={`CaseOpens ${color}`} ref={stripRef}>
