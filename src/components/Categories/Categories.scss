@@ -1,9 +1,11 @@
 .categories {
-    width: 100%;
+    min-width: 100%;
     display: flex;
     justify-content: center;
+    position: sticky;
+    top: 5px;
+    z-index: 999;
 }
-.categories .wrapper {}
 .categories .categoriesList {
     height: 54px;
     display: flex;
@@ -56,6 +58,7 @@
     .categories {
         overflow-x: scroll;
         justify-content: start;
+        top: 0;
     }
     .categories .categoriesList{
         height: 44px;

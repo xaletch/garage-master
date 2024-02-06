@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './Categories.scss'
-import { useGetCasesQuery } from '../../redux/cases/cases';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setSelectedCategory } from '../../redux/slices/categoriesSlice';
@@ -18,6 +17,8 @@ export const Categories = ({ categoryRefs, category }) => {
     const selectedRef = categoryRefs.current[selectedCategory];
     if (selectedRef && selectedRef.current) {
       selectedRef.current.scrollIntoView({ behavior: "smooth" });
+      const offset = selectedRef.current.offsetTop;
+      window.scrollTo({ top: offset - 80, behavior: 'smooth' });
     }
   }, [selectedCategory]);
 
