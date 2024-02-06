@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect } from 'react'
 import './AllCases.scss';
 import { Link } from 'react-router-dom';
-import { useGetCasesQuery } from '../../redux/cases/cases.js';
 import { Loading } from '../Loading/Loading';
 
-import { useDispatch, useSelector } from 'react-redux'
-import { setCaseItems } from '../../redux/slices/categoriesSlice.js';
-
-export const AllCases = () => {
-    const { data, isLoading, isSuccess } = useGetCasesQuery(null);
-
-    const dispatch = useDispatch();
-    const { caseItems } = useSelector(state => state.categorySlice);
-
+export const AllCases = ({ categoryRefs, categoryCases, isLoading, scrollPosition }) => {
     useEffect(() => {
-        if (isSuccess) {
-            dispatch(setCaseItems(data?.data.cases));
-        }
-    }, [isSuccess]);
+        categoryRefs.current = {};
+        categoryCases?.data.cases?.forEach((item) => {
+            categoryRefs.current[item.category_name] = React.createRef();
+        });
+    }, [categoryCases]);
 
     if (isLoading) {
         return <Loading />
@@ -26,12 +17,12 @@ export const AllCases = () => {
 
     return (
         <>
-            {caseItems?.map((item) => (
-                <div className='CasesAll'key={item.category_name}>
+            {categoryCases?.data.cases?.map((item) => (
+                <div className='CasesAll' key={item.category_name} ref={categoryRefs.current[item.category_name]}>
                     <h2>{item.category_name}</h2>
                     <div className="CasesAllMain mainWidht">
                         {item.items.map((subItem, index) => (
-                            <Link to={`/selected-case/${subItem.url}`} key={index}>
+                            <Link to={`/selected-case/${subItem.url}`} key={index} onClick={() => localStorage.setItem('scrollPosition', scrollPosition)}>
                                 <div className={`CaseCard ${subItem.color}`} key={subItem.url}>
                                     <div className={`CaseCardWrapper ${subItem.color}`}>
                                         <div className={`CaseCardInner ${subItem.color}`}>
