@@ -26,7 +26,7 @@ export const CaseOpens = ({ drop, multipliedItems, translateX, winner, color, is
       }
     });
   };
-  
+   
   useEffect(() => {
     const observer = new IntersectionObserver(onIntersection, { threshold: 1 });
   

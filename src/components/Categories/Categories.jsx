@@ -26,7 +26,7 @@ export const Categories = ({ categoryRefs, category }) => {
     <div className="categories">
       <ul className="categoriesList">
         {category.slice(0, 9).map((item, index) => (
-          <li
+          <li 
             className={`item ${selectedCategory === item.category_name ? 'active' : ''}`}
             key={index}
             onClick={() => handleSelectCategory(item.category_name)}
